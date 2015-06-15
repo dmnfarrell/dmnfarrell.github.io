@@ -1,2 +1,2 @@
 # dmnfarrell.github.io
-my pag
+my pages
