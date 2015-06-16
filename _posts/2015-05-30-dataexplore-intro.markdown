@@ -6,7 +6,7 @@ categories: dataexplore
 ---
 
 ##Background
-Finding appropriate software tools for teaching and learning data analysis is not trivial. This is especially true if a non-programming approach is sought. The ubiquity of spreadsheets in the form of Excel has meant they have been shoe-horned into doing tasks that they were never originally designed for. Thus they are often inappropriate as a teaching tool. This topic is covered in greater detail in [this post]({% post_url 2015-05-31-teaching-data %}).
+Finding appropriate software tools for teaching and learning data analysis is not trivial. This is especially true if a non-programming approach is sought. The ubiquity of spreadsheets in the form of Excel has meant they have been shoe-horned into doing tasks that they were never originally designed for. Thus they are often inappropriate as a teaching tool. This topic is covered in greater detail in in another post.
 
 <span style="float: right; padding:12px;">
 <a href="/img/dexpl_scr1.png"> <img src="/img/dexpl_scr1.png" width="250px"></a>
