@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /:categories/:year/:month/:day/:title 
@@ -132,3 +133,22 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
   
+=======
+# Site settings
+title: DataExplore blog
+
+email: farrell.damien@gmail.com
+
+description: > # this means to ignore newlines until "baseurl:"
+ DataExplore blog and other random items.
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+
+url: "http://dmnfarrell.github.io" # the base hostname & protocol for your site
+
+github_username:  dmnfarrell
+
+# Build settings
+markdown: rdiscount
+highlighter: true
+>>>>>>> c871895f083ece7277321bfd499e4ecd3a70b805
