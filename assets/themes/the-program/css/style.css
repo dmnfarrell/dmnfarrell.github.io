@@ -567,7 +567,7 @@ pre {
   color: #f2f2f2;
   background-color: #393939;
   border: 1px solid #393939;
-  font-family: consolas, monaco, monospace;
+  font-family: "Droid Sans", Arial, monospace;
   margin-left: 0;
   margin-right: 0;
   padding: 1.625em;
@@ -580,7 +580,7 @@ pre {
 /* HEADER
 --------------------------------------------------------------------------------- */
 .the-header .logo {
-  font-family: UbuntuMono-B, consolas, monaco, monospace;
+  font-family: "Droid Sans", Arial, monospace;
   margin: 0;
 }
 .the-header .logo a:visited {
@@ -995,11 +995,11 @@ pre {
   .body {
     float: left;
     width: 100%;
-    margin-right: -450px;
+    margin-right: -300px;
   }
   .body .unit-body {
     border-top: 0 none;
-    margin-right: 450px;
+    margin-right: 300px;
     padding: 26px 52px;
   }
   .the-footer {
