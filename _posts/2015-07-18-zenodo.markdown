@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Zenodo and sharing your software"
+date:   2015-07-18 11:50:00
+categories: research
+---
+
+##Software sharing in the sciences
+
+Many scientists have to develop their own software in the course of research. Much of it never sees the light of day because it's too specific or not rigourous enough to be used by others. The developer might not have the time to clean the code and make it bug free enough to be usable. Sometimes the scientist is too embarrased to release the code because it's a mess. However increasingly this has become a serious problem. Without sharing the software how can others replicate your work. Funding agencies now expect this. Many journals now require the software be released with an open license as part of publication and this will slowly become the norm. Though it's still hard to publish software in it's own right.
+
+There is also the recognition factor. Up until recently scientists have only been able to get recognition of their software by publishing it in a journal. There are now alternatives that can be used instead of, or in conjunction with, journal articles. As part of the drive to improve data sharing and promote open access to data multiple organisations are supporting new services that enable authors of research software to create a permanent, citable, open access record of their software. One of these is Zenodo.
+
+##What is Zenodo for?
+
+[Zenodo](https://zenodo.org) is a tool that facilitates sharing of research outputs from a wide variety of formats across all fields of science. This includes software. Now, people working on software in GitHub will be able to ensure that their code is not only preserved but also provided with a [digital object identifier](https://en.wikipedia.org/wiki/Digital_object_identifier) (DOI), just like an academic paper. Researchers can now get credit for creating good software by making it citable. JUst as importantly it also allows reproducibility.
+
+##How to use it
+
+If you are using github it is very easy to integrate this service. Just register, add your github account and then switch on syncing for your repository. When a release is made from that github project it will be given a unique DOI which can be linked to. A citation is then made using this permanent record. A link to the software record can be made using a badge as shown.
+
+<div style="text-align:right">
+<a href="http://dx.doi.org/10.5281/zenodo.20660">
+<img src="https://zenodo.org/badge/doi/10.5281/zenodo.20660.svg"
+alt="10.5281/zenodo.20660"></a>
+</div>
+
+##Useful links
+
+* [CERN post on zenodo](http://home.web.cern.ch/about/updates/2014/03/tool-developed-cern-makes-software-citation-easier)
+* [About Open Access](https://www.openaire.eu/support/faq)
+* [Journal of Open Research Software](http://www.software.ac.uk/blog/2012-03-23-announcing-journal-open-research-software-software-metajournal)

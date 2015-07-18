@@ -2,7 +2,7 @@
 layout: post
 title:  "Educational software for data analysis"
 date:   2015-06-14 12:00:00
-categories: dataexplore
+categories: education
 ---
 
 In developing a tool for simple data analysis that could be used in teaching it is interesting to look at the current options. The near universal use of spreadsheets, largely in the form of Excel, has meant they are being used for tasks not originally designed for. There is plenty of evidence of this even if one is not an educator. Just walk around a research lab in a university or a workplace office. If you were rude enough to stop and look over peoples shoulders you might witness Excel being used in turn as a statistical tool, database or batch programming tool. See this article on  [spreadsheet addiction](http://www.burns-stat.com/documents/tutorials/spreadsheet-addiction/) by Patrick Burns if the topic intrigues you. The author does not hate spreadsheets. In fact they are a wonderful idea but stretched to beyond breaking point in many cases. The macro in particular is a tool being used in place of actual programming in sometimes absurd ways.
