@@ -646,13 +646,16 @@ pre {
   margin-top: 0;
 }
 .unit-article a:link {
-  border-bottom: 1px dashed #c26164;
+  border-bottom: 1px;
+  color: #0066CC;
+  text-decoration: underline;
 }
 .unit-article a:visited {
-  border-bottom: 1px dashed #ad4346;
+  border-bottom: 1px;
+  color: #993300;
 }
 .unit-article a:hover {
-  border-bottom: 1px dashed #d08688;
+  border-bottom: 1px #d08688;
 }
 .unit-article blockquote {
   border-left: 1em solid rgba(21, 25, 25, 0.8);
