@@ -415,28 +415,28 @@ h1,
   font-size: 24px;
   line-height: 26px;
   margin-top: 12px;
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 }
 h2,
 .h2 {
   font-size: 22px;
-  line-height: 32px;
+  line-height: 22px;
   margin-top: 22px;
   margin-bottom: 10px;
 }
 h3,
 .h3 {
-  font-size: 22px;
-  line-height: 21px;
-  margin-top: 16px;
-  margin-bottom: 26px;
+  font-size: 19px;
+  line-height: 18px;
+  margin-top: 12px;
+  margin-bottom: 16px;
 }
 h4,
 .h4 {
-  font-size: 18.541px;
-  line-height: 26px;
-  margin-top: 26px;
-  margin-bottom: 26px;
+  font-size: 17.5px;
+  line-height: 21px;
+  margin-top: 11px;
+  margin-bottom: 16px;
 }
 p,
 ul,
