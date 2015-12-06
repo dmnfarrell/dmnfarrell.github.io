@@ -5,6 +5,11 @@ date:   2015-12-05 13:05:00
 categories: dataexplore
 ---
 
+<iframe width="320" height="240" style="float: right; padding:12px;"
+src="https://www.youtube.com/embed/DyHO7XfBW4o"
+frameborder="0" allowfullscreen>
+</iframe>
+
 ##Background
 
 Sometimes you might have data with various categorical columns that you want to summarise. This will often be to view statistical information like the spread of values in a column. This can be done using histograms or boxplots in dataexplore. However the *factor plots plugin* provides more advanced  statistical graphics when you want to see variability over multiple related categories. Seaborn is a Python visualization library based on matplotlib. Since the functions operate on dataframes they are ideally suited for use in dataexplore.
