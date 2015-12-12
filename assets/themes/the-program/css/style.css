@@ -310,13 +310,15 @@ Tables from [HTML5 Boilerplate](http://j.mp/rP0wmY)
 
 No styleguide reference.
 */
-table {
+table, th, td {
   border-collapse: collapse;
-  border-spacing: 0;
+  padding: 2px;
+  background: white;
+  border: 1px solid black;
+  font-family: Arial, sans-serif;
+  font-size: small;
 }
-td {
-  vertical-align: top;
-}
+
 /*
 Base .mod module from http://j.mp/svs81k
 
@@ -672,9 +674,13 @@ pre {
 }
 .unit-article ul {
   list-style: square;
+  list-style-position: inside;
+  margin-left:10px;
 }
 .unit-article ol {
   list-style: decimal;
+  list-style-position: inside;
+  margin-left:10px;
 }
 .unit-article li h1,
 .unit-article dt h1,
