@@ -12,7 +12,7 @@ The default plotting mode in DataExplore is to continually overwrite the plot wi
 
 ##Usage
 
-This can be done by selecting the 'use grid layout' option in the plot viewer and then using the Grid Layout tab dialog (shown below) to adjust the rows and column settings to place the subplots. Every time you re-plot the data will be plotted at the current row/column location. You will need to clear the current figure before starting unless you want to overlay on this.
+This can be done by selecting the 'use grid layout' option in the plot viewer and then using the Grid Layout tab dialog (shown below) to adjust the rows and column settings to place the subplots. Every time you re-plot the data will be plotted at the current row/column location, clearing the previous subplot at that location. You will need to clear the current figure before starting unless you want to overlay on this.
 
 <div style="width: 400px;">
 <a href="/img/plot_layout_options.png"><img src="/img/plot_layout_options.png" width="500px"></a>
