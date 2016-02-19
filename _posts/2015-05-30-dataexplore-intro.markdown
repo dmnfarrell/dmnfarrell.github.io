@@ -5,7 +5,7 @@ date:   2015-05-30 12:17:29
 categories: dataexplore
 ---
 
-##Background
+## Background
 Finding appropriate software tools for teaching and learning data analysis is not trivial. This is especially true if a non-programming approach is sought. The ubiquity of spreadsheets in the form of Excel has meant they have been shoe-horned into doing tasks that they were never originally designed for. Thus they are often inappropriate as a teaching tool. This topic is covered in greater detail in in another post.
 
 <span style="float: right; padding:12px;">
@@ -16,12 +16,12 @@ Finding appropriate software tools for teaching and learning data analysis is no
 
 The program is free and open source and written in Python. It is hoped that this program will find use in the educational sphere at all levels from secondary to even graduate level.
 
-##Who is it for?
+## Who is it for?
 
 * Non-programmers who want to learn and do basic data analytics.
 * Teachers who want a tool that provides a relatively simple interface but can still do some powerful data transformation and plotting tasks.
 * Students for whom a spreadsheet is not adequate but who cannot afford commercial software.
 
-##How to install
+## How to install
 
 Go to the [home page](http://dmnfarrell.github.io/pandastable/) and download the windows installer. For mac and linux the program is provided by the pandastable Python package. The required packages can be installed using pip. Instructions are [here](https://github.com/dmnfarrell/pandastable/wiki/Installation)

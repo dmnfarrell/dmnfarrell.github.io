@@ -5,17 +5,17 @@ date:   2015-12-04 11:12:00
 categories: dataexplore
 ---
 
-##Introduction
+## Introduction
 
 Plugins are designed to add third party functionality not in the core application. Since the program is written in Python any programmer familiar with the language and the Tkinter library can add a plugin. Usually the purpose will be to implement a dialog/widget that the user interacts with and that does some analysis task related to the table. But this could also be a simple script that runs on the current table (or even all sheets at once) without showing a dialog. It could also be a utility not directly related to table manipulation but convenient to have in the application.
 
 Those wishing to implement a plugin can refer to the [wiki article](https://github.com/dmnfarrell/pandastable/wiki/Writing-Plugins) on github.
 
-##Adding plugins
+## Adding plugins
 
 To install a plugin someone else has written is very easy. Simply place the plugin .py file in the .dataexplore/plugins folder in your home directory. Then choose Plugins->Update plugins or restart the program to load the plugin. If the plugin doesn't appear it means there is an error in the Python file.
 
-##Current plugins
+## Current plugins
 
 At this time there are two plugins available with the application
 

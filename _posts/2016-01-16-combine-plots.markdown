@@ -6,11 +6,11 @@ categories: dataexplore
 tags: [plotting]
 ---
 
-##Background
+## Background
 
 The default plotting mode in DataExplore is to continually overwrite the plot window based on the currently plotted data. Some of the plotting options will generate multiple subplots but these are re-created in one step. For some applications you will want to combine different ways of looking at the data in one plot or plots from different tables.
 
-##Usage
+## Usage
 
 This can be done by selecting the 'use grid layout' option in the plot viewer and then using the Grid Layout tab dialog (shown below) to adjust the rows and column settings to place the subplots. Every time you re-plot the data will be plotted at the current row/column location, clearing the previous subplot at that location. You will need to clear the current figure before starting unless you want to overlay on this.
 

@@ -10,16 +10,16 @@ src="https://www.youtube.com/embed/YTJPbdEQqXA"
 frameborder="0" allowfullscreen>
 </iframe>
 
-##Background
+## Background
 
 The Titanic data used here formed the basis of a [Kaggle](https://en.wikipedia.org/wiki/Kaggle) Getting Started Competition which provide a teaching guide for machine learning. In this contest, students were asked to predict which people were likely to survive based on the data. Here we will simply use the same data to show simple exploratory methods for beginners. The accompanying screen cast goes through most of the same steps.
 
-##Basic plotting
+## Basic plotting
 
 Load the titanic data from the main menu by choosing Datasets->Titanic
 You will get a table with 1309 rows and 13 columns. Most of the column names are self explanatory. Where would you start in familiarizing yourself with this data set? The best way is often with simple plots.
 
-####How are ages distributed?
+#### How are ages distributed?
 
 Choose histogram in the plot options and Apply. Then click on the age column (clicking the header chooses all rows unless you have selected rows inside the table). Then press the plot button on the toolbar. You will see this histogram:
 
@@ -35,7 +35,7 @@ Say you want to break down the age distributions by another column representing 
 
 You can do the same for survived and other categorical columns. Remember if you try to group by a numerical column it probably won't make sense and there will be too many plots to draw. Also when plotting the program tries to plot any number data in your selection so you may need to be careful which columns you have selected to get clear plots.
 
-####Breakdown data using value_counts or aggregate
+#### Breakdown data using value_counts or aggregate
 
 Another way to look at categorical summaries is to use value_counts. This function is applied to a column by right-clikcing in the column header and choosing 'Apply Function', then choose 'value_counts' as the function. Press OK and some parameters from the function are shown. The defaults are ok, but as an example you could choose 'normalize' to get category counts as fractions of the total. The results are opened in a new table below the main one. In this case with just 2 rows. You can select these and plot them as a bar chart:
 
@@ -77,7 +77,7 @@ This is more informative. As you can see the index is important for labeling of 
 
 In Pandas such aggregation operations are referred to as 'split-apply-combine'. See [this link](http://pandas.pydata.org/pandas-docs/stable/groupby.html) to learn more.
 
-####Re-binning pclass
+#### Re-binning pclass
 
 As a last example say we want to reduce many categories into a few to make things clearer. For example **pclass** represent the passenger class as 1,2,3 but we want to lump 2 and 3 together as high and the remainder as low. We can do this from the 'create categorical' function accessed by clicking on the column pclass header. We then re-bin the column and indicate the new labels. This might take some practice to use properly in other situations. The bins define the bin edges in which to re allocate the data and hence are intervals. So the labels are 1 less than the bins. Bins can also be an integer of equally spaced values. In this case we enter 0,1,3 and low,high as below:
 
@@ -87,7 +87,7 @@ As a last example say we want to reduce many categories into a few to make thing
 
 This means any values between 0 and 1 -> low and between 1 and 3 -> high. This creates a new column called 'pclass_binned' (you can rename it). You should perform this on the original table (rather than the aggregated one) so the grouping can be redone and then repeat the above steps.
 
-####Which families lost the most members
+#### Which families lost the most members
 
 This is a specific kind of question that requires you to think a bit about the steps required. In this case it's accomplished quite easily with several steps. There may be more than one way to approach such a task.
 

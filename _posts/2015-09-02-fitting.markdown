@@ -7,7 +7,7 @@ categories: dataexplore
 
 Introductions to linear regression are available from many sources on the web and a basic understanding is assumed here. See links below.
 
-##Statsmodels
+## Statsmodels
 
 This Python library is used for model fitting in DataExplore since it works well with pandas and has a simple interface. It provides descriptive statistics, statistical tests, plotting functions, and implementation of standard estimators used in model fitting. It also allows string formulas using [patsy](https://patsy.readthedocs.org/en/latest/) and this is used in DataExplore to allow the user to type in their formulas easily.
 
@@ -19,7 +19,7 @@ Simple linear regression is an approach for predicting a quantitative response u
 
 Logistic (or logit) regression is a type of regression analysis used for predicting the outcome of a categorical dependent variable represented often by integers (i.e. 0 or 1 might represent male/female) based on one or more predictor variables which can be continuous quantities. Statsmodels provides the logit function for this. The [IPython Notebook Tutorial for Titanic](http://nbviewer.ipython.org/github/agconti/kaggle-titanic/blob/master/Titanic.ipynb)  gives a very good illustration of this kind of fitting. The Titanic dataset is included by default with the application to allow logistic regression to be demonstrated in the same manner as that tutorial.
 
-##Usage
+## Usage
 <span style="float: right; padding:12px;">
 <img src="/img/dexpl_modelfitting.png" width="400px">
 </span>

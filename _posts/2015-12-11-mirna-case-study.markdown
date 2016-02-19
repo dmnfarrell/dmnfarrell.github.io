@@ -6,11 +6,11 @@ categories: dataexplore
 tags: [miRNA,merge,melt,seaborn]
 ---
 
-##Background
+## Background
 
 microRNAs (miRNAs) are non-coding RNAs that have been shown to be important in regulating gene expression. They have significant potential as novel biomarkers for a range of human diseases. This example uses RNA-sequencing results of serum miRNA from an experimental paratuberculosis infection model in cows. The data file is a set of abundances of cattle miRNAs over 24 samples representing 12 different animals. This data file was produced from the raw miRNAseq data using the miRDeep2 software.
 
-##Viewing the miRNA abundance data
+## Viewing the miRNA abundance data
 
 Load the dataset using Datasets->miRNA expression. You can see that there is one row per miRNA and columns of read counts for each of the 24 samples labelled s01, s02 etc. There are also columns called s01(norm) etc. which are the normalized counts. First let's look at ways in which the data can be viewed using just the regular plotting functionality. We wish to see sample variation for a single miRNA. This can be done by simply selecting a row and then plotting a bar graph. You will get a result like the plots below:
 
@@ -50,7 +50,7 @@ Download the table <a href="/other/mirna_sample_labels.csv">here</a>.
 
 ---
 
-##Combining multiple sample labels with miRNA expression data
+## Combining multiple sample labels with miRNA expression data
 
 We now want to add the sample labels to the data before we can plot. This means merging the 2 tables. We want to use the factor plotting plugin to view the data so first we will 'melt' the miRNA table and then merge, finally we can plot. The steps are given below.
 
@@ -75,7 +75,7 @@ We now want to add the sample labels to the data before we can plot. This means 
 
 ---
 
-##Using the factor plotting plugin with the long form data
+## Using the factor plotting plugin with the long form data
 
 See the previous post for introduction to factor plots.
 
@@ -97,6 +97,6 @@ The above may seem quite complicated but will become easier as you get used to t
 * [Pandas melt function](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.melt.html)
 * [wide and long formats in R](http://seananderson.ca/2013/10/19/reshape.html)
 
-##Reference
+## Reference
 
 D. Farrell, R. G. Shaughnessy, L. Britton, D. E. MacHugh, B. Markey, and S. V. Gordon, “The Identification of Circulating MiRNA in Bovine Serum and Their Potential as Novel Biomarkers of Early Mycobacterium avium subsp paratuberculosis Infection,” PLoS One, vol. 10, no. 7, p. e0134310, 2015.

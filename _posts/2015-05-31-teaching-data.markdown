@@ -13,7 +13,7 @@ So there is a gap to be filled - but with what? To get an idea of the rationale 
 
 The above linked discussion also contains the oft repeated reason for using a popular (commercial) tool - that it is 'common in business' or 'industry standard'. This is a very poor reason to choose a piece of software for teaching in schools or universities. In fact it is likely half the reason spreadsheets are still so misused since it perpetuates the same mistakes. However many educators are forced (or prefer) to turn to commercial solutions. In data analytics there are not that many free programs available for non-programmers (see links below). There are now many web based solutions, most being commercial. The web app is certainly the new frontier for such tools but it still isn't quite that easy to build highly interactive applications. So there is a space for desktop tools too.
 
-##Free software for data analysis
+## Free software for data analysis
 
 * [R-studio](http://www.rstudio.com/) Requires learning R language basics
 * [iNZight](https://www.stat.auckland.ac.nz/~wild/iNZight/index.php) Built for schools

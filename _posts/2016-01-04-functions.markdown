@@ -11,7 +11,7 @@ src="https://www.youtube.com/embed/Ylp7kfKVhQU"
 frameborder="0" allowfullscreen>
 </iframe>
 
-##Background
+## Background
 
 Unlike a spreadsheet DataExplore does not allow individual cell based formulae. New columns can however be created using functions. Functions can be applied using expressions typed by the user or by right-clicking on the columns(s) and using the 'Apply Function' dialogs. You can see an overview of the typical usage in the embedded youtube screen cast. You can see the wiki (link below) for more details.
 
