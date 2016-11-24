@@ -34,7 +34,7 @@ Now selecting the normalized rows and a number of miRNA columns (using ctrl-clic
 
 ---
 
-##Adding per sample labels
+## Adding per sample labels
 
 The 24 samples in this dataset come from 12 animals, 6 control and 6 infected and at 2 time points. What we really want is to see the differences between these conditions. However this information is in another table matching the sample names to the categories. This file is provided here as a csv file. To put it into dataexplore just open it in a text editor or spreadsheet, copy and then create a new sheet and paste it in. You can also use the import csv dialog but it shouldn't be needed. The table is of the following form:
 
@@ -99,4 +99,5 @@ The above may seem quite complicated but will become easier as you get used to t
 
 ## Reference
 
-D. Farrell, R. G. Shaughnessy, L. Britton, D. E. MacHugh, B. Markey, and S. V. Gordon, “The Identification of Circulating MiRNA in Bovine Serum and Their Potential as Novel Biomarkers of Early Mycobacterium avium subsp paratuberculosis Infection,” PLoS One, vol. 10, no. 7, p. e0134310, 2015.
+D. Farrell, R. G. Shaughnessy, L. Britton, D. E. MacHugh, B. Markey, and S. V. Gordon, “The Identification of Circulating MiRNA in Bovine Serum and Their Potential as Novel Biomarkers of Early Mycobacterium avium subsp paratuberculosis Infection,”
+[PLoS One, vol. 10, no. 7, p. e0134310, 2015](DOI: 10.1371/journal.pone.0134310)
