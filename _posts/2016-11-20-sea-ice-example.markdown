@@ -7,7 +7,7 @@ tags: [plotting,arctic]
 ---
 
 <iframe width="320" height="240" style="float: right; padding:12px;"
-src="https://www.youtube.com/watch?v=SHyADz4Rm0A"
+src="https://www.youtube.com/embed/SHyADz4Rm0A"
 frameborder="0" allowfullscreen>
 </iframe>
 
