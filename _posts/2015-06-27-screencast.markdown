@@ -10,6 +10,6 @@ categories: dataexplore
 This screencast goes through some of the main features of the application using some simple sample data generated within the program. Note there is no audio narration but most of the content is self-explanatory.
 
 <iframe width="550" height="395"
-src="https://www.youtube.com/embed/lA7bhbWOkSw"
+src="https://www.youtube.com/embed/Ss0QIFywt74"
 frameborder="0" allowfullscreen>
 </iframe>

@@ -11,7 +11,7 @@ Many scientists have to develop their own software in the course of research. Mu
 
 There is also the recognition factor. Up until recently scientists have only been able to get recognition of their software by publishing it in a journal. There are now alternatives that can be used instead of, or in conjunction with, journal articles. As part of the drive to improve data sharing and promote open access to data multiple organisations are supporting new services that enable authors of research software to create a permanent, citable, open access record of their software. One of these is Zenodo.
 
-##What is Zenodo for?
+## What is Zenodo for?
 
 [Zenodo](https://zenodo.org) is a tool that facilitates sharing of research outputs from a wide variety of formats across all fields of science. This includes software. Now, people working on software in GitHub will be able to ensure that their code is not only preserved but also provided with a [digital object identifier](https://en.wikipedia.org/wiki/Digital_object_identifier) (DOI), just like an academic paper. Researchers can now get credit for creating good software by making it citable. JUst as importantly it also allows reproducibility.
 
