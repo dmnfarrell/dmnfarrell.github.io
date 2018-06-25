@@ -10,7 +10,7 @@ Some fixes in version 0.9.0 include an improved dialog for arranging plots in a 
 
 A bug that caused large tables to loaded slowly has been fixed so you should not see a significant delay when opening most tables. A table with a million rows and say 5 columns should open in less than a second.
 
-The [documentation](http://pandastable.readthedocs.io/en/latest/) has been updated to give a better overview of functionality of the program. see the 'using dataexplore' section at 
+The [documentation](http://pandastable.readthedocs.io/en/latest/) has been updated to give a better overview of functionality of the program. see the 'using dataexplore' section.
 
 ## Links
 
