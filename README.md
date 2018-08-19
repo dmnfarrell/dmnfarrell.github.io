@@ -1,4 +1,4 @@
-# DataExplore Blog site
+# My blog site
 
 ## License
 

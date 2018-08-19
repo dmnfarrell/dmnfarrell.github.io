@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Version 0.9.0 released"
+title:  "DataExplore version 0.9.0 released"
 date:   2018-04-02 10:20:00
 categories: dataexplore
 tags: [releases]

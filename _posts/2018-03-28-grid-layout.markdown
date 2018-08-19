@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "New grid layout dialog for sub-plots"
+title:  "DataExplore - new grid layout dialog for sub-plots"
 date:   2018-03-28 11:20:20
 categories: dataexplore
 tags: [plotting]

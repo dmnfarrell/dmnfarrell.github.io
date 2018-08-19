@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Grouped plots in version 0.8.0"
+title:  "DataExplore - grouped plots in version 0.8.0"
 date:   2017-07-05 15:07:00
 categories: dataexplore
 tags: [plotting]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Version 0.10.0 released"
+title:  "Dataexplore version 0.10.0 released"
 date:   2018-06-21 12:15:00
 categories: dataexplore
 tags: [releases]
@@ -8,7 +8,7 @@ tags: [releases]
 
 Version 0.10.0 adds a dot plot, plot animation dialog and column wrapping.
 
-## Tables with long column names
+## Tables with long column headings
 
 You can now handle long column names better by wrapping the text in the column header to get a better view of the names. The header will be resized to accomodate the longest name in the header up to a limit, as shown below. The function is accessed via the view menu. You can also right click in the column header and choose format->wrap header.
 

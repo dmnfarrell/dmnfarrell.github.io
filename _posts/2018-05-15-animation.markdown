@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Animated plots"
+title:  "Animated plots in DataExplore"
 date:   2018-05-15 12:30:00
 categories: dataexplore
 tags: [plotting]

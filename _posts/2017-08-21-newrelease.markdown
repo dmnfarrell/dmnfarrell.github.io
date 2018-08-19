@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Version 0.8.1 released"
+title:  "DataExplore version 0.8.1 released"
 date:   2017-08-21 11:30:00
 categories: dataexplore
 tags: [releases,filtering]

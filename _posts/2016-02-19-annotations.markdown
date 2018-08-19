@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Adding annotations to plots"
+title:  "DataExplore - adding annotations to plots"
 date:   2016-02-19 15:35:00
 categories: dataexplore
 tags: [annotation]

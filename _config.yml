@@ -8,8 +8,8 @@ highlighter: rouge
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : DataExplore blog
-tagline:  DataExplore blog and other random items.
+title : Exploring Bioinformatics
+tagline:  blog exploring bioinformatics and other random items
 author:
   email : farrell.damien@gmail.com
   github : dmnfarrell
@@ -30,7 +30,7 @@ production_url : http://dmnfarrell.github.io
 JB :
   version : 0.3.0
   theme : the-program
-  
+
   # All links will be namespaced by BASE_PATH if defined.
   # Links in your website should always be prefixed with {{BASE_PATH}}
   # however this value will be dynamically changed depending on your deployment situation.

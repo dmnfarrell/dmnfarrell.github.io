@@ -566,17 +566,15 @@ pre {
   margin-bottom: 1.625em;
 }
 pre {
-  color: #f2f2f2;
-  background-color: #393939;
-  border: 1px solid #393939;
+  color: #303232;
+  background-color: #F7F7F2;
+  border: 1px solid white;
   font-family: "Droid Sans", Arial, monospace;
   margin-left: 0;
   margin-right: 0;
   padding: 1.625em;
   overflow: auto;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.6);
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.6);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.6);
+
 }
 /* meta */
 /* HEADER
@@ -722,7 +720,7 @@ pre {
 .unit-article li code {
   padding: 2px 5px;
   white-space: nowrap;
-  background-color: #fff04a;
+  background-color: #EFEEF2;
 }
 .unit-article img {
   display: block;
@@ -1094,7 +1092,7 @@ pre {
   }
 }
 pre .c {
-  color: #999999;
+  color: #9B6BA4;
   font-style: italic;
 }
 /* Comment */
@@ -1108,28 +1106,28 @@ pre .g {
 }
 /* Generic */
 pre .k {
-  color: #6ab825;
+  color: #2B9363;
   font-weight: bold;
 }
 /* Keyword */
 pre .l {
-  color: #d0d0d0;
+  color: #303232;
 }
 /* Literal */
 pre .n {
-  color: #d0d0d0;
+  color: #303232;
 }
 /* Name */
 pre .o {
-  color: #d0d0d0;
+  color: #303232;
 }
 /* Operator */
 pre .x {
-  color: #d0d0d0;
+  color: #303232;
 }
 /* Other */
 pre .p {
-  color: #d0d0d0;
+  color: #303232
 }
 /* Punctuation */
 pre .cm {
@@ -1184,7 +1182,7 @@ pre .gp {
 }
 /* Generic.Prompt */
 pre .gs {
-  color: #d0d0d0;
+  color: #303232;
   font-weight: bold;
 }
 /* Generic.Strong */
@@ -1198,31 +1196,31 @@ pre .gt {
 }
 /* Generic.Traceback */
 pre .kc {
-  color: #6ab825;
+  color: #2B9363;
   font-weight: bold;
 }
 /* Keyword.Constant */
 pre .kd {
-  color: #6ab825;
+  color: #51996B;
   font-weight: bold;
 }
 /* Keyword.Declaration */
 pre .kn {
-  color: #6ab825;
+  color: #2B9363;
   font-weight: bold;
 }
 /* Keyword.Namespace */
 pre .kp {
-  color: #6ab825;
+  color: #2B9363;
 }
 /* Keyword.Pseudo */
 pre .kr {
-  color: #6ab825;
+  color: #2B9363;
   font-weight: bold;
 }
 /* Keyword.Reserved */
 pre .kt {
-  color: #6ab825;
+  color: #2B9363;
   font-weight: bold;
 }
 /* Keyword.Type */
@@ -1289,7 +1287,7 @@ pre .py {
 }
 /* Name.Property */
 pre .nt {
-  color: #6ab825;
+  color: #2B9363;
   font-weight: bold;
 }
 /* Name.Tag */
@@ -1298,7 +1296,7 @@ pre .nv {
 }
 /* Name.Variable */
 pre .ow {
-  color: #6ab825;
+  color: #2B9363;
   font-weight: bold;
 }
 /* Operator.Word */
