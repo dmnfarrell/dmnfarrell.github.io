@@ -1,10 +1,9 @@
 ---
 layout: page
-title: DataExplore
+title: Bioinformatics and other bits
 tagline: blog
 ---
 
-## Posts
 
 <ul class="posts">
   {% for post in site.posts %}

@@ -196,12 +196,7 @@ img {
 svg:not(:root) {
   overflow: hidden;
 }
-/* Correct overflow not hidden in IE9 */
-/*
-Figures from [HTML5 Boilerplate](http://j.mp/rP0wmY)
 
-No styleguide reference.
-*/
 figure {
   margin: 0;
 }
