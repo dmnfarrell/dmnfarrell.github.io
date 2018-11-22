@@ -2091,7 +2091,7 @@ for enc in encs:
 ```
 
 <div style="width: 400px;">
-<img src="/img/blogpost_12_0.png" width="600px">
+<img src="/img/peptide_encoding_plots.png" width="600px">
 </div>
 
 ## Build a predictor
