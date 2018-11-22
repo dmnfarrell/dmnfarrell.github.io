@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Bioinformatics and other bits
+title: Posts
 tagline: blog
 ---
 

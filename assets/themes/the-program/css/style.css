@@ -305,13 +305,20 @@ Tables from [HTML5 Boilerplate](http://j.mp/rP0wmY)
 
 No styleguide reference.
 */
-table, th, td {
+table {
   border-collapse: collapse;
-  padding: 2px;
+  padding: 4px;
   background: white;
-  border: 1px solid black;
-  font-family: Arial, sans-serif;
+  border: 0px solid black;
   font-size: small;
+}
+th, td {
+  border: 0px solid black;
+  text-align: left;
+  padding: 4px;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
 /*
@@ -576,6 +583,9 @@ pre {
 --------------------------------------------------------------------------------- */
 .the-header .logo {
   font-family: "Droid Sans", Arial, monospace;
+  font-weight: bold;
+  letter-spacing: -2px;
+  text-color: blue;
   margin: 0;
 }
 .the-header .logo a:visited {
@@ -889,7 +899,7 @@ pre {
   margin-bottom: 0;
 }
 .the-header .unit-head {
-  padding: 26px;
+  padding: 20px;
 }
 .the-header .unit-head .nav-global .logo {
   display: block;
@@ -897,8 +907,8 @@ pre {
 }
 .the-header .unit-head .nav-global .logo a {
   display: block;
-  font-size: 30px;
-  line-height: 52px;
+  font-size: 28px;
+  line-height: 42px;
   padding-bottom: 26px;
 }
 .body .unit-body {
@@ -947,14 +957,14 @@ pre {
   }
   .the-header .unit-head .nav-global li {
     float: left;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-width: 0 1px 0 0;
+    border: 0px solid rgba(0, 0, 0, 0.05);
+    border-width: 0 0px 0 0;
   }
   .the-header .unit-head .nav-global li a,
   .the-header .unit-head .nav-global li div {
     display: block;
-    padding: 26px;
-    height: 26px;
+    padding: 20px;
+    height: 20px;
   }
   .the-header .unit-head .nav-global li a:hover {
     background-color: #fff04a;
@@ -1473,4 +1483,8 @@ hr {
 .right {
   *display: inline;
   float: right;
+}
+
+table.mytable th, td {
+
 }
