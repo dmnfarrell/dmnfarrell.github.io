@@ -192,6 +192,7 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic;
   vertical-align: middle;
+  padding: 5px;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -449,6 +450,9 @@ dl,
 img {
   margin-top: 0;
   margin-bottom: 1.625em;
+}
+img[alt$="inline"] {
+   display: inline-block;
 }
 small,
 .small,
