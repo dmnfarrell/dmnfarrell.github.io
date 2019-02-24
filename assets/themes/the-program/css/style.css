@@ -313,7 +313,14 @@ table {
   border: 0px solid black;
   font-size: small;
 }
-th, td {
+th {
+  border: 0px solid black;
+  color: #F2F4F5;
+  background-color: #6A7378;
+  text-align: left;
+  padding: 4px;
+}
+td {
   border: 0px solid black;
   text-align: left;
   padding: 4px;
