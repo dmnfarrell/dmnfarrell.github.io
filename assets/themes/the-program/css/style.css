@@ -312,6 +312,7 @@ table {
   background: white;
   border: 0px solid black;
   font-size: small;
+  margin-bottom: 20px;
 }
 th {
   border: 0px solid black;
@@ -323,6 +324,7 @@ th {
 td {
   border: 0px solid black;
   text-align: left;
+  vertical-align: top;
   padding: 4px;
 }
 tr:nth-child(even) {
