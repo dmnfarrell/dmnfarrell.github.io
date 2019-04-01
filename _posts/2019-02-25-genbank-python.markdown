@@ -3,7 +3,7 @@ layout: post
 title:  "Reading and writing genbank/embl files with Python"
 date:   2019-02-25 19:00:00
 categories: bioinformatics
-tags: [annotation,python]
+tags: [annotation,genbank,python]
 ---
 
 <div style="width: 300px; float:right;">

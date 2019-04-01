@@ -3,10 +3,10 @@ layout: post
 title:  "Sequence, gene and protein databases: are you confused?"
 date:   2019-03-20 11:00:00
 categories: bioinformatics
-tags: [annotation,ncbi]
+tags: [genbank,ensembl,ncbi]
 ---
 
-<div style="width: 200px; float:right;">
+<div style="width: 220px; float:right;">
 <img src="/img/seqdbs.png" width="200px">
 </div>
 
@@ -24,13 +24,17 @@ The profileration of so many sub-databases with linked datasets is bewildering e
 <a href="/img/databases_chart.png"><img src="/img/databases_chart.png" width="500px"></a>
 </div>
 
+## SRA, ENA and ArrayExpress
+
+The Sequence Read Archive (SRA) is the INSDC project for storage of raw sequence data from next-generation sequencing platforms such as the Illumina platform. This includes data from RNA-Seq and ChIP-Seq studies. Data is often uploaded as aligned BAM files. You can use the NCBI SRA Toolkit to fetch data using accession numbers. Deposition of data in the SRA is mandated by most funding agencies and many journals. The European Nucleotide Archive (ENA) are the sequence repositories managed by the EBI and stores EMBL-bank, their instance of primary nucleotide sequences discussed above. It also runs an instance of the SRA. You can upload raw reads to either platform. ArrayExpress stores functional genomics data from various modalities like RNA-Seq. It includes a web-based submission tool called Annotare.
+
 ## BLAST
 
 Almost all molecular biologists will know about Blast, a sequence match algorithm. When you use the [NCBI Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) service you are essentially searching the INSDC sequences for matches. This is a huge amount of search space and Blasts uses a form of caching so you get the results quickly.
 
 ## Ensembl vs Entrez Gene
 
-These two terms confused me simply because they look the same but mean different things. Ensembl is a joint project between EMBL-EBI (Eurpoean) and the Sanger Institute to develop a software system annotation on selected eukaryotic genomes. Entrez is name of the NCBI infrastructure which provides access to all of the NCBI (US) databases. That includes PubMed, SRA etc and the Gene database (Entrez Gene). Both are built on INSDC and you could say annotate the same data in varying ways. You can therefore map a gene with an Ensembl ID to and Entrez gene name though the process is not as clear cut as you might think. Many people prefer to stick to one annotation source and always use Entrez only.
+I suspect that these two terms are commonly mixed up. Ensembl is a joint project between EMBL-EBI (European) and the Sanger Institute to develop a software system annotation on selected eukaryotic genomes. Entrez is name of the NCBI infrastructure which provides access to all of the NCBI (US) databases. That includes PubMed, SRA etc and the Gene database (Entrez Gene). Both are built on INSDC and you could say annotate the same data in varying ways. You can therefore map a gene with an Ensembl ID to and Entrez gene name though the process is not as clear cut as you might think. Many people prefer to stick to one annotation source and always use Entrez only.
 
 The websites also look quite different. Both have genome browsers. As to which website is easier to use is a matter of preference. As an example compare these two pages on [Ensembl](https://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000139618) and [Entrez gene](https://www.ncbi.nlm.nih.gov/gene/675) for the BRCA2 gene. Both have very similar information.
 
@@ -60,7 +64,7 @@ Many other databases obviously exist. At some point it seems there was a databas
 
 ## Down a rabbit hole
 
-Those trying to find information in one of these websites might find themselves daunted by all the links and going round in circles. It's worth looking at a brief guide to what the website does or a video tutorial before trying to tackle something like Ensembl. These interfaces could still certainly be improved in terms of usability but there is a huge amount of functionality available - if you have the time to learn how to use them..
+Those trying to find information in one of these websites might find themselves daunted by all the links and going round in circles. It's worth looking at a brief guide to what the website does or a video tutorial before trying to tackle something like Ensembl.  These interfaces could still certainly be improved in terms of usability but there is a huge amount of functionality available - if you have the time to learn how to use them..
 
 ## Links
 
