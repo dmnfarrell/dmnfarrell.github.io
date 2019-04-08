@@ -4,6 +4,7 @@ title:  "Create an MHC-Class I binding predictor in Python"
 date:   2018-11-12 15:02:00
 categories: bioinformatics
 tags: [mhc]
+thumbnail: /img/mhc-molecule.png
 ---
 
 ## Background

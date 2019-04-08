@@ -4,6 +4,7 @@ title:  "Make protein models with Blender"
 date:   2019-04-04 14:00:00
 categories: bioinformatics
 tags: [protein,blender]
+thumbnail: /img/blender_mhc.png
 ---
 
 ## Background

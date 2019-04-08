@@ -4,6 +4,7 @@ title:  "Reading and writing genbank/embl files with Python"
 date:   2019-02-25 19:00:00
 categories: bioinformatics
 tags: [annotation,genbank,python]
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Genbank100CD.jpg/450px-Genbank100CD.jpg
 ---
 
 <div style="width: 300px; float:right;">

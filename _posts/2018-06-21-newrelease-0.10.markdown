@@ -4,6 +4,7 @@ title:  "Dataexplore version 0.10.0 released"
 date:   2018-06-21 12:15:00
 categories: dataexplore
 tags: [releases]
+thumbnail: /img/column_wrapping.png
 ---
 
 Version 0.10.0 adds a dot plot, plot animation dialog and column wrapping.

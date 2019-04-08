@@ -4,6 +4,7 @@ title:  "Using epitopepredict for MHC binding prediction in Python"
 date:   2018-11-25 12:17:00
 categories: bioinformatics
 tags: [epitopepredict,mhc]
+thumbnail: https://raw.githubusercontent.com/dmnfarrell/epitopepredict/master/img/logo.png
 ---
 
 ## Background

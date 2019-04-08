@@ -4,6 +4,7 @@ title:  "Sequence, gene and protein databases: are you confused?"
 date:   2019-03-20 11:00:00
 categories: bioinformatics
 tags: [genbank,ensembl,ncbi]
+thumbnail: /img/seqdbs.png
 ---
 
 <div style="width: 220px; float:right;">

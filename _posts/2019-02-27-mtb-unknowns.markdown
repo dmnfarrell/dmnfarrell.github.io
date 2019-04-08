@@ -4,6 +4,7 @@ title:  "Unknown proteins in Mycobacterium tuberculosis"
 date:   2019-02-27 14:20:00
 categories: bioinformatics
 tags: [annotation,mtb]
+thumbnail: /img/mtb_functional_cats.png
 ---
 
 ## Background

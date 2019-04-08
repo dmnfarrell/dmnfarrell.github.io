@@ -4,6 +4,7 @@ title:  "Creating a local RefSeq protein blast database"
 date:   2018-10-09 15:02:00
 categories: bioinformatics
 tags: [refseq]
+thumbnail: https://blast.ncbi.nlm.nih.gov/images/protein-blast-cover.png
 ---
 
 ## Background

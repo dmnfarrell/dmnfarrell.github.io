@@ -198,6 +198,22 @@ svg:not(:root) {
   overflow: hidden;
 }
 
+a.posttitle  {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  border-bottom-style: none;
+}
+
+.thumbnail {
+   width: 220px;
+   border-width: 0px;
+   border-color: black;
+   border-style: solid;
+   margin: 0;
+}
+
 figure {
   margin: 0;
 }

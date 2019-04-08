@@ -4,6 +4,7 @@ title:  "Deploy a Python application with snapcraft"
 date:   2018-09-26 10:12:00
 categories: software
 tags: [snapcraft]
+thumbnail: https://dashboard.snapcraft.io/site_media/appmedia/2018/04/Snapcraft-logo-bird.png
 ---
 
 ## Snaps
