@@ -223,7 +223,7 @@ figure {
   font-size: smaller;
   line-height: 1.3;
   text-indent: 0;
-  
+
   margin: 0.5em;
   padding: 0.2em;
   overflow: auto;
@@ -616,12 +616,12 @@ pre {
 }
 pre {
   color: #303232;
-  background-color: #F7F7F2;
-  border: 1px solid white;
+  background-color: white;
+  border: 1px solid #E2E9E9;
   font-family: "Droid Sans", Arial, monospace;
   margin-left: 0;
   margin-right: 0;
-  padding: 1.625em;
+  padding: 1.25em;
   overflow: auto;
 
 }
