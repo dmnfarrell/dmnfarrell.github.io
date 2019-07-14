@@ -9,8 +9,8 @@ thumbnail: https://panel.pyviz.org/_static/logo_stacked.png
 
 ## Dashboards
 
- <div style="width: 320px; float:right;">
- <img src="https://miro.medium.com/max/516/1*kIHGz24IVEQ25iaohtJARw.gif" width="300px">
+ <div style="width: 300px; float:right;">
+ <img src="https://miro.medium.com/max/516/1*kIHGz24IVEQ25iaohtJARw.gif" width="280px">
  </div>
 
 Traditionally data views are static, like those in scientific papers. You make a plot and it becomes a figure inside a pdf. However lots of scientific work would benefit from having interactive plots that readers can explore. Building interactive apps that can manipulate and analyse data has always been the preserve of specialist programmers. Scientists should not have to be experts in javascript or web frameworks to be able to do this. However, web technology has matured enough that it is now possible to create your such apps with relatively little effort. This does assume some programming knowledge, in this case Python.
@@ -38,7 +38,7 @@ import panel as pn
 pn.extension()
 ```
 
-This example is from the documentation and shows how to create an interactive plot very easily. The function mplplot uses matplotlib to craete a line plot from a pandas dataframe and returns a figure. The sine function provides the data. `pn.interact` is shorthand that says "every time the widgets are used, update the plot function". You can see that there is no actual code to create widgets, they are generated via the interact depending on the parameters of the sine function. This makes it very quick though has limits for more advanced functionality.
+This example is from the documentation and shows how to create an interactive plot very easily. The function mplplot uses matplotlib to create a line plot from a pandas dataframe and returns a figure. The sine function provides the data. `pn.interact` is shorthand that says "every time the widgets are used, update the plot function". You can see that there is no actual code to create widgets, they are generated via the interact depending on the parameters of the sine function. This makes it very quick though has limits for more advanced functionality.
 
 ```python
 import matplotlib
