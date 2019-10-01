@@ -11,6 +11,10 @@ thumbnail: /img/mtb_functional_cats.png
 
 Genome annotation is the process of locating and describing the function of all relevant sequence regions in the genome. The simplest way to perform gene annotation is to identify open reading frames for coding genes (ORFs) and then use homology based search tools, like BLAST, to search for homologous genes. Annotation is now largely automated for the bulk of new genomes because there is so much new sequence being produced and much of it can be assigned function based on known information. However in the early days, the relatively few bacterial genomes would be manually curated. The reference genomes created then still exist, some as 'gold standard' annotations that have been maintained ever since.  Some older annotations are less well maintained and perhaps have been superseded. These still appear on GenBank as reference genomes and you can see how this might confuse potential users as to which is the correct annotation to use.
 
+## Update
+
+[This paper](https://www.biorxiv.org/content/10.1101/757823v1) now details the updates discussed here to the M.bovis annotation.
+
 ## Mtb H37Rv
 
 H37Rv is a widely used laboratory strain of Mycobacterium tuberculosis (Mtb) and was the first Mtb genome to be annotated in 1998 by Stewart Cole and collegues. (Another assembly was made by the Broad institute and six strains of H37Rv from distinct laboratories were sequenced in 2010 by Texas AM researchers). The original annotation has been updated and curated since and is still considered the reference genome for this strain. This annotation was long made accessible through the Tuberculist database and now Mycobrowser.

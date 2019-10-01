@@ -2,7 +2,7 @@
 layout: post
 title:  "Interactively view datasets with HoloViews"
 date:   2019-09-24 13:12:00
-categories: bioinformatics
+categories: plotting
 tags: [holoviews,pyviz,python]
 thumbnail: http://holoviews.org/_static/logo_horizontal.png
 ---

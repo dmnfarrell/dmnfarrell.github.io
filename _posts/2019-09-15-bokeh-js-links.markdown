@@ -2,7 +2,7 @@
 layout: post
 title:  "Javascript callbacks for linking bokeh plots to panel widgets"
 date:   2019-09-15 15:46:00
-categories: bioinformatics
+categories: plotting
 tags: [bokeh,pyviz,python]
 thumbnail: /img/bokeh_js_links.gif
 ---
