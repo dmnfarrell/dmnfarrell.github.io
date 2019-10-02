@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Plotting arctic sea ice extent data with three different Python packages"
+title:  "Plotting global sea ice extent data with four different Python packages"
 date:   2019-09-30 18:02:00
 categories: plotting
 tags: [matplotlib,pyviz,bokeh,python,arctic]
@@ -9,7 +9,7 @@ thumbnail: /img/seaice_decades_mpl.png
 
 ## Background
 
-This post shows three different libraries for visualizing the same data. The data used here was calculated using raw data provided by NSIDC (the National Snow and Ice Data Center). This combines measures of north and south sea ice extent to estimate the global total. We will plot the data from a pandas dataframe by year with a trendline.
+This post shows four different libraries for visualizing the same data. The data used here was calculated using raw data provided by NSIDC (the National Snow and Ice Data Center). This combines measures of north and south sea ice extent to estimate the global total. We will plot the data from a pandas dataframe by year with a trendline.
 
 ## Import data
 
@@ -37,6 +37,25 @@ plt.title('sea ice extent data')
 
 <div style="width: 650px;">
 <a href="/img/seaice_mpl.png"> <img src="/img/seaice_mpl.png" width="600px"></a>
+</div>
+
+## Altair
+
+[Altair](https://altair-viz.github.io/index.html) is a declarative plotting library for Python, based on Vega. That means you describe the properties of the data and the object can plot itself from these properties. It provides some interactivity and the code is quite readable and short.
+
+```python
+import altair as alt
+sub = df[df['year'].isin(years)]
+chart = alt.Chart(sub).mark_line().encode(x='yearday',
+                                           y=alt.Y('extent', scale=alt.Scale(zero=False)),
+                                           color='year:N',                                                          
+                                           tooltip=['year', 'extent']
+                                         ).properties(width=700, height=300)
+chart
+```
+
+<div style="width: 650px;">
+<a href="/img/seaice_altair.png"> <img src="/img/seaice_altair.png" width="600px"></a>
 </div>
 
 ## Holoviews
