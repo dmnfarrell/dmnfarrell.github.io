@@ -9,13 +9,13 @@ thumbnail: /img/nucdiff_substitution.png
 
 ## Background
 
-Entire genome sequences are now routinely generated from bacterial isloates with whole genome sequencing. This has many applciations in the research domain e.g. genetics and species evolution. It also has clinical application such as in strain identification for diagnostic use. Once a genome is sequenced you can assemble it into contigs using a _de novo_ assembler like SPAdes. Finishing the genome requires a bit more effort, but either way you can still perform comparisons. There are a multiple ways to compare genomes:
+Entire genome sequences are now routinely generated from bacterial isloates with whole genome sequencing. This has many applciations in the research domain e.g. genetics and species evolution. It also has clinical application such as in strain identification for diagnostic use. Once a genome is sequenced you can assemble it into contigs using a _de novo_ assembler like SPAdes. Finishing the genome requires a bit more effort, but either way you can still perform comparisons. There are multiple ways to compare genomes:
 
 * Whole genome comparisons
 * Alignment to a reference and snp calling (without assembly)
 * BLAST searches of target sequences to one or more of the genomes and comparing the results
 
-This post is about the first of these methods. Comparing whole genomes is done in the form of **many local alignments** between matching segments. You can then see all (in theory) of the structural differences such as large insertions/deletions, between both genomes. This is subject to the quality of the assemblies of course. There are plenty of reasons why you will have some errors in the contigs such as the presence of mobile repeat elements. Sequencing errors also play a role. So you won't see ALL differences between two geneoms and might see some false positives.
+This post is about the first of these methods. Comparing whole genomes is done in the form of **many local alignments** between matching segments. You can then see all (in theory) of the structural differences such as large insertions/deletions, between both genomes. This is subject to the quality of the assemblies of course. There are plenty of reasons why you will have some errors in the contigs such as the presence of mobile repeat elements. Sequencing errors also play a role. So you won't see ALL differences between two genomes and might see some false positives.
 
 ## MUMmer
 
