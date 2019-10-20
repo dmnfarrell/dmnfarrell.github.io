@@ -11,7 +11,7 @@ thumbnail: https://media.springernature.com/full/springer-static/image/art%3A10.
 
 The Average Nucleotide Identity (ANI) is a convenient way to express the similarity of two microbial genomes in a single number. It's the mean nucleotide identity of orthologous gene pairs shared between two genomes. This value is used to delineate species. A typical percentage threshold for species boundary is 95% ANI. It can be calculated by aligning the matching segments and finding the average identity. The alignment can be done quickly with MUMmer (ANIm method) but there are other methods too.
 
-Say you want to compare many genomes together to make a distance matrix and species tree. You could have hundreds of samples. You need to perform an all vs. all comparison. For increasing numbers of genomes the number of pairwise comparisons goes up dramatically. If `n` is the number of samples, then `n*(n-1)/2` comparisons must be done. So even if your method only takes 10 seconds per comparison, you will have to do 19,900 comparisons and that would take 55 hours!
+Say you want to compare many genomes together to make a distance matrix and species tree. You could have hundreds of samples and you need to perform an all vs. all comparison. For increasing numbers of genomes the number of pairwise comparisons goes up dramatically. If `n` is the number of samples, then `n*(n-1)/2` comparisons must be done. So even if your method only takes 10 seconds per comparison, for 200 genomes you will have to do 19,900 comparisons and that would take 55 hours!
 
 ## FastANI
 
@@ -23,8 +23,8 @@ FastANI can be parallelized for multi-core processors. It's done by splitting th
 
 Example of scaling of FastANI with the number of genomes is shown below. Bacterial genome assemblies were used. Each run was executed in parallel with 10 threads on a Ryzen 2600X cpu. In this case the time increased approximately with no. genomes<sup>1.5</sup>. This is not a thorough benchmark but is certainly much faster than the ANIm method.
 
-<div style="width: 650px;">
-<img src="/img/fastani_scale.png" width="600px">
+<div style="width: 550px;">
+<img src="/img/fastani_scale.png" width="520px">
 </div>
 
 ## Python code
