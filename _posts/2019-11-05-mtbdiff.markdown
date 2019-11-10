@@ -14,7 +14,7 @@ thumbnail: /img/mtbdiff_rd8.png
 <figcaption>Topology of animal-adapted MTBC members, rooted with Mycobacterium canettii. Some significant deletions are indicated by red arrow heads with RD specific nomenclature. Figure from Brites et al. (2018) (https://doi.org/10.3389/fmicb.2018.02820)</figcaption>
 </figure>
 
-Mycobacterium tuberculosis (MTB) is the causative agent of human TB. Not only are there are multiple closely related lineages of the bacteria present in human populations, there are also animal adapted organisms, such as M. bovis, that infect a broad range of animal species beyond their most prominent host in cattle. The entire group is referred to as the M. tuberculosis complex (MTBC). The animal adapted species are characterized by high sequence similarity (>99.9% identiy) to MTB but with key sequence polymorphisms called *regions of difference* (RDs) in which deletions or insertions are present. Some of these may be important for adaption to the chosen niche of the species. But the ecology and the evolution of these animal-adapted species are poorly understood. Only a few representatives have been isolated so far, limiting inferences with respect to their host range.
+Mycobacterium tuberculosis (MTB) is the causative agent of human TB. Not only are there are multiple closely related lineages of the bacteria present in human populations, there are also animal adapted organisms, such as M. bovis, that infect a broad range of animal species beyond their most prominent host in cattle. The entire group is referred to as the M. tuberculosis complex (MTBC). The animal adapted species are characterized by high sequence similarity (>99.9% identity) to MTB but with key sequence polymorphisms called *regions of difference* (RDs) in which deletions or insertions are present. Some of these may be important for adaption to the chosen niche of the species. But the ecology and the evolution of these animal-adapted species are poorly understood, with only a few representatives having been isolated so far.
 
 With the increased use of whole genome sequencing it's now possible to compare many genomes together across their entire sequence. This is usually done by aligning the sequence reads to a reference genome (H37Rv) and calling variants. SNPs are filtered and then used to build a phylogeny. This is how the tree on right was made in a recent paper (Brites et al., 2018). This tree also shows the clades some of the major deletion events. These were determined by annotation of unmapped reads (those with no coverage to the reference).
 
@@ -44,7 +44,7 @@ It's also possible to detect SNPs with NucDiff. We can see below that two of the
 
 ### Many changes in PE/PPE regions
 
-When we group together all the unique differences over the isolates we get a picture of the types of changes detected. They are shown below grouped by category. Those in PE/PPE proteins can often be discounted as they are proteins containing repeats giving rise to sequencinga artifacts.
+When we group together all the unique differences over the isolates we get a picture of the types of changes detected. They are shown below grouped by category. Those in PE/PPE proteins can often be discounted as they are proteins containing repeats giving rise to sequencing artifacts.
 
 <div style="width: 520px;">
 <a href="/img/mtbc_rd_stats.png"> <img src="/img/mtbc_rd_stats.png" width="500px"></a>

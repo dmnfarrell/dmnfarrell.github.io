@@ -9,6 +9,10 @@ thumbnail: /img/nucdiff_substitution.png
 
 ## Background
 
+<div style="width: 260px; float: right;">
+<a href="/img/nucdiff_summary.png"> <img src="/img/nucdiff_summary.png" width="250px"></a>
+</div>
+
 Entire genome sequences are now routinely generated from bacterial isloates with whole genome sequencing. This has many applciations in the research domain e.g. genetics and species evolution. It also has clinical application such as in strain identification for diagnostic use. Once a genome is sequenced you can assemble it into contigs using a _de novo_ assembler like SPAdes. Finishing the genome requires a bit more effort, but either way you can still perform comparisons. There are multiple ways to compare genomes:
 
 * Whole genome comparisons
