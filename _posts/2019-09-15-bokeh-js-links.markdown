@@ -13,9 +13,22 @@ Both Bokeh and Panel use widgets to control plot elements. (These tools have bee
 
 ## Code
 
-This example uses a plot with colored boxes though the exact content is not important.
+This example uses a plot with colored boxes though the exact content is not important. You can install Bokeh and Panel with pip or conda.
 
 ```python
+import random
+from bokeh.models import ColumnDataSource
+from bokeh.plotting import figure
+from bokeh.models.glyphs import Text, Rect
+
+def random_colors(size, seed=30):
+    """random list of html colors of length sizes"""
+
+    random.seed = seed    
+    colors = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+                for i in range(size)]
+    return colors
+
 def dummy_plot(start=0,end=500,plot_width=1000,callback=None):
 
     m=3
@@ -23,7 +36,7 @@ def dummy_plot(start=0,end=500,plot_width=1000,callback=None):
     x = np.arange(0,end,2)   
     y = list(range(1,m)) * len(x)
     y = y[:len(x)]
-    colors = utils.random_colors(len(y))
+    colors = random_colors(len(y))
     w = [random.random()*3 for i in x]    
     source = ColumnDataSource({'x':x,'y':y,'w':w,'color':colors})
         x_range = (0,end)
@@ -57,7 +70,7 @@ jsupdateplot = '''
 #link to the plot object
 s.jslink(p, code={'value': jsupdateplot})
 #display the elements
-pn.Column(loc,s, pp)
+pn.Column(s, pp)
 ```
 
 The final behaviour is as shown below with both dragging slider and plot updating the other widget.
