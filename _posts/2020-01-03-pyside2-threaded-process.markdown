@@ -15,7 +15,7 @@ thumbnail: /img/pyside2-threading.png
 
 Qt is a popular GUI toolkit for writing desktop applications. It has bindings for Python using either PySide2 or PyQt5 (which use essentially identical syntax). This means you can code Qt apps without needing to know C++. One of the challenging aspects in all GUI tookits is running processes concurrently while still using your application. This is because the main GUI runs in a thread and if you launch your process in the same thread it will block all user interaction until it's finished. That's a problem if your task runs more than a second or two. The solution is to run your jobs in other threads. The recommended solution in Qt is to use classes called `QRunnable` and `QThreadPool`. `QThreadPool` handles queuing and execution of workers. Workers are `QRunnable` objects containing the process you want to run. You place the code to run in the `run()` method of the `QRunnable` class.
 
-This method is mostly taken from the [example](https://www.learnpyqt.com/courses/concurrent-execution/multithreading-pyqt-applications-qthreadpool/) by Martin Fitzpatrick at learnpyqt.com. It's also explained better and in more detail there.
+This method is mostly taken from the [example](https://www.learnpyqt.com/courses/concurrent-execution/multithreading-pyqt-applications-qthreadpool/) by Martin Fitzpatrick at learnpyqt.com. It's also explained in more detail there.
 
 ## Imports
 
