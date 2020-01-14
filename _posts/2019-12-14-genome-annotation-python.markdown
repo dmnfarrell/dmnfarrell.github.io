@@ -78,50 +78,52 @@ def annotate_contigs(infile, outfile=None, **kwargs):
     #get target seqs
     seqs = list(SeqIO.parse(resfile,'fasta'))
     #make blast db of prokka proteins
-    dbname = os.path.join(app.prokkadbdir,'sprot.fa')
+    fetch_sequence_from_url('sprot', path=prokkadbdir)
+    dbname = os.path.join(prokkadbdir,'sprot.fa')
     tools.make_blast_database(dbname, dbtype='prot')
     print ('blasting ORFS to uniprot sequences')
-    bl = tools.blast_sequences(dbname, seqs, maxseqs=100, evalue=.01,
+    bl = tools.blast_sequences(dbname, seqs, maxseqs=1, evalue=1e-3,
                                 cmd='blastp', show_cmd=True, **kwargs)
 
-    #this assumes we have blasted to the prokka formatted sequences
     bl[['protein_id','gene','product','cog']] = bl.stitle.apply(prokka_header_info,1)
 
     cols = ['qseqid','sseqid','pident','sstart','send','protein_id','gene','product']
     bl = bl.sort_values(['qseqid','pident'], ascending=False).drop_duplicates(['qseqid'])[cols]
-
     #read input file seqs
     contigs = SeqIO.to_dict(SeqIO.parse(infile,'fasta'))
-    #read in prodigal fasta to a dataframe
+    #read in prodigal fasta to dataframe
     df = tools.fasta_to_dataframe(resfile)
-    #extract the coordinate information from the prodigal fasta header
     df[['start','end','strand']] = df.description.apply(get_prodigal_coords,1)
     #merge blast result with prodigal fasta file info
-    df = df.merge(x, left_on='name', right_on='qseqid', how='left')
-    df['contig'] = df['name'].apply(lambda x: x[:6])
+    res = df.merge(bl,left_on='name',right_on='qseqid',how='right')
 
+    #get simple name for contig
     def get_contig(x):
         return ('_').join(x.split('_')[:-1])
+    res['contig'] = res['name'].apply(get_contig)
 
-    l=1 #counter for assigning locus tags
+    l=1  #counter for assigning locus tags
     if outfile is None:
-        outfile = infile'+.gbk'
+        outfile = infile+'.gbk'
     handle = open(outfile,'w+')
     recs = []
     #group by contig and get features for each protein found
-    for c,df in df.groupby('contig'):
-        #get the contig sequence for the query file so we can write it
-        #to the genbank file
-        contig = get_contig(df.iloc[0]['name'])
-        nucseq = contigs[contig].seq
-        rec = SeqRecord(nucseq,id=c)
+    for c,df in res.groupby('contig'):
+        print (c, len(df))
+        contig = get_contig(c)
+        #truncated label for writing to genbank
+        label = ('_').join(c.split('_')[:2])
+        nucseq = contigs[c].seq
+        rec = SeqRecord(nucseq)
         rec.seq.alphabet = generic_dna
-        for i,row in df.iterrows():        
+        rec.id = label
+        rec.name = label
+        for i,row in df.iterrows():
             tag = 'PREF_{l:04d}'.format(l=l)
             quals = {'gene':row.gene,'product':row['product'],'locus_tag':tag,'translation':row.sequence}
-            feat = SeqFeature(FeatureLocation(row.start,row.end, row.strand), strand=row.strand,
+            feat = SeqFeature(FeatureLocation(row.start,row.end,row.strand), strand=row.strand,
                               type="CDS", qualifiers=quals)
-            rec.features.append(feat)   
+            rec.features.append(feat)
             l+=1
         #print(rec.format("gb"))
         SeqIO.write(rec, handle, "genbank")
