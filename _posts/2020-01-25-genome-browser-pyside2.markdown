@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "A genome simple browser with Qt and dna_features_viewer"
+title:  "A simple genome browser with Qt and dna_features_viewer"
 date:   2020-01-25 11:04:00
 categories: python
-tags: [pyside2,python]
+tags: [pyside2,python,annotation,genomics]
 thumbnail: /img/pyside2_feature_viewer.gif
 ---
 
