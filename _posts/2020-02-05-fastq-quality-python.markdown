@@ -9,11 +9,12 @@ thumbnail: /img/fastq_quals.png
 
 ## Background
 
-Results from high throughput sequencing are saved as fastq format files. These contain millions of reads. Due to how sequencing chemistry works, reads can will have varying levels of quality across their span, generally at the start and ends. The fastq file contains prres scores for each position of the read and plotting the distribution of qualities over a good sample of the reads is a primary way to decide whether to trim the reads or not. A popular program for viewing this and other metrics is **FastQC**, a Java program. It's easy to use and produces a single html page of output. Here we show how to make some of those plots in Python with the Biopython and matplotlib packages.
+Results from high throughput sequencing are saved as fastq format files. These contain millions of reads. Due to how sequencing chemistry works, reads will have varying levels of quality across their span, generally at the start and ends. The fastq file contains quality scores for each position of the read and plotting the distribution of qualities over a good sample of the reads is a primary way to decide whether to trim the reads or not. A popular program for viewing this and other metrics is **FastQC**, a Java program. It's easy to use and produces a single html page of output. Here I show how to make some of those plots in Python with the Biopython and matplotlib packages.
 
 ## Imports
 
 ```python
+import os
 import math
 import pylab as plt
 import numpy as np
@@ -22,6 +23,8 @@ import matplotlib.patches as patches
 ```
 
 ## Quality - phred scores
+
+A Phred quality score is a measure of the quality of the identification of a base. So each read has a score along every position. The score measure can be used to filter reads by trimming or removal.
 
 ```python
 def plot_fastq_qualities(filename, ax=None, limit=10000):
@@ -133,3 +136,4 @@ def normpdf(x, mean, sd):
 ## Links
 
 [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+[Phred scores](https://en.wikipedia.org/wiki/Phred_quality_score)
