@@ -2,18 +2,22 @@
 layout: post
 title:  "Updates to a genome annotation on the ENA via Webin-CLI"
 date:   2020-02-18 11:30:00
-categories: python
+categories: bioinformatics
 tags: [genomics]
-thumbnail: https://ena-docs.readthedocs.io/en/latest/_images/metadata_model_sample.png
+thumbnail: img/ena-scr.jpg
 ---
 
 ## Background
 
-The European Nucleotide Archive (ENA) stores and manages genome and sequence data and shares these within NCBI/DDBJ as part of its role in the INSDC. If all these acronyms are already confusing see this [previous post](sequence-databases). The ENA allows submission of new data by different routes depending on the source type. For raw reads they can use the interactive web form, by command line using their **Webin-CLI** program or programmatically. However it seems that for some things you now have to use the Webin-CLI. According to the documentation: "Genome and transcriptome assemblies can only be submitted using the Webin-CLI submission interface." NCBI have their own [submission portal](https://submit.ncbi.nlm.nih.gov/) which some might find easier to use. _It is only necessary to submit to one of the INSDC databases and they are synced._
+<div style="width: 350px; float:right;">
+ <a href="/img/ena=src.jpg"> <img src="/img/ena-scr.jpg" width="300px"></a>
+</div>
+
+The European Nucleotide Archive (ENA) stores and manages genome and sequence data and shares these with DDBJ and NCBI as part of its role in the INSDC. If all these acronyms are already confusing see this [previous post](sequence-databases). The ENA allows submission of new data by different routes depending on the source type. For raw reads they can use the interactive web form, by command line using their **Webin-CLI** program or programmatically. However it seems that for some things you now must use the Webin-CLI. According to the documentation: "Genome and transcriptome assemblies can only be submitted using the Webin-CLI submission interface." NCBI have their own [submission portal](https://submit.ncbi.nlm.nih.gov/) which some might find easier to use. _It is only necessary to submit to one of the INSDC databases since they are synced._
 
 ## Updating (older) genome annotations is a bit of a pain
 
-Using the Webin command line tool seems tricky at first but it is at least [documented quite well](https://ena-docs.readthedocs.io/). One particular task that I found difficult though is genome annotation updates. This wouldn't be a very common problem because I would guess that once the vast majority of genomes are submitted, the annotation is not changed. That's because they are nearly all automatically generated. On Genbank when submitting microbial assemblies you can use their Prokaryotic Annotation Pipeline (PGAP) to do the annotation. For the ENA you can use another program like RAST and upload your file. However if there is already an annotation and you want to update it, it's a little more confusing. Some existing genomes reference genomes were annotated in the days before automation and were manually curated. Some still are. I am referring here to mainly bacterial genomes. Updating them used to require sending an e-mail to the ENA. So using this tool is certainly better. Here is how it's done.
+Using the Webin command line tool seems tricky at first but it is at least [documented quite well](https://ena-docs.readthedocs.io/). One particular task that I found difficult though is genome annotation updates. This wouldn't be a very common problem because I would guess that once the vast majority of genomes are submitted, the annotation is not changed. That's because they are nearly all automatically generated. On Genbank when submitting microbial assemblies you can use their Prokaryotic Annotation Pipeline (PGAP) to do the annotation. For the ENA you can use another program like RAST and upload your file. However if there is already an annotation and you want to update it, it's a little more confusing. Some existing reference genomes were annotated in the days before automation and were manually curated. Some still are. I am referring here to mainly bacterial genomes. Updating them used to require sending an e-mail to the ENA. So using this tool is certainly better. Here is how it's done.
 
 ## Preparing annotations
 
@@ -47,7 +51,7 @@ You then want to validate your file. Note the context is `genome`:
 java -jar /local/webin-cli-2.2.0.jar -validate -context genome -manifest=submission.manifest -userName yourname -password ******
 ```
 
-However you may find that your annotation file won't pass the validation step because it's was using an less rigorous standard. This will create a report in the same folder under `genome/ASM19583v2/validate/`. Typical reasons are that a `locus_tag` is missing or non-unique. These have to be corrected before you can submit. You might have to edit them in a text file or in Artemis.
+However you may find that your annotation file won't pass the validation step because it had less rigorous checking applied when first submitted. These erors will be put into a report file created in the same folder under `genome/<assembly>/validate/`. Typical reasons are that a `locus_tag` is missing or non-unique. These have to be corrected before you can submit. You might have to edit them in a text file or in Artemis.
 
 Once the file is fixed and you don't get any errors you can submit by replacing the `-validate` option in the command with `-submit`.
 
@@ -56,3 +60,4 @@ Once the file is fixed and you don't get any errors you can submit by replacing 
 * [ENA submissions](https://ena-docs.readthedocs.io/)
 * [NCBI Submission Portal](https://submit.ncbi.nlm.nih.gov/)
 * [Artemis](https://www.sanger.ac.uk/science/tools/artemis)
+* [Reading and writing genbank/embl files with Python](http://dmnfarrell.github.io/bioinformatics/genbank-python))
