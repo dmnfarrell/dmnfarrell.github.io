@@ -10,7 +10,7 @@ thumbnail: img/ena-scr.jpg
 ## Background
 
 <div style="width: 350px; float:right;">
- <a href="/img/ena=src.jpg"> <img src="/img/ena-scr.jpg" width="300px"></a>
+ <a href="/img/ena-src.jpg"> <img src="/img/ena-scr.jpg" width="300px"></a>
 </div>
 
 The European Nucleotide Archive (ENA) stores and manages genome and sequence data and shares these with DDBJ and NCBI as part of its role in the INSDC. If all these acronyms are already confusing see this [previous post](sequence-databases). The ENA allows submission of new data by different routes depending on the source type. For raw reads they can use the interactive web form, by command line using their **Webin-CLI** program or programmatically. However it seems that for some things you now must use the Webin-CLI. According to the documentation: "Genome and transcriptome assemblies can only be submitted using the Webin-CLI submission interface." NCBI have their own [submission portal](https://submit.ncbi.nlm.nih.gov/) which some might find easier to use. _It is only necessary to submit to one of the INSDC databases since they are synced._
