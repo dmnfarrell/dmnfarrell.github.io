@@ -13,7 +13,7 @@ thumbnail: /img/sarscov2_spike_model.png
  <a href="/img/sarscov2_spike_model.png"> <img src="/img/sarscov2_spike_model.png" width="300px"></a>
 </div>
 
-Since the identification of SARS-CoV-2 virus and it's subsequent spread, there has been considerable discussion and uncertainty over it's origin. The genome of the newly emerging CoV consists of a single, positive-stranded RNA that is approximately 30k nucleotides long. The overall genome organization of the newly emerging CoV is similar to that of other coronaviruses. The newly sequenced virus genome encodes the open reading frames (ORFs) common to all betacoronaviruses, including  the spike-surface glycoprotein (S). This is essential for entry of virus particles into the cell. The S protein contains two functional domains: a receptor binding domain, and a second domain which contains sequences that mediate fusion of the viral and cell membranes. The S glycoprotein must be cleaved by cell proteases to enable exposure of the fusion sequences and hence is needed for cell entry. The receptor binding domain (RBD) in the spike protein is the most variable part of the virus genome. SARS-CoV-2 seems to have an RBD that may bind with high affinity to ACE2 from human and closely related mammals, but less so in other species. Six residues in the RBD appear to be critical for binding to the ACE2 receptor and determining host range. Five of these six residues are mutated in SARS-CoV-2 compared to its most closely related virus, RaTG13. The sequence comparison also shows the insertion of a furin cleavage sequence in SARS-CoV-2. This may alter the ability of the virus to infect cells in humans relative to the Bat form. Interested readers should check the links at the end of this page for further details. www.virology.ws has some easy to read articles on current research.
+Since the identification of SARS-CoV-2 virus and it's subsequent spread, there has been considerable discussion and uncertainty over it's origin. The genome of the newly emerging CoV consists of a single, positive-stranded RNA that is approximately 30k nucleotides long. The overall genome organization of the newly emerging CoV is similar to that of other coronaviruses. The newly sequenced virus genome encodes the open reading frames (ORFs) common to all betacoronaviruses, including the spike-surface glycoprotein (S). The S protein contains two functional domains: a receptor binding domain, and a second domain which contains sequences that mediate fusion of the viral and cell membranes. The S glycoprotein must be cleaved by cell proteases to enable exposure of the fusion sequences and hence is essential for cell entry. The receptor binding domain (RBD) in the spike protein is the most variable part of the virus genome. SARS-CoV-2 seems to have an RBD that may bind with high affinity to ACE2 from human and closely related mammals, but less so in other species. Six residues in the RBD appear to be critical for binding to the ACE2 receptor and determining host range. Five of these six residues are mutated in SARS-CoV-2 compared to the most closely related bat virus, RaTG13 (MN996532). The sequence comparison also shows the insertion of a furin cleavage sequence in SARS-CoV-2. This may alter the ability of the virus to infect cells in humans relative to the Bat form. Interested readers should check the links at the end of this page for further details. www.virology.ws has some easy to read articles on current research.
 
 This page illustrates some microbial genomics methods using Python by replicating some of the results dicussed by [Andersen et al.](http://virological.org/t/the-proximal-origin-of-sars-cov-2/398). It is important to note that the content of this page is the subject of current and ongoing research and should not be seen as indicating a special expertise in virology on the part of the author.
 
@@ -74,7 +74,7 @@ subset[cols]
 
 ## Annotate the nucleotide sequences and save in a dataframe
 
-This function iterates over a dataframe that matches the accessions in the sequences we have loaded previously. This returns a dataframe with all the annotated sequences in one table. They can then be extracted based on whatever critierion we need. Note the annotated record for each file is written to a genbank file and it's loaded if present instead of re-running the annotation (even though the annotation only takes a couple of seconds). The core method called here is run_annotation from a package that I wrote called pygenefinder. It performs a Prokka-type annotation on prokaryotic sequences and returns a dataframe and list of one or more SeqRecord objects. This function does use blast, hmmer, aragorn and prodigal but they can all be installed easily on Linux.
+This function iterates over a dataframe that matches the accessions in the sequences we have loaded previously. This returns a dataframe with all the annotated sequences in one table. They can then be extracted based on whatever critierion we need. Note the annotated record for each file is written to a genbank file and it's loaded if present instead of re-running the annotation (even though the annotation only takes a couple of seconds for a virus). The core method called here is run_annotation from a package that I wrote called `pygenefinder`. It performs a Prokka-type annotation on prokaryotic sequences and returns a dataframe and list of one or more SeqRecord objects. This function does use blast, hmmer, aragorn and prodigal but they can all be installed easily on Linux.
 
 ```python
 def annotate_files(df):
@@ -126,6 +126,10 @@ def get_similar_sequences(protname, annot):
 seqs = get_similar_sequences('Spike glycoprotein', annot)
 ```
 
+### Alternative method
+
+Obviously in this case it's easier to search for the protein sequence on genbank and blastp to get it's closest hits. Then just download and align them. This assumes the protein sequences you need are in the database though. The method I have shown will work for any arbotary microbial nucleotide sequences.
+
 ## Align the sequences
 
 We then just align those sequences with Clustal and show the alignment in the notebook interactively using another package called pybioviz. This works inside a Jupyter notebook, but there are lots of alignment viewers available. If you scroll along the sequence you will see the RBD and polybasic cleavage site in MN908947.
@@ -140,7 +144,7 @@ show(p)
 
 ## Structural view of receptor binding domain
 
-You can view models of the virus protein structures on SWISS-MODEL here: https://swissmodel.expasy.org/repository/species/2697049. They are based on the closest proteome and associated known structures. The particular model of interest here is the heterodimer Spike protein complexed with the human ACE receptor. Here we show a basic example of how to view the binding domain with PyMol. We can use Python to load and set up a scene focused on the interacting residues. The mutated residues are L455, F486, Q493, S494, N501, and Y505 using the coordinates of the model structure. The method find_interacting_residues selects the six key residues on chain C, the Spike protein and finds all residues in the receptor (chain D) within 4Å of any of these. This gives us a simple picture of the interaction. More in depth study of the structure is beyond the scope of this article.
+You can view models of the virus protein structures on SWISS-MODEL here: https://swissmodel.expasy.org/repository/species/2697049. They are based on the closest proteome and associated known structures. The particular model of interest here is the heterodimer Spike protein complexed with the human ACE2 receptor. Here we show a basic example of how to view the binding domain with PyMol. We can use Python to load and set up a scene focused on the interacting residues. The mutated residues are L455, F486, Q493, S494, N501, and Y505 using the coordinates of the model structure. The method `find_interacting_residues` selects the six key residues on chain C, the Spike protein and finds all residues in the receptor (chain D) within 4Å of any of these. This gives us a simple picture of the interaction. More in depth study of the structure is beyond the scope of this article.
 
 ```python
 def find_interacting_residues():
@@ -190,6 +194,7 @@ cmd.save('sarscov2_spike_ace.pse')
 
 * Wan, Y., Shang, J., Graham, R., Baric, R. S. & Li, F. Receptor recognition by novel coronavirus from Wuhan: An analysis based on decade-long structural studies of SARS. J. Virol. (2020) doi:10.1128/JVI.00127-20.
 * Hoffmann, M. et al., The novel coronavirus 2019 (2019-nCoV) uses the SARS-coronavirus receptor ACE2 and the cellular protease TMPRSS2 for entry into target cells. bioRxiv 2020.01.31.929042 (2020) doi:10.1101/2020.01.31.929042.
+* Song W, Gui M, Wang X, Xiang Y (2018) Cryo-EM structure of the SARS coronavirus spike glycoprotein in complex with its host cell receptor ACE2. PLoS Pathog 14(8): e1007236. https://doi.org/10.1371/journal.ppat.1007236
 
 ## Links
 
