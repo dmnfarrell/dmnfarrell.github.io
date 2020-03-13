@@ -28,7 +28,7 @@ The snapcraft program is used to build snaps. This should be installed on your s
 
 ```sudo snap install snapcraft --classic```
 
-Say you have package called testapp that you want to snap. It would typically have the file structure below.  Like most python packages it has a `setup.py` file. This is needed to make the snap. You can download these sample files <a href="/other/python-snap-template.zip">here</a> and try it for yourself.
+Say you have package called testapp that you want to snap. It would typically have the file structure below.  Like most python packages it has a `setup.py` file. This is needed to make the snap. You can download these sample files [here](https://github.com/dmnfarrell/teaching/tree/master/snapcraft/testapp) and try it for yourself.
 
 ```
 ├── setup.py
@@ -63,7 +63,7 @@ parts:
     stage-packages: [ncbi-blast+]
 ```
 
-Briefly, each .yaml file has a section with the name of the snap, a summary and description. Then there are *parts* which can be anything you want added such as programs, libraries, or other assets needed. The above example uses a single Python part to fetch the source from the parent directory. This could also be a github repository or URL. This uses the `setup.py` file to build the required python packages. You can optionally add a stage-packages line that lists other programs to be added from the apt repository. The python-packages line is only needed if you want extra python packages not in the setup.py file. Usually if your package is on pip you can use that via setup.py.
+Briefly, each .yaml file has a section with the name of the snap, a summary and description. Then there are *parts* which can be anything you want added such as programs, libraries, or other assets needed. The above example uses a single Python part to fetch the source from the current directory. This could also be a github repository or URL. This uses the `setup.py` file to build the required python packages. You can optionally add a stage-packages line that lists other programs to be added from the apt repository. The python-packages line is only needed if you want extra python packages not in the setup.py file. Usually if your package is on pip you can use that via setup.py.
 The *apps* section allows you to expose commands that will be available when the snap is installed. In this case testapp is a command (does not have to be the same as the snap name) is a link to bin/hello which is exposed in the setup.py file as shown below:
 
 ```
@@ -75,11 +75,11 @@ entry_points = {
 
 If your command name matches the snap name, users will be able run the command directly.
 
-The [confinement](https://docs.snapcraft.io/reference/confinement) mode determines how self contained the snap is. Generally strict should be used. You can used devmode as in this case to test things until you have it working.
+The [confinement](https://docs.snapcraft.io/reference/confinement) mode determines how self contained the snap is. Generally strict should be used. You can use devmode also to test things until you have it working.
 
-To build the snap, change to the snap directory and type:
+To build the snap, just run snapcraft inside the folder:
 
-```snapcraft snap```
+```snapcraft```
 
 ## Deploying
 
@@ -89,7 +89,7 @@ Ubuntu provides the [snap store](https://snapcraft.io/store) infrastructure maki
 
 When the snap is ready for putting on the store you can follow these steps:
 
-1. change the confinement to strict and rebuild the snap
+1. ensure the confinement is strict and build the snap
 2. publish using these steps:
 
 ```
