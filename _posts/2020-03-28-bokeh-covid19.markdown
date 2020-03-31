@@ -44,7 +44,7 @@ data = pd.pivot_table(df,index='dateRep',columns='countriesAndTerritories',value
 summary = df.groupby('countriesAndTerritories').agg({'deaths':np.sum,'cases':np.sum}).reset_index()
 ```
 
-The basic data looks like this:
+The original table looks like this:
 
 | dateRep | day        | month | year | cases | deaths | countriesAndTerritories | geoId       | countryterritoryCode | popData2018 | cumcases   |   |
 |------------|-------|------|-------|--------|-------------------------|-------------|----------------------|-------------|------------|---|
@@ -132,7 +132,7 @@ This method seems convoluted and probably isn't as intuitive as using straight P
 
 {% include bokeh_covid19.html %}
 
-We could now build up a more complex dashboard using this code as a basis and embed it anywhere.
+We could now build up a more complex dashboard using this code as a basis and embed it anywhere. The only issue with this method is that you would need to re-generate the embedded code in order to update the underlying data.
 
 ## Links
 
