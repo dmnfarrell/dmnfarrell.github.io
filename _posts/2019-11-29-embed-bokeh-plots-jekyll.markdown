@@ -38,7 +38,7 @@ The html in this page can then be put in the `_includes` folder of your Jekyll b
 </script>
 ```
 
-Finally to insert the bokeh plot you just use this line in the blog page where you want the plot to appear.
+Also ensure that the version of Bokeh included is sufficient for your script. Old versions might not work with certain code. Finally to insert the bokeh plot you just use this line in the blog page where you want the plot to appear.
 
 {% raw %}
 ```{% include bokeh_zim_plot.html %}```
@@ -52,4 +52,5 @@ This is how this plot was included:
 ## Links
 
 * [source info used for this post](https://briancaffey.github.io/2017/01/23/bokeh-plots-on-jekyll.html)
+* [Embedding Plots in Jekyll Blogs](https://www.katarinahoeger.com/2018/03/17/embedding-plots-in-jekyll-blog)
 * [jekyll](https://jekyllrb.com/)

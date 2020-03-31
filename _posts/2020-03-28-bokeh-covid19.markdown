@@ -1,0 +1,140 @@
+---
+layout: post
+title:  "COVID-19 ECDC data plots with Bokeh"
+date:   2020-03-28 12:41:00
+categories: plotting
+tags: [bokeh,python,covid19]
+thumbnail: /img/ecdc_covid_scr.png
+---
+
+## Background
+
+<div style="width: 450px; float: right;">
+ <a href="/img/ecdc_covid_scr.png"> <img src="/img/ecdc_covid_scr.png" width="400px"></a>
+</div>
+
+In a [previous post](/embed-bokeh-plots-jekyll) I showed how to embed Bokeh plots in a jekyll site like this blog. In this example we use ECDC daily data on COVID-19 to make an interactive plot comparing the track of cumulative detected cases between two countries. Importantly, this requires two dropdown menus to select the countries. To deploy this dashboard without a Bokeh server we cannot use Python callbacks but need to use javascript code to handle the menu changes. This is a bit harder to implement if you're not familiar with Javascript.
+
+## Imports
+
+```python
+import random
+import pandas as pd
+from bokeh.io import show, output_notebook
+from bokeh.models import ColumnDataSource, ColorBar, HoverTool, Legend
+from bokeh.plotting import figure
+from bokeh.palettes import brewer
+from bokeh.layouts import row, column, gridplot
+from bokeh.models import CustomJS, Slider, Select, Plot, Button, LinearAxis, Range1d, DatetimeTickFormatter
+from bokeh.models.glyphs import Line, MultiLine
+```
+
+## Get the data
+
+First we read in the excel data directly from the ECDC url. This is long form data with a row for each time point and country. To make it easier to do the plotting dynamically, we pivot the table so that we get a column per country and each row represents a date.
+
+```python
+df = pd.read_excel('https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide.xlsx')
+df['dateRep'] = pd.to_datetime(df.dateRep, infer_datetime_format=True)
+df = df.sort_values(['countriesAndTerritories','dateRep'])
+#find cumulative cases in each country by using groupby-apply
+df['cumcases'] = df.groupby(['countriesAndTerritories'])['cases'].apply(lambda x: x.cumsum())
+#pivot the table
+data = pd.pivot_table(df,index='dateRep',columns='countriesAndTerritories',values='cumcases').reset_index()
+summary = df.groupby('countriesAndTerritories').agg({'deaths':np.sum,'cases':np.sum}).reset_index()
+```
+
+The basic data looks like this:
+
+| dateRep | day        | month | year | cases | deaths | countriesAndTerritories | geoId       | countryterritoryCode | popData2018 | cumcases   |   |
+|------------|-------|------|-------|--------|-------------------------|-------------|----------------------|-------------|------------|---|
+| 2019-12-31 | 31    | 12   | 2019  | 0      | 0                       | Afghanistan | AF                   | AFG         | 37172386.0 | 0 |
+| 2020-01-01 | 1     | 1    | 2020  | 0      | 0                       | Afghanistan | AF                   | AFG         | 37172386.0 | 0 |
+| 2020-01-02 | 2     | 1    | 2020  | 0      | 0                       | Afghanistan | AF                   | AFG         | 37172386.0 | 0 |
+| 2020-01-03 | 3     | 1    | 2020  | 0      | 0                       | Afghanistan | AF                   | AFG         | 37172386.0 | 0 |
+| 2020-01-04 | 4     | 1    | 2020  | 0      | 0                       | Afghanistan | AF                   | AFG         | 37172386.0 | 0 |
+
+The pivoted table looks like this:
+
+| dateRep    | China   | Sweden | India |
+|------------|---------|--------|-------|
+| 2020-01-30 | 7734.0  | 0.0    | 1.0   |
+| 2020-01-31 | 9714.0  | 0.0    | 1.0   |
+| 2020-02-01 | 11809.0 | 1.0    | 1.0   |
+| 2020-02-02 | 14399.0 | 1.0    | 2.0   |
+| 2020-02-03 | 17211.0 | 1.0    | 2.0   |
+
+## Code
+
+In the following we want to be able to compare two countries in the same plot. The value plotted is the cumulative cases. But since there is a big difference in case numbers between countries they are plotted on twin axes, so that the plots are comparable in terms of their rate of change. We make a `ColumnDataSource` from the dataframe, then create two filtered dataframes for two countries to make the plot. The callback uses a `CustomJS` function to associate a piece of javascript code with both select menus. All it does is take the country name and changes the underlying plot data for either series to use a new column from the main `ColumnDataSource` (made from the pivoted dataframe). We have to pass both filtered and main `ColumnDataSource` objects to the callback. We then attach the callback to the menus using `js_on_change`.
+
+```python
+source = ColumnDataSource(data)
+# create CDS for filtered sources
+filt_data1 = data[['dateRep','China']].rename(columns={'China':'cases'})
+src2 = ColumnDataSource(filt_data1)
+filt_data2 = data[['dateRep','Ireland']].rename(columns={'Ireland':'cases'})
+src3 = ColumnDataSource(filt_data2)
+
+hover_tool = HoverTool(tooltips=[
+            ('Cases', '@cases'),
+            ('Date', '@dateRep')],
+            formatters={'dateRep': 'datetime'}
+        )
+
+p1 = figure(plot_width=600,plot_height=400,x_axis_type='datetime',
+           tools=[hover_tool],title='Sars-CoV-2 cases (ECDC)',y_range=Range1d(start=0, end=filt_data1.cases.max()+50))
+p1.line(x='dateRep',y='cases', source=src2, legend_label="country 1", line_color='blue',
+        line_width=3,line_alpha=.8)
+#set the second y-axis and use that with our second line
+p1.extra_y_ranges = {"y2": Range1d(start=0, end=filt_data2.cases.max()+50)}
+p1.add_layout(LinearAxis(y_range_name="y2"), 'right')
+p1.line(x='dateRep',y='cases', source=src3, legend_label="country 2", line_color='orange',
+        line_width=3,line_alpha=.8,y_range_name="y2")
+
+p1.yaxis[0].axis_label = 'China'
+p1.yaxis[1].axis_label = 'Ireland'
+p1.background_fill_color = "whitesmoke"
+p1.background_fill_alpha = 0.5
+p1.legend.location = "top_left"
+p1.xaxis.axis_label = 'Date'
+p1.xaxis.formatter=DatetimeTickFormatter(days="%d/%m",
+months="%m/%d %H:%M",
+)
+#this javascript snippet is the callback when either select is changed
+code="""
+var c = cb_obj.value;
+ax.axis_label = c;
+var y = s1.data[c];
+s2.data['cases'] = y;
+y_range.start = 0;
+y_range.end = parseInt(y[y.length - 1]+50);
+s2.change.emit();
+"""
+callback1 = CustomJS(args=dict(s1=source,s2=src2,y_range=p1.y_range,ax=p1.yaxis[0]), code=code)
+callback2 = CustomJS(args=dict(s1=source,s2=src3,y_range=p1.extra_y_ranges['y2'],ax=p1.yaxis[1]), code=code)
+names = list(df.countriesAndTerritories.unique() )
+names_sub=['China','United_Kingdom','United_States_of_America','Spain','Italy',
+           'Germany','France','Iran','Australia','Ireland','Sweden','Belgium','Turkey','India']
+select1 = Select(title="Country 1:", value='China', options=names_sub)
+select1.js_on_change('value', callback1)
+select2 = Select(title="Country 2:", value='Ireland', options=names)
+select2.js_on_change('value', callback2)
+btn = Button(label='Update')
+
+layout = column(row(select1,select2), row(p1))
+show(layout)
+```
+
+## The widget
+
+This method seems convoluted and probably isn't as intuitive as using straight Python but it has the advantage that the resulting interactive plot can be displayed in any web page since it's pure Javascript. So I can embed it directly in this page as follows:
+
+{% include bokeh_covid19.html %}
+
+We could now build up a more complex dashboard using this code as a basis and embed it anywhere.
+
+## Links
+
+* [ECDC geographic distribution of COVID-19 cases worldwide](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide)
+* [Notebook with this code](https://github.com/dmnfarrell/teaching/blob/master/sarscov2/plot_cases.ipynb)
