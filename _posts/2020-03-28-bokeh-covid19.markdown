@@ -13,7 +13,7 @@ thumbnail: /img/ecdc_covid_scr.png
  <a href="/img/ecdc_covid_scr.png"> <img src="/img/ecdc_covid_scr.png" width="400px"></a>
 </div>
 
-In a [previous post](/embed-bokeh-plots-jekyll) I showed how to embed Bokeh plots in a jekyll site like this blog. In this example we use ECDC daily data on COVID-19 to make an interactive plot comparing the track of cumulative detected cases between two countries. Importantly, this requires two dropdown menus to select the countries. To deploy this dashboard without a Bokeh server we cannot use Python callbacks but need to use javascript code to handle the menu changes. This is a bit harder to implement if you're not familiar with Javascript.
+In a [previous post](/plotting/embed-bokeh-plots-jekyll) I showed how to embed Bokeh plots in a jekyll site like this blog. In this example we use ECDC daily data on COVID-19 to make an interactive plot comparing the track of cumulative detected cases between two countries. Importantly, this requires two dropdown menus to select the countries. To deploy this dashboard without a Bokeh server we cannot use Python callbacks but need to use javascript code to handle the menu changes. This is a bit harder to implement if you're not familiar with Javascript.
 
 ## Imports
 
@@ -31,7 +31,7 @@ from bokeh.models.glyphs import Line, MultiLine
 
 ## Get the data
 
-First we read in the excel data directly from the ECDC url. This is long form data with a row for each time point and country. To make it easier to do the plotting dynamically, we pivot the table so that we get a column per country and each row represents a date.
+First we read in the excel data directly from the ECDC url. This is long form data with a row for each time point and country. To make it easier to do the plotting dynamically, we pivot the table so that we get a column per country and each row represents a date. Note that we don't have to do it this way but I found it easier in this instance.
 
 ```python
 df = pd.read_excel('https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-geographic-disbtribution-worldwide.xlsx')
