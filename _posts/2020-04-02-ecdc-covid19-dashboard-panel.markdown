@@ -17,7 +17,7 @@ In the [previous post](/plotting/bokeh-covid19) we made a simple Bokeh plot of t
 
 If you want to just try the dashboard, it can be accessed [here](http://bola.ucd.ie/covid19_plots).
 
-The complete Python script with this code can be found [here](https://github.com/dmnfarrell/teaching/blob/master/sarscov2/covid19_plots.py)
+The complete Python script with this code can be found [here](https://github.com/dmnfarrell/teaching/blob/master/sarscov2/ecdc_covid19_plots.ipynb)
 
 
 ## Imports
@@ -221,7 +221,7 @@ app = pn.Column(pn.Row(pn.Column(title,country_select,scale_select,plot_select),
 
 ## Run the server locally
 
-You can now save this code in a Python script and at the end append this line:
+You can either use a Jupyter notebook or save this code in a Python script. In either you need to append this line:
 
 ```python
 app.servable()
@@ -230,7 +230,7 @@ app.servable()
 This allows you to run the `panel serve` script from the command line as below. This runs a local bokeh server so that you can view the dashboard in a browser.
 
 ```
-panel serve covid19_plots.py --port 5100
+panel serve ecdc_covid19_plots.ipynb --port 5100
 ```
 
 The final dashboard looks like this:
@@ -256,7 +256,7 @@ Say we wish to share this application beyond a local network. One way is to run 
     .
 ```
 
-You then simply alias this folder to /static in the Apache configuration. The restart apache and the page will be viewable fro myour website under whatever name you proxied your local server too. 
+You then simply alias this folder to /static in the Apache configuration. The restart apache and the page will be viewable fro myour website under whatever name you proxied your local server too.
 
 ## Links
 

@@ -137,4 +137,4 @@ We could now build up a more complex dashboard using this code as a basis and em
 ## Links
 
 * [ECDC geographic distribution of COVID-19 cases worldwide](https://www.ecdc.europa.eu/en/publications-data/download-todays-data-geographic-distribution-covid-19-cases-worldwide)
-* [Notebook with this code](https://github.com/dmnfarrell/teaching/blob/master/sarscov2/plot_cases.ipynb)
+* [Notebook with this code](https://github.com/dmnfarrell/teaching/blob/master/sarscov2/)
