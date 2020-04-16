@@ -13,7 +13,7 @@ thumbnail: /img/abm-mesa-grid.png
  <a href="/img/SIR_example.png"> <img src="/img/SIR_example.png" width="300px"></a>
 </div>
 
-Forecasting the outcome of infectious disease epidemics is now receiving much attention due to the ongoing COVID-19 pandemic. A traditional framework for infectious disease spread is a the so-called [SIR model](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology), dividing a population into susceptible (S), infectious (I) and recovered/removed (R). These can be estimated over time with a set of differential equations given known transition rates between states. These in turn depends on parameters like the R0 for the infection. These equation based methods are called compartmental models. Agent-based models are a more recent advance that simulate many individual 'agents' in the population to achieve the same goal. The agents are heterogeneous, with multiple attributes and complexity emerges out of the aggregate behaviour of many agents combined. At least that's my simplistic understanding. A simple example here served to help me understand how the agent-based approach works. It uses the [Mesa](https://github.com/projectmesa/mesa/) Python library to build an SIR model and also illustrates ways of visualizing the simulation as the model is run using Bokeh.
+Forecasting the outcome of infectious disease epidemics is now receiving much attention due to the ongoing COVID-19 pandemic. A traditional framework for infectious disease spread is the so-called [SIR model](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology), dividing a population into susceptible (S), infectious (I) and recovered/removed (R). These can be estimated over time with a set of differential equations given known transition rates between states. These in turn depend on parameters like the R0 for the infection. These equation based methods are called compartmental models. Agent-based models are a more recent advance that simulate many individual 'agents' in the population to achieve the same goal. The agents are heterogeneous, with multiple attributes and complexity emerges out of the aggregate behaviour of many agents combined. At least that's my simplistic understanding. A simple example here served to help me understand how the agent-based approach works. It uses the [Mesa](https://github.com/projectmesa/mesa/) Python library to build an SIR model and also illustrates ways of visualizing the simulation as the model is run using Bokeh.
 
 ## Imports
 
@@ -40,11 +40,10 @@ class InfectionModel(Model):
     """A model for infection spread."""
 
     def __init__(self, N=10, width=10, height=10, ptrans=0.5,
-                 progression_period=3, progression_sd=2, death_rate=0.0193, recovery_days=21,
+                 death_rate=0.02, recovery_days=21,
                  recovery_sd=7):
 
         self.num_agents = N
-        self.initial_outbreak_size = 1
         self.recovery_days = recovery_days
         self.recovery_sd = recovery_sd
         self.ptrans = ptrans
@@ -115,16 +114,13 @@ class MyAgent(Agent):
             t = self.model.schedule.time-self.infection_time
             if t >= self.recovery_time:          
                 self.state = State.REMOVED
-            #print (self.model.schedule.time,self.recovery_time,t)
 
     def contact(self):
         """Find close contacts and infect"""
 
         cellmates = self.model.grid.get_cell_list_contents([self.pos])       
         if len(cellmates) > 1:
-            #other = self.random.choice(cellmates)
             for other in cellmates:
-                #print (self.model.schedule.time,self.state,other.state)                
                 if self.random.random() > model.ptrans:
                     continue
                 if self.state is State.INFECTED and other.state is State.SUSCEPTIBLE:                    
@@ -155,7 +151,7 @@ To make this data easier to plot we can convert it into wide form as follows.
 
 ```python
 def get_column_data(model):
-    #pivot the model dataframe to get states count at each step
+    """pivot the model dataframe to get states count at each step"""
     agent_state = model.datacollector.get_agent_vars_dataframe()
     X = pd.pivot_table(agent_state.reset_index(),index='Step',columns='State',aggfunc=np.size,fill_value=0)    
     labels = ['Susceptible','Infected','Removed']
@@ -166,18 +162,18 @@ def get_column_data(model):
 The resulting table looks like this:
 
 ```
-Step  Susceptible  Infected  Removed
-0      0          295         5        0
-1      1          295         5        0
-2      2          287        13        0
-3      3          284        16        0
-4      4          279        21        0
+Step   Susceptible  Infected  Removed
+0          295         5        0
+1          295         5        0
+2          287        13        0
+3          284        16        0
+4          279        21        0
 ..   ...          ...       ...      ...
-95    95            7         0      180
-96    96            7         0      180
-97    97            7         0      180
-98    98            7         0      180
-99    99            7         0      180
+95            7         0      180
+96            7         0      180
+97            7         0      180
+98            7         0      180
+99            7         0      180
 ```
 
 ## Plot model states with Bokeh
@@ -279,7 +275,7 @@ for i in range(steps):
     time.sleep(0.2)
 ```
 
-The final output is shown below. You'll notice the simulation reproduces the general pattern of states transitions of the SIR model. Beyond that, this is obviously a very simple model. For example real world models don't use grids like this, rather networks of contacts.
+The final output is shown below. You'll notice the simulation reproduces the general pattern of states transitions of the SIR model. Beyond that, this is obviously a very simple model. For example most real world models normally probably don't use grids like this, rather networks of contacts. A more realistic synthetic populaiton would describe additional features of each agent like age, household status and so on derived from demographic data of the target country.
 
 <div style="width: auto; float:left;">
  <a href="/img/abm_sir_bokeh.gif"> <img class="scaled" src="/img/abm_sir_bokeh.gif"></a>
