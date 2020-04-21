@@ -38,7 +38,7 @@ First let's check that our annotation works ok against the reference genome whic
 |N   |GU280_gp10|419       |
 |ORF10|GU280_gp11|38       |
 
-Here is my annotation below. You can see there are some differences. We are missing the E protein and ORF10. ORF8 is there but without the gene name. My method probably needs improvement! Even automatic annotations will not be the same. However it's good enough that we can use this as for reference proteins, since that is easier for comparison.
+Here is my annotation below. You can see there are some differences. We are missing the E protein and ORF10. ORF8 is there but without the gene name. My method probably needs improvement! Even automatic annotations will not be the same. However it's good enough that we can use this for the reference proteins, since that is easier for comparison.
 
 |gene|product|length    |
 |----|-------|----------|
@@ -54,6 +54,17 @@ Here is my annotation below. You can see there are some differences. We are miss
 |- |hypothetical protein|51        |
 
 ## Some code
+
+Imports:
+
+```python
+import pandas as pd
+from Bio import SeqIO,AlignIO
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+import pylab as plt
+from pygenefinder import app,tools
+```
 
 This method allows us to load sequences from a fasta with duplicate sequences:
 
@@ -162,7 +173,7 @@ As you can see this is a non-phylogenetic method and has limitations as such. We
 
 ## Links
 
-* [Notebook with this code]()
+* [Notebook with this code](https://github.com/dmnfarrell/teaching/blob/master/sarscov2/protein_annotation.ipynb)
 * [gisaid](https://www.gisaid.org/)
 * [Selection analysis of gisaid sars-cov-2 data](http://virological.org/t/selection-analysis-of-gisaid-sars-cov-2-data/448/2)
 * [covid19dataportal.org](https://www.covid19dataportal.org/proteins)
