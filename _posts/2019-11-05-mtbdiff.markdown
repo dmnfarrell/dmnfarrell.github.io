@@ -3,7 +3,7 @@ layout: post
 title:  "Analysis of MTBC regions of difference with NucDiff"
 date:   2019-11-05 12:44:00
 categories: bioinformatics
-tags: [mtbdiff,microbiology]
+tags: [mtbc,mtbdiff,microbiology]
 thumbnail: /img/mtbdiff_rd8.png
 ---
 
