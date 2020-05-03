@@ -45,8 +45,8 @@ def bwa_align(file1, file2, idx, out, threads=4, overwrite=False):
     samtoolscmd = 'samtools'
     if file2 == None:
         file2=''
-    cmd = '{b} mem -M -t {t} {i} {f1} {f2} | {s} view -F 0x04 -bt - | {s} sort -o {o}'.format(b=bwacmd,i=idx,s=samtoolscmd,
-                                                                                      f1=file1,f2=file2,o=out,t=threads)
+    cmd = '{b} mem -M -t {t} {i} {f1} {f2} | {s} view -F 0x04 -bt - | \
+        {s} sort -o {o}'.format(b=bwacmd,i=idx,s=samtoolscmd, f1=file1,f2=file2,o=out,t=threads)
     if not os.path.exists(out) or overwrite == True:
         print (cmd)
         tmp = subprocess.check_output(cmd, shell=True)        
@@ -132,10 +132,13 @@ def apply_rules(x):
             return 'Microti'
         elif (x.RD12bov == 0 or x.RD1bcg == 0 or x.RD2bcg == 0):
             return 'Caprae'
-    elif x.RD4 == 0 and x.RD1bcg==0 and x.RD2bcg==1:
-        return 'BCG (Moreau)'
-    elif x.RD4 ==0 and x.RD1bcg==0 and x.RD2bcg==0:
-        return 'BCG (Merieux)'
+    elif x.RD4 == 0:
+        if x.RD1bcg==1 and x.RD2bcg==1 and x.RD12bov == 0:
+            return 'Bovis'
+        elif x.RD1bcg==0 and x.RD2bcg==1:
+            return 'BCG (Moreau)'
+        elif x.RD1bcg==0 and x.RD2bcg==0:
+            return 'BCG (Merieux)'
     elif x.RD711 == 0:
         return 'Africanum'
 ```
@@ -173,7 +176,9 @@ Finally we can use the `apply_rules` method to identify unknown samples from the
 X.apply(apply_rules,1)
 ```
 
-Note that this method is not quite complete as it doesn't properly handle the `RDoryx_wag22` deletion that identifies M.Orygis and the `pks15/1` region needs to be treated specially. Also the rules function needs to be completed.
+Note that this method is not quite complete as it doesn't properly handle the `RDoryx_wag22` deletion that identifies M.Orygis and the `pks15/1` region needs to be treated specially. Also the rules function needs to be completed. 
+
+The up to date version of this code can be found [here](https://github.com/dmnfarrell/pathogenie/blob/master/pathogenie/rd_analysis.py)
 
 ## Links
 
