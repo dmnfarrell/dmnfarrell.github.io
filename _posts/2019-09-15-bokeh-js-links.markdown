@@ -13,6 +13,13 @@ Both Bokeh and Panel use widgets to control plot elements. (These tools have bee
 
 ## Code
 
+Note: if you want to run this inside a jupyter lab you need to install the extensions:
+
+```
+jupyter labextension install @bokeh/jupyter_bokeh
+jupyter labextension install @pyviz/jupyterlab_pyviz
+```
+
 This example uses a plot with colored boxes though the exact content is not important. You can install Bokeh and Panel with pip or conda.
 
 ```python
