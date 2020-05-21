@@ -7,6 +7,8 @@ tags: [python,genomics,ngs]
 thumbnail: /img/fasta_from_vcf.svg
 ---
 
+**UPDATE**: This method is not recommended, use the function in the [follow up post](/bioinformatics/vcf-sites-fasta2) instead.
+
 ## Background
 
 <div style="width: 400px; float: right;">
@@ -22,7 +24,7 @@ Requires these Python packages: pyvcf, pyfaidx, biopython and pandas. The progra
 ## Imports
 
 ```python
-import sys,os,subprocess
+import sys,os
 import pandas as pd
 from Bio import SeqIO
 from pyfaidx import Fasta
@@ -32,7 +34,7 @@ import vcf
 
 ## Code
 
-This particular function returns a list of `SeqRecord` objects and a matrix of the sites in the form of a pandas DataFrame. It iterates over all each sample once to prodice a set of all unique sites in all samples, using the `FastaVariant` object from pyfadix. The nucleotide at each sites is recorded for the reference genome. In a second loop over each sample we extract the variant nucleotide at each of the sites and store these in a sequence. The results is a list of sequences per sample. This can then be saved to a fasta file and used as an MSA for input into RAXml or other tree constuction programs. This code has not been fully compared to other algorithms of this kind so use it at your discretion.
+This particular function returns a list of `SeqRecord` objects and a matrix of the sites in the form of a pandas DataFrame. It iterates over each sample once to produce a set of all unique sites in all samples, using the `FastaVariant` object from pyfadix. The nucleotide at each sites is recorded for the reference genome. In a second loop over each sample we extract the variant nucleotide at each of the sites and store these in a sequence. The results is a list of sequences per sample. This can then be saved to a fasta file and used as an MSA for input into RAXml or other tree constuction programs. This code has not been fully compared to other algorithms of this kind so use it at your discretion.
 
 ```python
 def fasta_alignment_from_vcf(vcf_file, ref):

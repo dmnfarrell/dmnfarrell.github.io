@@ -29,7 +29,7 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio import Phylo, AlignIO
-from pygenefinder import app,tools
+import pathogenie
 from pybioviz import plotters
 from bokeh.io import show, output_notebook, output_file
 output_notebook()
@@ -74,7 +74,7 @@ subset[cols]
 
 ## Annotate the nucleotide sequences and save in a dataframe
 
-This function iterates over a dataframe that matches the accessions in the sequences we have loaded previously. This returns a dataframe with all the annotated sequences in one table. They can then be extracted based on whatever critierion we need. Note the annotated record for each file is written to a genbank file and it's loaded if present instead of re-running the annotation (even though the annotation only takes a couple of seconds for a virus). The core method called here is run_annotation from a package that I wrote called `pygenefinder`. It performs a Prokka-type annotation on prokaryotic sequences and returns a dataframe and list of one or more SeqRecord objects. This function does use blast, hmmer, aragorn and prodigal but they can all be installed easily on Linux.
+This function iterates over a dataframe that matches the accessions in the sequences we have loaded previously. This returns a dataframe with all the annotated sequences in one table. They can then be extracted based on whatever critierion we need. Note the annotated record for each file is written to a genbank file and it's loaded if present instead of re-running the annotation (even though the annotation only takes a couple of seconds for a virus). The core method called here is run_annotation from a package that I wrote called `pathogenie`. It performs a Prokka-type annotation on prokaryotic sequences and returns a dataframe and list of one or more SeqRecord objects. This function does use blast, hmmer, aragorn and prodigal but they can all be installed easily on Linux.
 
 ```python
 def annotate_files(df):
@@ -86,14 +86,14 @@ def annotate_files(df):
         #print(row)
         gbfile = os.path.join(outdir,label+'.gbk')
         if os.path.exists(gbfile):        
-            featdf = tools.genbank_to_dataframe(gbfile)
+            featdf = pathogenie.tools.genbank_to_dataframe(gbfile)
             featdf['sequence'] = featdf.translation
         else:
             seq = seqrecs[label]
             filename = os.path.join('temp',label+'.fasta')
             SeqIO.write(seq,filename,'fasta')
-            featdf,recs = app.run_annotation(filename, threads=10, kingdom='viruses')
-            tools.recs_to_genbank(recs, gbfile)
+            featdf,recs = pathogenie.app.run_annotation(filename, threads=10, kingdom='viruses')
+            pathogenie.tools.recs_to_genbank(recs, gbfile)
         featdf['label'] = label
         featdf['host'] = row.Host
         featdf['id'] = row.Species
@@ -150,7 +150,7 @@ Obviously it would probably be easier in this case to search the relevant protei
 We then just align those sequences with Clustal and show the alignment in the notebook interactively using another package called `pybioviz`. This works inside a Jupyter notebook, but there are lots of alignment viewers available. If you scroll along the sequence you will see the RBD and polybasic cleavage site in MN908947.
 
 ```python
-aln = tools.clustal_alignment(seqs=seqs)
+aln = pathogenie.tools.clustal_alignment(seqs=seqs)
 p = plotters.plot_sequence_alignment(aln)
 show(p)
 ```
