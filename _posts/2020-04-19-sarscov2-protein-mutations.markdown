@@ -14,7 +14,7 @@ thumbnail: /img/sarscov2_mut_freq.png
 </div>
 
 Groups studying the SARS-CoV-2 virus are using genomes from GISAID to keep track of variants that could have functional effects on the virus phenotype. Some of them may be positively or negatively selected for. These genomes are updated daily from sequencing results across the world. There are at present ~8000 sequences for the human virus present. This data is available with free registration on the GISAID website.
-One way of using these sequences is to calculate the number of non-synonymous mutations arising in the genome since the first identified isolate from Wuhan was sequenced. There is more than one way to do this as usual. Typically a phylogenetic approach is used using the nucleotide sequence. An alternate way is to annotate the  genomes and extract the corresponding protein sequences across all non-redundant genomes (non-identical). Then these can all be aligned against the reference to see the amino acid substitutions. Here I use some code from a Python package I made called `pygenefinder` to do the annotation. Notice that annotating all the genomes like this is somewhat inefficient since they are practically identical. However since they're viral genomes it's very quick and it lets us extract the sequence for any protein of interest. This approach would work for more distant sequences too.
+One way of using these sequences is to calculate the number of non-synonymous mutations arising in the genome since the first identified isolate from Wuhan was sequenced. There is more than one way to do this as usual. Typically a phylogenetic approach is used using the nucleotide sequence. An alternate way is to annotate the  genomes and extract the corresponding protein sequences across all non-redundant genomes (non-identical). Then these can all be aligned against the reference to see the amino acid substitutions. Here I use some code from a Python package I made called `pathogenie` to do the annotation. Notice that annotating all the genomes like this is somewhat inefficient since they are practically identical. However since they're viral genomes it's very quick and it lets us extract the sequence for any protein of interest. This approach would work for more distant sequences too.
 
 ## Method
 
@@ -41,8 +41,8 @@ First let's check that our annotation works ok against the reference genome whic
 Next we can annotate with my own routine as follows:
 
 ```python
-from pygenefinder import app,tools
-sc2,sc2recs = app.run_annotation('NC_045512.fa', kingdom='viruses')
+from pathogenie import app,tools
+sc2,sc2recs = pathogenie.run_annotation('NC_045512.fa', kingdom='viruses')
 ```
 
 Here is my annotation below. You can see there are some differences. We are missing the E protein and ORF10. ORF8 is there but without the gene name. My method probably needs improvement! Even automatic annotations will not be the same. However it's good enough that we can use this for the reference proteins, since most of the proteins are present and the sequences should be identical.
@@ -70,10 +70,10 @@ from Bio import SeqIO,AlignIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 import pylab as plt
-from pygenefinder import app,tools
+import pathogenie
 ```
 
-This method allows us to load sequences from a fasta with duplicate sequences:
+All of our sequences from GISAID are in one file and some have the same id. This method allows us to load sequences from a fasta with duplicate sequences:
 
 ```python
 def load_deduplicated_sequences(filename):
@@ -85,25 +85,24 @@ def load_deduplicated_sequences(filename):
         for rec in SeqIO.parse(in_handle, "fasta"):        
             if rec.seq in unique_seqs:
                 continue
-            if not rec.id in gisrecs:
+            if not rec.id in newrecs:
                 try:
                     id = rec.id.split('|')[1]           
-                    newrecs[id] = rec
-                    #seqs.append(rec.seq)
+                    newrecs[id] = rec              
                     unique_seqs[str(rec.seq)] = id
                 except:
                     pass
     return newrecs
 ```
 
-Here's the method used to get the mutations. Pairwise comparisons are used so the record can be stored with the mutation name.
+Here's the method used to get the mutations from the protein sequences. Pairwise comparisons are used so the record can be stored with the mutation name.
 
 ```python
 def get_mutations(recs, ref):
     mutations = {}
     positions = []
     for rec in recs:
-        aln = tools.clustal_alignment(seqs=[ref, rec])
+        aln = pathogenie.clustal_alignment(seqs=[ref, rec])
         #print (aln)
         for pos in range(len(aln[0])):
             refaa = aln[0,pos]        
@@ -116,12 +115,12 @@ def get_mutations(recs, ref):
     return mutations
 ```
 
-This is the code that runs the whole process. We can run this for each protein by providing the reference version and all the records (with nucleotide sequences). Note that the annotation is run once and the result passed to the function. The other methods used here are not shown in detail. The code for those methods can be found on the github repo for pygenefinder [here](https://github.com/dmnfarrell/pygenefinder).
+This is the code that runs the whole process. We can run this for each protein by providing the reference version and all the records (with nucleotide sequences). Note that the annotation is run once and the result passed to the function. The other methods used here are not shown in detail. The code for those methods can be found on the github repo for pathogenie [here](https://github.com/dmnfarrell/pathogenie).
 
 ```python
 #run the annotation
 gisrecs = load_deduplicated_sequences('gisaid_cov2020_sequences.fasta')
-annot = app.annotate_files(gisrecs, outdir='gisaid_annot', kingdom='viruses')
+annot = pathogenie.annotate_files(gisrecs, outdir='gisaid_annot', kingdom='viruses')
 
 names = ['Protein 7a', 'Protein 3a', 'Spike glycoprotein','Membrane protein',
          'Nucleoprotein','Replicase polyprotein 1a','Replicase polyprotein 1ab']
@@ -131,8 +130,8 @@ for protname in names:
     refprot = sc2[sc2['product']==protname].iloc[0]
     refrec = SeqRecord(Seq(refprot.translation),id='ref')
     print (protname)
-    annot_seqs = app.get_similar_sequences(protein, annot)
-    unique_seqs, counts = tools.collapse_sequences(annot_seqs, refrec)
+    annot_seqs = pathogenie.get_similar_sequences(protein, annot)
+    unique_seqs, counts = pathogenie.collapse_sequences(annot_seqs, refrec)
     print ('%s unique sequences' %len(unique_seqs))
     mutations = get_mutations(unique_seqs, refrec)
     #convert mutations to string and count the frequency
