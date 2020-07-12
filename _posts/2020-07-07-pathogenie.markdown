@@ -25,7 +25,7 @@ The interface consists of three main panels. One on top for loading input fasta 
 
 ## Annotation
 
-The annotation in pathogenie is mostly modelled on the Prokka method though it's a somewhat simpler version with not all the same features. ([Prokka](https://github.com/tseemann/prokka/) is a microbial genome annotation tool written in Perl). Genes are first identified with prodigal and the open reading frames blasted in turn to UniProt proteins,
+The annotation in pathogenie is mostly modelled on the Prokka method though it's a somewhat simpler version with not all the same features. ([Prokka](https://github.com/tseemann/prokka/) is a microbial genome annotation tool written in Perl). Genes are first identified with prodigal and the open reading frames blasted in turn to amr genes and a set of non redundant UniProt proteins. The remaining unknowns are run through hmmer. tRNAs are identified with aragorn. A set of trusted proteins can be added for species specific use.
 
 ### Running an annotation
 
