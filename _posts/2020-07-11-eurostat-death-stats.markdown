@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Eurostat deaths from all causes data"
+title:  "Eurostat deaths from all causes dataset plots"
 date:   2020-07-11 12:18:00
 categories: plotting
 tags: [eurostat,seaborn]
@@ -13,7 +13,7 @@ thumbnail: /img/eurostat_scr.png
   <img src="/img/eurostat_scr.png" width="220px">
 </div>
 
-The number of deaths by week in most countries of the European Union are stored by [Eurostat](https://ec.europa.eu/eurostat) and accessible via  their data explorer tool. This is a bit of a clunky interface but fairly straightforward to use. The data on total deaths is useful for assessing the possible effects of the COVID-19 pandemic on the European population deaths. In particular excess deaths can be estimated by comparing to the mean values over a given period. The data used here was downloaded for all years >2005 with age and sex breakdown for all available countries. The United Kingdom has limited data.
+The number of deaths by week in most countries of the European Union are stored by [Eurostat](https://ec.europa.eu/eurostat) and accessible via  their data explorer tool. This is a bit of a clunky interface but fairly straightforward to use. The data on total deaths is useful for assessing the possible effects of the COVID-19 pandemic on the European population deaths. In particular excess deaths can be estimated by comparing to the mean values over a given period. The data used here was downloaded for all years >2005 with age and sex breakdown for all available countries. The United Kingdom only starts in 2020 so is not used.
 
 ## Flu season deaths create a regular cycle
 
@@ -25,7 +25,7 @@ The [flu season](https://en.wikipedia.org/wiki/Flu_season) accounts for a substa
 
 ## Totals per year by age group during 'covid peak'
 
-If we take the covid peak (see below) as being around weeks 10-20 of 2020, we can roughly compare the deaths for the same period each year. Remember these are total deaths, not for specific causes. This clearly shows the majority of the increase over other years or excess is due to the >70 age group.
+The spread of Covid-19 in Europe occured mostly after the flu season. If we take the 'covid peak' (see below) as being around weeks 10-20 of 2020, we can roughly compare the deaths for the same period each year. Remember these are total deaths, not for specific causes. The data used is only for the subset of countries with data for all years. This clearly shows the majority of the increase over other years or excess is due to the >70 age group.
 
 <div style="width: auto; float:center;">
  <a href="/img/eurostat_fluseason_deaths.png"> <img class="scaled" src="/img/eurostat_fluseason_deaths.png"></a>
@@ -33,7 +33,7 @@ If we take the covid peak (see below) as being around weeks 10-20 of 2020, we ca
 
 ## Total deaths per year up to end of June
 
-This plot shows the totals for the first half of each year, up to June for selected countries.
+This plot shows the totals for the first half of each year, up to June for selected countries. It is therefore a like with like comparison to 2020.
 
 <div style="width: auto; float:center;">
  <a href="/img/eurostat_4countries_totaldeaths.png"> <img class="scaled" src="/img/eurostat_4countries_totaldeaths.png"></a>
@@ -41,7 +41,7 @@ This plot shows the totals for the first half of each year, up to June for selec
 
 ## Total deaths per year up to end of June, individual plots
 
-The same plot broken down for multiple countries. Italy has incomplete data for 2020 so seems lower.
+The same plot broken down for only countries with complete data for all years.
 
 <div style="width: auto; float:center;">
  <a href="/img/eurostat_totaldeaths_bycountry.png"> <img class="scaled" src="/img/eurostat_totaldeaths_bycountry.png"></a>
