@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Sequence alignment viewer wth Qt/PySide2"
+title:  "Sequence alignment viewer with Qt/PySide2"
 date:   2020-07-21 15:14:00
 categories: bioinformatics
 tags: [pyside2,python]
@@ -9,11 +9,11 @@ thumbnail: /img/seqviewer_scr1.png
 
 ## Background
 
-Title speaks for itself here. A sequence alignment is made here from a fasta file with clustal and read in using BioPython to a list of SeqRecord objects. The rest is just making a graphical interface for showing the alignment. We use a custom `QPlainTextEdit` class for the text displays. The `draw_alignment` method handles the drawing and coloring of the sequence alignment. The fastest way to do this is add the text letter by letter as html with the color specified. Despite it's name `QPlainTextEdit` can handle html. This was developed as part of the [pathogenie](https://github.com/dmnfarrell/pathogenie) program.
+Title speaks for itself here. A sequence alignment is made here from a fasta file with clustal and read in using BioPython to a list of `SeqRecord` objects. The rest is just making a graphical interface for showing the alignment. We use a custom `QPlainTextEdit` class for the text displays. The `AlignmentWidget` class contains a `QSplitter` with areas for the labels and sequence separated. The `draw_alignment` method handles the drawing and coloring of the sequence alignment. The fastest way to do this is add the text letter by letter as html with the color specified. Despite it's name `QPlainTextEdit` can handle html. This widget was developed for use in the [pathogenie](https://github.com/dmnfarrell/pathogenie) tool.
 
 ## What's missing
 
-Missing is a way to make the two parts of the alignment scroll vertically together. These are in a QSplitter and need to use a shared scrollbar. Also needed is a way to set a reference sequence from one of the entries so that we can color
+Missing is a way to make the two parts of the alignment scroll vertically together. These are in a `QSplitter` and need to use a shared scrollbar. Also needed is a way to set a reference sequence from one of the entries so that we can color
 
 ## Imports
 
