@@ -17,7 +17,7 @@ In the [previous post](/plotting/bokeh-covid19) we made a simple Bokeh plot of t
 
 If you want to just try the dashboard, it can be accessed [here](http://bola.ucd.ie/covid19_plots).
 
-The complete Python script with this code can be found [here](https://github.com/dmnfarrell/teaching/blob/master/sarscov2/ecdc_covid19_plots.ipynb)
+The complete Python script with this code can be found [here](https://github.com/dmnfarrell/teaching/blob/master/covid_stats/ecdc_covid19_bokeh.ipynb)
 
 
 ## Imports
