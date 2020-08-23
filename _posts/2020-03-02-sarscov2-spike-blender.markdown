@@ -3,7 +3,7 @@ layout: post
 title:  "Model of the SARS-CoV-2 spike protein in Blender"
 date:   2020-03-02 11:30:00
 categories: bioinformatics
-tags: [genomics,SARS-CoV-2,blender]
+tags: [genomics,sarscov2,blender]
 thumbnail: /img/spike_thumb.png
 ---
 

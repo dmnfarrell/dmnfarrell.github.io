@@ -3,7 +3,7 @@ layout: post
 title:  "Explore the SARS-CoV-2 spike protein sequences using Python tools"
 date:   2020-02-28 10:30:00
 categories: bioinformatics
-tags: [genomics,SARS-CoV-2]
+tags: [genomics,sarscov2]
 thumbnail: /img/sarscov2_spike_model.png
 ---
 
