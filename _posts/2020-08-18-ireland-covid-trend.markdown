@@ -15,6 +15,8 @@ The data used here is provided at [data.gov.ie](https://data.gov.ie/dataset?q=co
 
 ## Tests performed vs positive rates
 
+Note: Plots updated subsequent to writing this post to reflect more recent data.
+
 With any ongoing transmission of a virus, continual community testing will eventually reveal some clusters. Many will go likely go undetected and may not spread if sufficient immunity exists or if distancing measures prevent it (or both). If we plot the tests performed and actual positives we can see the rate (positives/total tests) has steadily declined since May. (The data is plotted here as a rolling mean with 7 day window to smooth the curves). This is despite the gradual re-opening. Tests have increased rapidly again in August in response to the clusters with contact tracing allowing other cases to be discovered. Thus by definition more cases are found in these areas. Such fluctuations are inevitable and a result of testing and tracing. However the total positive rate continues downward.
 
 <div style="width: auto; float:center;">

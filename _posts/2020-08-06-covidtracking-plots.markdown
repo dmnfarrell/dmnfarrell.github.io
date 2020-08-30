@@ -13,6 +13,8 @@ thumbnail: /img/us_covid_positives_total.png
 
 ## Total USA tests/positive rate
 
+Note: Plots updated subsequent to writing this post to reflect more recent data.
+
 We can sum the daily tests and positives over all states to get the trend for the whole US in one plot. `perc positives` is the percentage of total tests that are positive. It is important to measure the trend in detected positives (green) as a proportion of the amount of testing, rather than total positives (orange). The quoting of positives tests alone, as is often the case in the media, is largely useless from a population perspective. This is especially true when large numbers of tests are being carried out and the prevalance of the disease is low in many areas. It is seen that testing has increased steadily and thus the trend of positives captures many more cases. However positive rates have not increased anywhere near as much.
 
 <div style="width: auto; float:center;">
@@ -21,7 +23,7 @@ We can sum the daily tests and positives over all states to get the trend for th
 
 ## Tests performed vs positive rates
 
-For four significant states we can plot the same data individually. NY: New York, CA: California, FL: FLorida and TX: Texas. The data has been plotted as a seven day rolling mean to smooth the line plots. Outbreaks have been at different times across the country. The US in this sense may be better seen as a collection of territories than as one homogenous area. Number of tests in New York were low at the peak and the rate was not capturing the true prevalance at all. Now positives are very low since the pandemic has subsided. California shows how postives and testing increase together dramatically but not the rate, which has stayed at lower than 0.1% since May.
+For some significant states we can plot the same data individually. NY: New York, CA: California, FL: FLorida, TX: Texas, IL: Illinois and GA: Georgia. The data has been plotted as a seven day rolling mean to smooth the line plots. Outbreaks have been at different times across the country. The US in this sense may be better seen as a collection of territories than as one homogenous area. Number of tests in New York were low at the peak and the rate was not capturing the true prevalance at all. Now positives are very low since the pandemic has subsided. California shows how postives and testing increase together dramatically but not the rate, which has stayed at lower than 0.1% since May.
 
 <div style="width: auto; float:center;">
  <a href="/img/us_covid_tests_positives_fourstates.png"> <img class="scaled" src="/img/us_covid_tests_positives_fourstates.png"></a>
