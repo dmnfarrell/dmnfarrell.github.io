@@ -20,13 +20,23 @@ Note: Plots updated subsequent to writing this post to reflect more recent data.
 With any ongoing transmission of a virus, continual community testing will eventually reveal some clusters. Many will go likely go undetected and may not spread if sufficient immunity exists or if distancing measures prevent it (or both). If we plot the tests performed and actual positives we can see the rate (positives/total tests) has steadily declined since May. (The data is plotted here as a rolling mean with 7 day window to smooth the curves). This is despite the gradual re-opening. Tests have increased rapidly again in August in response to the clusters with contact tracing allowing other cases to be discovered. Thus by definition more cases are found in these areas. Such fluctuations are inevitable and a result of testing and tracing. However the total positive rate continues downward.
 
 <div style="width: auto; float:center;">
- <a href="/img/ireland_covid_tests_prate.png"> <img class="scaled" src="/img/ireland_covid_tests_prate.png"></a>
+ <a href="/img/ireland_covid_tests_prate.jpg"> <img class="scaled" src="/img/ireland_covid_tests_prate.jpg"></a>
 </div>
+
+## Per county positives
 
 The by-county nature of the new cases can be seen in these plots (Covid19CountyStatisticsHPSCIreland dataset). The three counties of interest show spikes but whether they are in clusters (they largely were) can't be seen in these plots.
 
 <div style="width: auto; float:center;">
- <a href="/img/ireland_covid_tests_bycounty.png"> <img class="scaled" src="/img/ireland_covid_tests_bycounty.png"></a>
+ <a href="/img/ireland_covid_tests_bycounty.jpg"> <img class="scaled" src="/img/ireland_covid_tests_bycounty.jpg"></a>
+</div>
+
+## Deaths and hospitalisations
+
+As we can see these two metrics have remained flat despite rises in confirmed cases.
+
+<div style="width: auto; float:center;">
+ <a href="/img/ireland_covid_hosp_deaths.jpg"> <img class="scaled" src="/img/ireland_covid_hosp_deaths.jpg"></a>
 </div>
 
 ## How to respond to spikes in test positives?

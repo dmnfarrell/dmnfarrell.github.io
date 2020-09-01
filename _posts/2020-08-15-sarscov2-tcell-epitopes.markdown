@@ -15,7 +15,7 @@ thumbnail: /img/scov2_tcell_mhc2.png
 
 Eight months after the initial outbreak, puzzles remain about the human immune response to the SARS-CoV-2 virus. Despite it's potential lethality to susceptible individuals, the disease is asymptomatic or mild in most people. However antibody tests have often revealed lower than expected rates of seropositivity in populations where the virus has spread. It is almost certain that other components of the immune system are important in protecting individuals or making them non-susceptible to infection. How do we explain the seeming resistance of children to infection? Robust innate immune responses are one candidate. Another possibility is T cells. These modulate the so-called [cell-mediated immune response](https://www.ecdc.europa.eu/en/covid-19/latest-evidence/immune-responses). SARS-CoV-2 reactive CD4+ T cells have been reported in unexposed individuals, suggesting pre-existing cross-reactive T cell memory in 20-50% of people. It's possible these are immune cells that would have been kept around (as 'memory' cells) after one or more previous exposures to the common cold coronaviruses which circulate widely.
 
-A [paper in Science by Mateus et al.](https://science.sciencemag.org/content/early/2020/08/04/science.abd3871) has identified such cross-reactive CD4+ epitopes by generating 42 short term T cell lines from previously identified epitopes in PBMCs from unexposed donors. Then homologs to these peptides in the HCoVs were tested for a response. These tests were done in unexposed and convalescent COVID19 patients. Responding cells in unexposed donors were predominantly found in the effector memory CD4+ T cell population. Cross reactivity was found in 10/42 of the T cell lines. In three cases, HCoV analogs were better antigens than the SARS-CoV-2 peptide. Though this does not prove immunity, it is an important step towards finding the answer.
+A [paper in Science by Mateus et al.](https://science.sciencemag.org/content/early/2020/08/04/science.abd3871) [1] has identified such cross-reactive CD4+ epitopes by generating 42 short term T cell lines from previously identified epitopes in PBMCs from unexposed donors. Then homologs to these peptides in the HCoVs were tested for a response. These tests were done in unexposed and convalescent COVID19 patients. Responding cells in unexposed donors were predominantly found in the effector memory CD4+ T cell population. Cross reactivity was found in 10/42 of the T cell lines. In three cases, HCoV analogs were better antigens than the SARS-CoV-2 peptide. Though this does not prove immunity, it is an important step towards finding the answer [4].
 
 ## The human coronaviruses
 
@@ -33,7 +33,7 @@ Human coronaviruses were first identified in the mid-1960s. The seven coronaviru
 
 ## Predicting epitopes
 
-Using computational methods it's possible to predict such potential cross-reactive CD4+ eptiopes just using the sequences. The method is as follows:
+Using computational methods it's possible to predict such potential cross-reactive CD4+ eptiopes just using the sequences. The method we use here is as follows:
 * Predict MHC-binders in each SCoV2 protein sequence and selected the top scoring candidates. Here we use [epitopepredict](https://github.com/dmnfarrell/epitopepredict) to predict the most 'promiscuous' binders across the 8 most representative human MHC-II alleles. Each protein sequence is split into 15-mer peptides and scored. We can really use any length from 9-20 but 15 matches the lengths used in the experimental study.
 * Select the top n scoring peptides in each protein. Since the proteins are different sizes, various strategies can be used. In this case we select the peptides above a 95% percentile threshold for each allele and sort them by the numnber of alleles they are present in. We also limit the total for each protein to prevent a very long protein like ORF1ab from dominating the selection.
 * Then we can check how well conserved each peptide is with it's closest homologous sequence in each of the other HCoVs by finding it's closest match in the genome and the percentage identity. Then rank them by conservation.
@@ -91,15 +91,15 @@ We finally check our peptides against the 10 epitopes identified by Mateus et al
 
 ## Summary
 
-Mateus et al. have shown that CD4+ T cell memory in some donors could be a contributing factor to immunity. T cells receptors are much less specific to their epitope than antibodies. HCoV neutralizing antibodies are unlikely to be cross reactive but T cells can be. This exercise shows that it is possible to computationally predict the same peptides with some degree of success. Note that the authors did also use predicted epitopes for their pooling of non-spike epitopes, so this enhances the chances of overlap to our set.
+Mateus et al. [1] have shown that CD4+ T cell memory in some donors could be a contributing factor to immunity. T cells receptors are much less specific to their epitope than antibodies. HCoV binding antibodies may be cross reactive with SARS-CoV-2 but many of these may not be neutralizing antibodies [5]. T cell epitopes are more readily conserved. This exercise shows that it is possible to computationally predict the same peptides with some degree of success. Note that the authors did also use predicted epitopes for their pooling of non-spike epitopes, so this enhances the chances of overlap to our set.
 
 ## References
 
-* J. Mateus et al., “Selective and cross-reactive SARS-CoV-2 T cell epitopes in unexposed humans,” Science (80-. )., vol. 3871, no. August, p. eabd3871, Aug. 2020.
-* A. Grifoni et al., “A sequence homology and bioinformatic approach can predict candidate targets for immune responses to SARS-CoV-2,” Cell Host Microbe, pp. 1–10, 2020.
-* V. Baruah and S. Bose, “Immunoinformatics-aided identification of T cell and B cell epitopes in the surface glycoprotein of 2019-nCoV,” J. Med. Virol., no. February, pp. 495–500, 2020.
-* S. F. Ahmed, A. A. Quadeer, and M. R. McKay, “Preliminary Identification of Potential Vaccine Targets for the COVID-19 Coronavirus (SARS-CoV-2) Based on SARS-CoV Immunological Studies.,” Viruses, vol. 12, no. 3, 2020.
-* Sekine, Takuya, et al. ‘Robust T Cell Immunity in Convalescent Individuals with Asymptomatic or Mild COVID-19’. BioRxiv, June 2020, p. 2020.06.29.174888. www.biorxiv.org, doi:10.1101/2020.06.29.174888.
+1. J. Mateus et al., “Selective and cross-reactive SARS-CoV-2 T cell epitopes in unexposed humans,” Science (80-. )., vol. 3871, no. August, p. eabd3871, Aug. 2020.
+2. A. Grifoni et al., “A sequence homology and bioinformatic approach can predict candidate targets for immune responses to SARS-CoV-2,” Cell Host Microbe, pp. 1–10, 2020.
+3. V. Baruah and S. Bose, “Immunoinformatics-aided identification of T cell and B cell epitopes in the surface glycoprotein of 2019-nCoV,” J. Med. Virol., no. February, pp. 495–500, 2020.
+4. Sekine, Takuya, et al. ‘Robust T Cell Immunity in Convalescent Individuals with Asymptomatic or Mild COVID-19’. BioRxiv, June 2020, p. 2020.06.29.174888. www.biorxiv.org, doi:10.1101/2020.06.29.174888.
+5. Lv H, Wu NC, Tsang OTY, Yuan M, Perera RAPM, Leung WS, et al.. Cross-reactive Antibody Response between SARS-CoV-2 and SARS-CoV Infections. Cell Rep. 2020; doi: 10.1016/j.celrep.2020.107725.
 
 ## links
 
