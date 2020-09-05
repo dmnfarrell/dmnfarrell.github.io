@@ -13,6 +13,8 @@ thumbnail: /img/mhc-molecule.png
 <img src="/img/mhc-molecule.png" width="400px">
 </div>
 
+Note: Also see the [follow up](/bioinformatics/mhclearning2) to this post.
+
 Peptide binding to MHC molecules is the key selection step in the Antigen-presentation pathway. This is essential for T cell immune responses. The 'epitope' is the peptide-MHC combination shown in the image at right. Key residues in the MHC contact the peptide and these differ between alleles. The prediction of peptide binding to MHC molecules has been much studied. The problem is simpler for class-I molecules since the binding peptide length is less variable (usually 8-11 but commonly 9). Typically binding predictors are based on training models with experimental binding affinity measurements with known peptide sequences. This data is available from the IEDB for many human alleles. New peptides can then be predicted based on their position specific similarity to the training data.
 
 This requires encoding the peptide amino acid sequence numerically in a manner that captures the properties important for binding. Many possible encodings have been suggested and three are illustrated below.

@@ -4,7 +4,7 @@ title:  "COVID tracking project - tests vs positive rates"
 date:   2020-08-06 10:26:00
 categories: plotting
 tags: [covid19]
-thumbnail: /img/us_covid_positives_total.png
+thumbnail: /img/us_covid_positives_total.jpg
 ---
 
 ## Background

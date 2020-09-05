@@ -4,7 +4,7 @@ title:  "Ireland COVID-19 trend in positive rate"
 date:   2020-08-18 10:26:00
 categories: plotting
 tags: [covid19]
-thumbnail: /img/ireland_covid_tests_prate.png
+thumbnail: /img/ireland_covid_tests_prate.jpg
 ---
 
 ## Background
