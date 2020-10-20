@@ -122,3 +122,4 @@ There are many ways to achieve the same goal in Jekyll. This method is simple bu
 ## Links
 
 * [Jekyll](https://jekyllrb.com/docs/posts/)
+* [jekyllcodex image gallery](https://jekyllcodex.org/without-plugin/image-gallery/#)
