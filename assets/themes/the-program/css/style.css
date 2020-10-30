@@ -232,9 +232,59 @@ figure {
 img.scaled {
   width: 90%;
   padding: 3px;
-  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+img.small-scaled {
+  width: 50%;
+  padding: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*gallery elements*/
+.image-gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(400px, 1fr));
+  justify-content: center;
+  padding: 5px;
+}
+
+.box {
+    flex-basis: 25%;
+    width: 100%;
+    padding: 10px;
+    margin: 2px;
+}
+
+@media screen and (max-width: 750px) {
+    img.small-scaled {
+         width: 400px;
+    }
+}
+
+figure {
+    display: inline-block;
+    border: 1px dotted gray;
+    margin: 20px; /* adjust as needed */
+}
+
+.caption {
+  color: gray;
+  font-style: italic;
+  text-align: center;
+}
+
+figcaption{
+  color: gray;
+  font-style: italic;
+  text-align: center;
+  padding: 3px;
+  align: center;
+  max-width: 300px;
+}
 /*
 Forms from [HTML5 Boilerplate](http://j.mp/rP0wmY)
 See inline comments for detail
@@ -647,6 +697,9 @@ pre {
 .the-header .nav-global .forkme {
   position: relative;
   top: 2px;
+}
+.the-header .img {
+object-fit: scale-down;
 }
 /* MAIN
 --------------------------------------------------------------------------------- */
