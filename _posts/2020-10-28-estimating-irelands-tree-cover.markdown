@@ -9,7 +9,7 @@ thumbnail: /img/dublin_wicklow_forests.png
 
 ## Background
 
-Today, only around 11% of the land area is covered in trees, compared to the EU average of over 30%. Much of this is non-native species in the form of sitka spruce plantations. It's a useful exercise to map these forested areas using freely available data. Note that to use the official datasets provided by the Irish Department of Agriculture, Food and the Marine (DAFM), you need to apply for access. Here we use [QGIS](https://qgis.org/en/site/), a free desktop tool for handling geospatial information.
+Today, only around 11% of the land area of Ireland is covered in trees, compared to the EU average of over 30%. Much of this is non-native species in the form of sitka spruce plantations. It's a useful exercise to map these forested areas using freely available data. Note that to use the official datasets provided by the Irish Department of Agriculture, Food and the Marine (DAFM), you need to apply for access. Here we use [QGIS](https://qgis.org/en/site/), a free desktop tool for handling geospatial information.
 
 ## Getting the data
 
