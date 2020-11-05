@@ -208,10 +208,20 @@ a.posttitle  {
 
 .thumbnail {
    width: 220px;
+   flex-basis: 25%;
    border-width: 0px;
    border-color: black;
    border-style: solid;
-   margin: 0;
+   margin: 3;
+   margin-left: auto;
+   margin-right: auto;
+justify-content: center;
+}
+
+@media screen and (max-width: 450px) {
+    img.thumbnail {
+         width: 90%;
+    }
 }
 
 figure {
@@ -227,6 +237,13 @@ figure {
   margin: 0.5em;
   padding: 0.2em;
   overflow: auto;
+}
+
+img.banner {
+  width: 100%;
+  padding: 3px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 img.scaled {

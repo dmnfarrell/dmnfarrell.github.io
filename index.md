@@ -8,7 +8,7 @@ tagline: blog
   {% for post in site.posts limit:10 %}
   <div class="span3">
 
-   <div style="width: 280px; float:right;">
+   <div style="float:right;">
     	{% if post.thumbnail %}
     	<img src="{{ post.thumbnail }}" class="thumbnail" />
     	{% else %}
