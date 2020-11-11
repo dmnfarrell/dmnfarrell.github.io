@@ -56,7 +56,7 @@ How is it possible that T cells specific to antigen in one virus can also recogn
 
 We can see this illustrated in part of the sequence alignment of the Spike protein of four HCoVs and Sarscov2. The highlighted part, `SFIEDLLFNKVTLADAG`, is a partially conserved peptide. Some of the differences are conservative changes (e.g. A->V) and may not alter the peptide binding significantly. In fact some HCoV homologs of this peptide were found by Mateus et al. [2] to elicit a response in Sars-Cov-2 specific T cells.
 
-<pre><code>
+<pre><small><code>
 scov2           NFSQILPDPSK---------PSKR<b>SFIEDLLFNKVTLADAG</b>-FIKQYGDCLGDIAARDLI
 sars            NFSQILPDPLK---------PTKR<b>SFIEDLLFNKVTLADAG</b>-FMKQYGECLGDINARDLI
 OC43            NVDDINFSPVLGCLGSECSKASSR<b>SAIEDLLFDKVKLSDVG</b>-FVEAYNNCTGGAEIRDLI
@@ -64,11 +64,11 @@ HKU1            DVDNINFKSLVGCLGPHCG-SSSR<b>SFFEDLLFDKVKLSDVG</b>-FVEAYNNCTGGSEIR
 229E            NLSSVIPSLPTSG-----SRVAGR<b>SAIEDILFSKLVTSGLG</b>TVDADYKKCTKGLSIADLA
 NL63            NLSSVLPQRNIRS-----SRIAGR<b>SALEDLLFSKVVTSGLG</b>TVDVDYKSCTKGLSIADLA
                 :...:  .             : ** :**:**.*:  :. * .   * .*  .    **
-</code></pre>
+</code></small></pre>
 
 ## The future
 
-T cells from patients who became infected with SARS-CoV in 2003 have been shown to cross-react with the SARS-CoV-2 virus 17 years later. Though the extent to which they can provide protection is not known. Clearly many people are not protected from infection by this means since the virus has spread widely. However many remain asymptomatic and pre-existing cellular immunity may be a significant factor in these cases. This is the next step in such research. There has also been much talk of reinfection, though it appears to be uncommon even though antibodies wane. More specific studies are needed in how pre-existing immunity to HCoVs may impact upon the outcome of infection. This will be important for estimating the actual thresholds for population wide immunity.
+T cells from patients who became infected with SARS-CoV in 2003 have been shown to cross-react with the SARS-CoV-2 virus 17 years later. Though the extent to which they can provide protection is not known. Clearly some people are not protected from infection by this means since the virus has spread widely. However many remain asymptomatic and pre-existing cellular immunity may be a significant factor in these cases. More specific studies are needed in how pre-existing immunity to HCoVs may impact upon the outcome of infection. This is the next step in such research. There has also been much talk of reinfection, though it appears to be uncommon even though antibodies wane. This will be important for estimating the actual thresholds for population wide immunity.
 
 Note: Immunology can be an extremely complex and confusing subject with a lot of arcane terminology. The immune system iself is a sophisticated network of feedbacks and redundancies that often defies easy description. (This may be one reason why people are so confused about what they see in the media). An article like this will gloss over many details and is rather simplified. I am not an immunologist. For further details try the links below.
 
