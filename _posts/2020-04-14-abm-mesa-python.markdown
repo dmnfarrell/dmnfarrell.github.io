@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "A simple Agent based infection model with Mesa and Bokeh"
+title:  "A simple agent based infection model with Mesa and Bokeh"
 date:   2020-04-14 10:30:00
 categories: bioinformatics
-tags: [abm,covid19]
+tags: [abm,mesa]
 thumbnail: /img/abm-mesa-grid.png
 ---
 

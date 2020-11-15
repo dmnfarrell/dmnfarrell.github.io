@@ -17,7 +17,7 @@ The World development indicators is a compilation of internationally comparable 
 
 <iframe src="https://data.worldbank.org/share/widget?end=2017&indicators=SP.DYN.AMRT.MA&locations=ZW-ZA-ZM-UG-VN&start=1960&type=shaded&view=chart" width='450' height='300' frameBorder='0' scrolling="no" ></iframe>
 
-This post shows how to make our own interactive dashboard using the same dataset with Panel and matplotlib, covered in a [previous post](pyviz-panel).
+This post shows how to make our own interactive dashboard using this dataset with Panel and matplotlib, covered in a [previous post](/bioinformatics/pyviz-panel).
 The table looks like this:
 
 ```
