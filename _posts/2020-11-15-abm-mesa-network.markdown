@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "A network based agent based infection model with Mesa"
+title:  "A network agent based infection model with Mesa"
 date:   2020-11-15 10:30:00
 categories: bioinformatics
-tags: [abm,mesa,pyviz]
+tags: [abm,mesa,panel]
 thumbnail: /img/abm_networkgrid.jpg
 ---
 
@@ -92,7 +92,7 @@ class MyAgent(Agent):
             sort_keys=True, indent=4)
 ```
 
-Now instead of usig a `MultiGrid` class, here we use the `NetworkGrid` class to make the model. This also requires NetworkX.
+Now instead of using a `MultiGrid` class, here we use the `NetworkGrid` class to make the model. This also requires NetworkX.
 
 ```python
 class NetworkInfectionModel(Model):
@@ -155,7 +155,7 @@ for i in range(steps):
 
 ## Plot the grid
 
-We can plot the network using networkx and matplotlib. First a layout is selected and the nodes positioned on it. Then the states are read from the current model state and the nodes colored according to their state. This way we can see how spread is occuring.
+We can plot the network using networkx and matplotlib. First a layout is selected and the nodes positioned on it with links between them (the edges). Then the states are read from the current model step and the nodes colored according to their state. This way we can see how spread is occuring.
 
 ```python
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
@@ -201,14 +201,14 @@ def run_model(pop, ptrans, degree, steps, delay, layout):
     ax2=fig2.add_subplot(1,1,1,label='b')
     states_pane.object = fig2
 
+    #step through the model and plot at each step
     for i in range(steps):
         model.step()
         plot_grid(model,fig1,title='step=%s' %i, layout=layout)        
         grid_pane.param.trigger('object')
         ax2.clear()
         plot_states(model,ax2)
-        ax2.set_xlim(0,steps)
-        #states_pane.object = fig2
+        ax2.set_xlim(0,steps)        
         states_pane.param.trigger('object')    
         time.sleep(delay)
     plt.clf()

@@ -15,6 +15,8 @@ thumbnail: /img/abm-mesa-grid.png
 
 Forecasting the outcome of infectious disease epidemics is now receiving much attention due to the ongoing COVID-19 pandemic. A traditional framework for infectious disease spread is the so-called [SIR model](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology), dividing a population into susceptible (S), infectious (I) and recovered/removed (R). These can be estimated over time with a set of differential equations given known transition rates between states. These in turn depend on parameters like the R0 for the infection. These equation based methods are called compartmental models. Agent-based models are a more recent advance that simulate many individual 'agents' in the population to achieve the same goal. The agents are heterogeneous, with multiple attributes and complexity emerges out of the aggregate behaviour of many agents combined. At least that's my simplistic understanding. A simple example here served to help me understand how the agent-based approach works. It uses the [Mesa](https://github.com/projectmesa/mesa/) Python library to build an SIR model and also illustrates ways of visualizing the simulation as the model is run using Bokeh.
 
+**Note:** A follow up to this post using a network grid is [here](/bioinformatics/abm-mesa-network).
+
 ## Imports
 
 ```python
@@ -27,7 +29,6 @@ from mesa.time import RandomActivation
 from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
 ```
-
 
 ## Building a simple model
 
