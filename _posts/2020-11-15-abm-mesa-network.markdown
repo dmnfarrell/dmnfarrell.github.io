@@ -13,7 +13,7 @@ thumbnail: /img/abm_networkgrid.jpg
  <a href="/img/abm_networkgrid.jpg"> <img src="/img/abm_networkgrid.jpg" width="300px"></a>
 </div>
 
-A [previous post](/bioinformatics/abm-mesa-python) looked at using agent bases models to simulate many individual 'agents' in the population for modelling infection spread. It used the [Mesa](https://github.com/projectmesa/mesa/) Python library to build an SIR model and also illustrates ways of visualizing the simulation as the model is run using Bokeh. Here we perform the same task but use a network grid instead. This is probably a more realistic type of model when used correctly. This code is suitable to run in a Jupyter notebook. The code is [here](https://github.com/dmnfarrell/teaching/tree/master/SIR_modelling). It uses the Mesa Virus on a Network example as a guide.
+A [previous post](/bioinformatics/abm-mesa-python) looked at using agent based models to simulate many individual 'agents' in the population for modelling infection spread. It used the [Mesa](https://github.com/projectmesa/mesa/) Python library to build an SIR model and also illustrates ways of visualizing the simulation as the model is run using Bokeh. Here we perform the same task but use a network grid instead. This is probably a more realistic type of model when used correctly. This code is suitable to run in a Jupyter notebook. The code is [here](https://github.com/dmnfarrell/teaching/tree/master/SIR_modelling). It uses the Mesa Virus on a Network example as a guide.
 
 ## Imports
 
