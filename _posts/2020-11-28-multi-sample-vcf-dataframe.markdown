@@ -9,7 +9,9 @@ thumbnail: /img/multi_sample_vcf_igv.png
 
 ## Background
 
-Here is some code I wrote to convert a vcf file with many samples into a table format. This was done to make the calls for easy to read at a given site. Reading a multi sample vcf is tortuous. The vcf is read in using pyVCF and for each record (a site with calls) the calls for each sample are parsed with the depth values (in the calldata object). We create a list for each and at the end convert all into a dataframe with the right column names. This code does assume your vcf has the FORMAT fields included as follows. It doesn't generalise to other formats. Also this code was only tested on a vcf made with `bcftools call` on a bacterial genome alignment.
+Here is some code I wrote to convert a vcf file with many samples into a table format. This was done to make the calls for many samples easier to read. Reading a multi sample vcf is tortuous. The vcf is read in using pyVCF and for each record (a site with calls) the calls for each sample are parsed with the depth values (in the calldata object). We create a list for each and at the end convert all into a dataframe with the right column names. This code does assume your vcf has the FORMAT fields included as follows. It doesn't generalise to other formats. Also this code was only tested on a vcf made with `bcftools call` on a bacterial genome alignment. This method is included in the [snpgenie](https://github.com/dmnfarrell/snpgenie) package.
+
+Here is a typical set of calls for a position:
 
 ```
 LT708304.1	1057	.	A	G	999	.	DP=5494;ADF=1,3028;ADR=0,1869;AD=1,4897;VDB=0.206626;SGB=24.3331;RPB=1;MQB=1;MQSB=1;BQB=1;MQ0F=0;AC=46;AN=46;DP4=1,0,3034,1873;MQ=60	GT:PL:DP:SP:ADF:ADR:AD	1:255,0:78:0:0,44:0,33:0,77	1:255,0:114:0:1,67:0,46:1,113	1:255,0:96:0:0,57:0,39:0,96	1:255,0:98:0:0,59:0,39:0,98	1:255,0:64:0:0,34:0,30:0,64	1:255,0:116:0:0,75:0,41:0,116	1:255,0:114:0:0,71:0,43:0,114	1:255,0:56:0:0,30:0,25:0,55	1:255,0:111:0:0,58:0,53:0,111	1:255,0:131:0:0,83:0,47:0,130	1:255,0:236:0:0,139:0,96:0,235	1:255,0:146:0:0,98:0,48:0,146	1:255,0:115:0:0,74:0,41:0,115	1:255,0:84:0:0,56:0,28:0,84	1:255,0:141:0:0,94:0,47:0,141
@@ -38,14 +40,12 @@ def vcf_to_dataframe(vcf_file):
     vcf_reader = vcf.Reader(file,'r')
     res=[]
     cols = ['sample','REF','ALT','mut','DP','ADF','ADR','AD','chrom','var_type','sub_type','start','end','QUAL']
-    i=0
+
     for rec in vcf_reader:
-        #if i>50:
-        #    break
         x = [rec.CHROM, rec.var_type, rec.var_subtype, rec.start, rec.end, rec.QUAL]
         for sample in rec.samples:
             if sample.gt_bases == None:
-              #no call
+                #no call
                 mut=''
                 row = [sample.sample, rec.REF, sample.gt_bases, mut, 0,0,0,0]
             elif rec.REF != sample.gt_bases:
