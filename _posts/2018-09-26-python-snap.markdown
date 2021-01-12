@@ -41,7 +41,7 @@ Say you have package called testapp that you want to snap. It would typically ha
 
 Notice that we have created a file called *snapcraft.yaml*. This is where you configure your snap build settings.
 
-```
+```yaml
 name: testapp
 version: '0.1'
 summary: python test package
@@ -77,9 +77,7 @@ If your command name matches the snap name, users will be able run the command d
 
 The [confinement](https://docs.snapcraft.io/reference/confinement) mode determines how self contained the snap is. Generally strict should be used. You can use devmode also to test things until you have it working.
 
-To build the snap, just run snapcraft inside the folder:
-
-```snapcraft```
+To build the snap, just run `snapcraft` inside the folder.
 
 ## Deploying
 

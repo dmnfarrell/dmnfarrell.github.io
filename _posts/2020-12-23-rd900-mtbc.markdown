@@ -51,13 +51,13 @@ rec = list(GFF.parse('RD900MAF.gff'))[0]
 
 ## Align the samples to the locus
 
-This code uses the [snpgenie](https://github.com/dmnfarrell/snpgenie) package to conveniently perform alignment of the fastq files in one go. It's normally used for variant calling but we can just use the
+This code uses the [snpgenie](https://github.com/dmnfarrell/snpgenie) package to conveniently perform alignment of the fastq files in one go. It's normally used for variant calling as well but we can just use the alignment part. This tool can be called at the command line ot via Python as below.
 
 ```python
 from snpgenie import tools, aligners, app, trees, plotting
 
 args = {'threads':20, 'outdir': 'snpgenie_results', 'labelsep':'-',  
-        'input':['/storage/elena_data/'],        
+        'input':['/storage/raw_data/'],        
         'reference': 'RD900MAF.fa',
         'overwrite':False      
         }
@@ -77,7 +77,6 @@ This method uses samtools to count coverage at each position in the alignment an
 ```python
 def get_coverage(bam_file, chr, start, end):
     cmd = 'samtools mpileup {b} --min-MQ 10 -f RD900MAF.fa -r {c}:{s}-{e}'.format(c=chr,s=start,e=end,b=bam_file)
-    #print(cmd)
     temp = subprocess.check_output(cmd, shell=True)    
     df=pd.read_csv(io.BytesIO(temp), sep='\t', names=['chr','pos','base','coverage','q','c'])
     return df
@@ -114,7 +113,6 @@ fig.savefig('rd900_coverage.jpg',dpi=100)
  <a href="/img/rd900_coverage.jpg"> <img class="small-scaled" src="/img/rd900_coverage.jpg"></a>
   <p class="caption">Coverage across the RD900 MAF region of all samples.</p>
 </div>
-
 
 ## Automatically find presence/absence of features
 
