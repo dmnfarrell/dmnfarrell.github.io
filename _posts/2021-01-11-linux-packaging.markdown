@@ -19,9 +19,9 @@ For application developers there is a problem with all this. Distros use differe
 
 Linus Torvalds, the creator of Linux, has aptly summarised the problem at a conference in 2014:
 
-```
-"We basically don't make binaries for Linux. Why? Because binaries for Linux desktop applications is a major f*ing pain in the ass. Right. You don't make binaries for Linux. You make binaries for Fedora 19, Fedora 20, maybe there's even like RHEL 5 from ten years ago, you make binaries for debian stable." - Linus Torvalds
-```
+<blockquote>
+We basically don't make binaries for Linux. Why? Because binaries for Linux desktop applications is a major f*ing pain in the ass. Right. You don't make binaries for Linux. You make binaries for Fedora 19, Fedora 20, maybe there's even like RHEL 5 from ten years ago, you make binaries for debian stable. - Linus Torvalds
+</blockquote>
 
 See more quotes in the explanation of this issue on the [AppImage github page](https://github.com/AppImage/AppImageKit).
 

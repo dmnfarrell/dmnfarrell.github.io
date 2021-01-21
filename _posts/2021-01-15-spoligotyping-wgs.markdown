@@ -38,7 +38,7 @@ ACGTCATACGCCGACCAATCATCAG
 TTTTCTGACCACTTGTGCGGGATTA
 ```
 
-We then just make the blast database from the reads by translating the fastq file into fast format and suing makeblastdb. The following method does this and the retrieval of hits. It puts the results into a pandas DataFrame and filters them. They are then aggregated to get hits per spacer. This is converted to the binary code. The methods `make_blast_database` and `blast_fasta` are imported from the tools module in the [snpgenie](https://github.com/dmnfarrell/snpgenie) package. They can be copied from the repository if needed separately. This method uses the reads direct without assembly or concatentation. It limits to the first 500000 reads for efficiency but this could be changed. If you have paired end reads it will probably work using one of the files.
+We then just make the blast database from the reads by translating the fastq file into fast format and using _makeblastdb_. The following method does this and the retrieval of hits. It puts the results into a pandas DataFrame and filters them. They are then aggregated to get hits per spacer. This is converted to the binary code. The methods `make_blast_database` and `blast_fasta` are imported from the `tools` module in the [snpgenie](https://github.com/dmnfarrell/snpgenie) package. They can be copied from the repository if needed separately. This method uses the reads direct without assembly or concatentation. It limits to the first 500000 reads for efficiency but this could be changed. If you have paired end reads it will probably work using one of the files.
 
 ```python
 from snpgenie import tools
@@ -105,7 +105,7 @@ b = get_spoligotype('test.fastq')
 get_sb_number(b)
 ```
 
-This method appears to work on test data with known types but hasn't been rigorously benchmarked. You should test it before production use.
+This method appears to work on test data with known types but hasn't been rigorously benchmarked. It's not likely to be 100% reliable and results should be checked for errors. You will notice that a single missed hit will produce the wrong result entirely.
 
 ## Links
 
