@@ -1660,18 +1660,18 @@ input[type='checkbox'] { display: none; }
   }
   .collapsible-content {
      max-height: 0px;
-     overflow: hidden;
      transition: max-height .25s ease-in-out;
+     overflow: auto;
   }
   .toggle:checked + .lbl-toggle + .collapsible-content {
-    max-height: 550px; }
+    max-height: 600px; }
   .toggle:checked+.lbl-toggle {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
   .collapsible-content .content-inner
-  { background: rgba(0, 105, 255, .2);
-     border-bottom: 1px solid rgba(0, 105, 255, .45);
+  { background: #EFE8C0 ;
+     border-bottom: #CCC5A0;
      border-bottom-left-radius: 7px;
      border-bottom-right-radius: 7px;
      padding: .5rem 1rem;

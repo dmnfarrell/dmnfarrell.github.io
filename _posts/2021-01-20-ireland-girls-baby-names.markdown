@@ -22,9 +22,8 @@ This shows names ranked by total number of births since 1970, top 20 only.
 <div class="wrap-collabsible">
 <input id="collapsible1" class="toggle" type="checkbox">
 <label for="collapsible1" class="lbl-toggle">Show code</label><div class="collapsible-content">
-<div class="content-inner">
-
-<pre>
+<div class="content-inner" markdown="1">
+```python
 import pandas as pd
 import pylab as plt
 import numpy as np
@@ -36,7 +35,7 @@ totals=girls.groupby('Name').sum()['Number of Births'].sort_values(ascending=Fal
 totals[:20].plot(kind='barh',figsize=(12,6))
 plt.title('total births per name, top 20')
 plt.savefig('girls_names_totals_top20.png',dpi=150)
-</pre>
+```
 </div>
 </div>
 </div>
@@ -53,9 +52,9 @@ The black line at the end of each bar is the variability of the number of births
 <div class="wrap-collabsible">
 <input id="collapsible2" class="toggle" type="checkbox">
 <label for="collapsible2" class="lbl-toggle">Show code</label><div class="collapsible-content">
-<div class="content-inner">
+<div class="content-inner" markdown="1">
 
-<pre>
+```python
 X = pd.pivot_table(girls,index='Name',columns='year',values='Number of Births')
 Xs = X.reindex(X.std(1).sort_values(ascending=False).index)
 Xm = X.reindex(X.mean(1).sort_values(ascending=False).index)
@@ -66,7 +65,7 @@ sns.set(font_scale=1.1)
 fg=sns.catplot(data=m,y='Name',x='Number of Births',kind='bar',order=top,height=8,aspect=.9)
 plt.title('top 50 girls names on average since 1970')
 fg.savefig('girls_names_top50.png',dpi=150)
-</pre>
+```
 
 </div>
 </div>
@@ -83,8 +82,8 @@ It's an obvious fact that names are subject to trends. For example we can extrac
 <div class="wrap-collabsible">
 <input id="collapsible3" class="toggle" type="checkbox">
 <label for="collapsible3" class="lbl-toggle">Show code</label><div class="collapsible-content">
-<div class="content-inner">
-<pre>
+<div class="content-inner" markdown="1">
+```python
 sns.set(font_scale=1.3)
 plt.figure(figsize=(15,8))
 xnorm = (Xs-Xs.min())/(Xs.max()-Xs.min())
@@ -92,8 +91,7 @@ g=sns.heatmap(xnorm[:15],cmap='gnuplot')
 g.set_facecolor('black')
 plt.title('most variable names since 1970')
 plt.savefig('girls_names_heatmap.png',dpi=150)
-</pre>
-
+```
 </div>
 </div>
 </div>
@@ -109,8 +107,8 @@ The above trends can be shown in another way with line plots. It shows more clea
 <div class="wrap-collabsible">
 <input id="collapsible4" class="toggle" type="checkbox">
 <label for="collapsible4" class="lbl-toggle">Show code</label><div class="collapsible-content">
-<div class="content-inner">
-<pre>
+<div class="content-inner" markdown="1">
+```python
 sns.set(font_scale=1.8)
 top = Xm[:20].index
 m = girls[girls.Name.isin(top)]
@@ -118,8 +116,7 @@ fg=sns.relplot(data=m,x='year',y='Number of Births',col='Name',col_wrap=4,
                kind='line',height=5,aspect=1.7,lw=5,facet_kws={'sharey': False})
 fg.set_titles(row_template = '{row_name}', col_template = '{col_name}')
 plt.savefig('girls_names_trends.png',dpi=150)
-</pre>
-
+```
 </div>
 </div>
 </div>
@@ -135,9 +132,9 @@ We can also plot the top 10 names in selected years in each decade which is quit
 <div class="wrap-collabsible">
 <input id="collapsible5" class="toggle" type="checkbox">
 <label for="collapsible5" class="lbl-toggle">Show code</label><div class="collapsible-content">
-<div class="content-inner">
+<div class="content-inner" markdown="1">
 
-<pre>
+```python
 fig,axs=plt.subplots(2,4,figsize=(15,10))
 axs=axs.flat
 i=0
@@ -153,8 +150,7 @@ for y in [1970,1980,1990,1995,2000,2010,2015,2019]:
 fig.suptitle('top 10 names each decade')
 plt.tight_layout()
 fig.savefig('girls_names_perdecade.png',dpi=150)
-</pre>
-
+```
 </div>
 </div>
 </div>
