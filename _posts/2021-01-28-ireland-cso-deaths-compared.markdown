@@ -38,7 +38,7 @@ cso
 
 ## Totals
 
-Total deaths increase year on year since population increases. Therefore any comparison between years has to take account of this.
+Total deaths increase year on year since population increases (shown below). Therefore any direct comparison between years has to take account of this.
 
  <div style="width: auto;">
   <a href="/img/ireland_deaths_cso_byyear.png"> <img class="scaled" src="/img/ireland_deaths_cso_byyear.png"></a>  
@@ -50,7 +50,7 @@ Total deaths increase year on year since population increases. Therefore any com
     <p class="caption">Population increase since 2005.</p>
  </div>
 
-Now we adjust for population increase by calculating the deaths per 1,000 people and get a more realistic comparison. This is still crude because it doesn't take into account the change in age profile.
+Now we adjust for population increase by calculating the deaths per 1,000 people and get a more realistic comparison. This is still crude because it doesn't take into account the change in age profile. I used a mix of population data from the cso and some data from worldometer. Some years are estimates.
 
  <div style="width: auto;">
   <a href="/img/ireland_deathsperthousand_cso_byyear.png"> <img class="scaled" src="/img/ireland_deathsperthousand_cso_byyear.png"></a>  
