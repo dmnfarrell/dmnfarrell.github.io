@@ -54,8 +54,13 @@ Now we adjust for population increase by calculating the deaths per 1,000 people
 
  <div style="width: auto;">
   <a href="/img/ireland_deathsperthousand_cso_byyear.png"> <img class="scaled" src="/img/ireland_deathsperthousand_cso_byyear.png"></a>  
-    <p class="caption">Yearly deaths from 2005-2018.</p>
  </div>
+
+Or viewed as a boxplot with the distrubution of monthly values every year:
+
+<div style="width: auto;">
+ <a href="/img/ireland_deathsperthousand_cso_byyear_boxplot.png"> <img class="scaled" src="/img/ireland_deathsperthousand_cso_byyear_boxplot.png"></a>  
+</div>
 
  <div class="wrap-collabsible">
  <input id="collapsible2" class="toggle" type="checkbox">
@@ -84,7 +89,7 @@ Now we adjust for population increase by calculating the deaths per 1,000 people
 
 ## Monthly deaths since 2015
 
-Individual years are shown below tracked per month.
+Individual years are shown below tracked per month. More recent years are most relevant for comparison so only 2015- is shown.
 
 <div style="width: auto;">
  <a href="/img/ireland_deaths_cso_bymonth.png"> <img class="scaled" src="/img/ireland_deaths_cso_bymonth.png"></a>  
