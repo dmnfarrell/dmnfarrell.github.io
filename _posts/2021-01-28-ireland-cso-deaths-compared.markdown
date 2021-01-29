@@ -136,7 +136,6 @@ An overall view of the monthly values shown in a heatmap:
  <a href="/img/ireland_deaths_cso_heatmap.png"> <img class="scaled" src="/img/ireland_deaths_cso_heatmap.png"></a>  
 </div>
 
-
 ## Links
 
 * [CSO: Measuring Mortality Using Public Data Sources](https://www.cso.ie/en/releasesandpublications/br/b-mpds/measuringmortalityusingpublicdatasources/)
