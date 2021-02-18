@@ -1,41 +1,41 @@
 ---
 layout: post
-title:  "snpgenie - a tool for SNP site detection from NGS data"
+title:  "SNiPgenie - a tool for SNP site detection from NGS data"
 date:   2020-05-12 12:03:00
 categories: bioinformatics
 tags: [pyside2,genomics,python,ngs]
-thumbnail: https://raw.githubusercontent.com/dmnfarrell/snpgenie/master/snpgenie/logo.png
+thumbnail: https://raw.githubusercontent.com/dmnfarrell/snipgenie/master/snipgenie/logo.png
 ---
 
 ## Background
 
 <div style="width: 300px; float:right;">
-  <img src="https://raw.githubusercontent.com/dmnfarrell/snpgenie/master/snpgenie/logo.png" width="280px">
+  <img src="https://raw.githubusercontent.com/dmnfarrell/snipgenie/master/snipgenie/logo.png" width="280px">
 </div>
 
 Finding differences between a reference genome (often the known laboratory type strain) and another genome is a common tool to study variation of sampled isolates from a population. Samples are sequenced and the fastq files then aligned to the reference. A variant caller is used to then specify the differences (variants) such as SNPs and INDELs. These generally need to be further filtered to rule out false positives. Such a sequence of steps are done by so-called 'pipelines' that string together the commands for each step required in the right order. There are by now plenty of pipelines made by different groups. The problem with the term is that it can describe anything from a simple hard coded script, unusable elsewhere, to re-usable workflows that carry out extra tasks beyond just the steps mentioned above. Snippy is one such tool.
 
-**snpgenie** is a tool for microbial variant calling and phylogenetic analysis from raw read data. It was primarily written to be used with bacterial isolates of M. Bovis but can be applied to other species. It could also be called a pipeline but unlike most other tools for this purpose it has both a command line and GUI component. The GUI is made using the Qt toolkit with PySide2. This software is written in Python. It was developed on Ubuntu linux but should also run on Windows 10 in the future.
+**SNiPgenie** is a tool for microbial variant calling and phylogenetic analysis from raw read data. It was primarily written to be used with bacterial isolates of M. Bovis but can be applied to other species. It could also be called a pipeline but unlike most other tools for this purpose it has both a command line and GUI component. The GUI is made using the Qt toolkit with PySide2. This software is written in Python. It was developed on Ubuntu linux but should also run on Windows 10 in the future.
 
 ## Installation
 
 ```bash
-pip install -e git+https://github.com/dmnfarrell/snpgenie.git#egg=snpgenie
+pip install -e git+https://github.com/dmnfarrell/snipgenie.git#egg=snipgenie
 sudo apt install bwa samtools bcftools tabix parallel
 ```
 
 ## Command line usage
 
-Run `snpgenie` for the cli or `snpgenie-gui` for the desktop version. You require a reference genome and reads in fastq format at minimum as input.
+Run `snipgenie` for the cli or `snipgenie-gui` for the desktop version. You require a reference genome and reads in fastq format at minimum as input.
 
 ```bash
-snpgenie -r reference.fa -g reference.gff -i data_files -o results
+snipgenie -r reference.fa -g reference.gff -i data_files -o results
 ```
 
 Add your own filters and provide number of threads:
 
 ```bash
-snpgenie -r reference.fa -g reference.gff -i data_files -t 8 -o results` \
+snipgenie -r reference.fa -g reference.gff -i data_files -t 8 -o results` \
  -f 'QUAL>=40 && INFO/DP>=20 && MQ>40'
 ```
 
@@ -59,7 +59,7 @@ Filenames are parsed and a sample name extracted for each pair (if paired end). 
 
 ## Use from Python
 
-You can run a workflow from within Python by importing the snpgenie package and invoking the `WorkFlow` class. You need to provide the options in a dictionary with the same keywords as the command line. Notice in this example we are loading files from two folders.
+You can run a workflow from within Python by importing the snipgenie package and invoking the `WorkFlow` class. You need to provide the options in a dictionary with the same keywords as the command line. Notice in this example we are loading files from two folders.
 
 ```python
 import sngenie
@@ -67,7 +67,7 @@ args = {'threads':8, 'outdir': 'results', 'labelsep':'-',
         'input':['/my/folder/',
                  '/my/other/folder'],
         'reference': None, 'overwrite':False}
-W = snpgenie.app.WorkFlow(**args)
+W = snipgenie.app.WorkFlow(**args)
 W.setup()
 W.run()
 ```
@@ -77,12 +77,12 @@ W.run()
 A desktop application version of this tool is in progress and should mostly work but the command line tool is recommended at present. It is intended to make the tool more accessible. Inputs are loaded into a table and the analysis steps can be run indivually. Additional tools like fastq qualities can be visualised as below.
 
 <div style="width: auto; float:left;">
- <a href="/img/snpgenie_scr1.png"> <img class="scaled" src="/img/snpgenie_scr1.png"></a>
+ <a href="/img/snipgenie_scr1.png"> <img class="scaled" src="/img/snipgenie_scr1.png"></a>
 </div>
 
 ## Links
 
-* [snpgenie](https://github.com/dmnfarrell/snpgenie)
+* [snipgenie](https://github.com/dmnfarrell/snipgenie)
 * [snippy](https://github.com/tseemann/snippy)
 * [vSNP](https://github.com/USDA-VS/vSNP)
 * [A Unix one-liner to call bacterial variants](http://thegenomefactory.blogspot.com/2018/10/a-unix-one-liner-to-call-bacterial.html)
