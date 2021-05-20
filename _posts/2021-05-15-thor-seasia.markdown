@@ -219,7 +219,7 @@ mpl_pane
 
 <div>
  <a href="/img/thor_laos_cluster_bombs.jpg"> <img class="small-scaled" src="/img/thor_laos_cluster_bombs.jpg"></a>  
-   <p class="caption">Unexploded cluster bomblet in Phonsavan area, Laos.</p>
+   <p class="caption">Locations of three cluster bomb types in Laos over all years.</p>
 </div>
 
 <div class="wrap-collabsible">
