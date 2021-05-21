@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Viewing the THOR dataset with bokeh"
+title:  "Viewing the THOR dataset with Bokeh and Panel"
 date:   2021-05-18 12:16:00
 categories: plotting
 tags: [plotting,bokeh,panel,THOR]
@@ -9,7 +9,7 @@ thumbnail: /img/F-105Ds_bomb_vietnam.jpg
 
 ## Background
 
-Following from the [previous post](/plotting/thor-seasia/), we can view the same THOR data interactively with Bokeh and Panel. These are Python libraries for interactive web visualization of data. The data is read in as in the previous post and we then write a function to plot the map data points using Bokeh with a Tile Renderer. We also use a function here to convert lat and long coordinates into web mercartor. The dashboard then consists of a date selector and some filter widgets that are connected to the `update_map` function via the `param.watch` mechanism. The code is all below in one block.
+Following from the [previous post](/plotting/thor-seasia), we can view the same THOR data interactively with Bokeh and Panel. These are Python libraries for interactive web visualization of data. The data is read in as in the previous post and we then write a function to plot the map data points using Bokeh with a Tile Renderer. We also use a function here to convert lat and long coordinates into web mercartor. The dashboard then consists of a date selector and some filter widgets that are connected to the `update_map` function via the `param.watch` mechanism. The code is all below in one block.
 
 ## Result
 
@@ -27,9 +27,6 @@ The complete code can be found [here](https://github.com/dmnfarrell/teaching/tre
  ```python
  colormap={'NORTH VIETNAM':'brown','SOUTH VIETNAM':'orange','LAOS':'red',
                  'CAMBODIA':'green','THAILAND':'blue','UNKNOWN':'gray'}
- x.MFUNC_DESC.unique()
- import matplotlib
- cmap = matplotlib.cm.get_cmap('Set1')
 
  providers = ['CARTODBPOSITRON','STAMEN_TERRAIN','OSM','ESRI_IMAGERY']
  cats = ['TGTCOUNTRY','WEAPONTYPE','MFUNC_DESC']
@@ -162,7 +159,9 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
      value_select.param.watch(update_map,'value')
      find_btn.on_click(find_in_region)
 
-     dashboard = pn.Column(date_slider,pn.Row(pn.Column(date_picker,tile_select,filterby_select,value_select,find_btn),map_pane))
+     dashboard = pn.Column(date_slider,pn.Row(
+                pn.Column(date_picker,tile_select,filterby_select,
+                value_select,find_btn),map_pane))
      return dashboard
 
  app=dashboard()
