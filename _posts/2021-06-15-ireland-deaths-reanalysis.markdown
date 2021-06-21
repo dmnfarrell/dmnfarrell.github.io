@@ -109,9 +109,18 @@ x.to_csv('rip_dn_scrape_processed.csv')
 </div>
 </div>
 
+## Totals
+
+ Note that these plots are the raw values and not age adjusted. Normally such data is adjusted to reflect the age profile of the population for each year. This is a standardisation required for year to year comparisons.
+
+<div style="width: auto;">
+ <a href="/img/ireland_deaths_ripie_summary_v2.png"> <img class="small-scaled" src="/img/ireland_deaths_ripie_summary_v2.png"></a>  
+   <p class="caption">Monthly totals compared.</p>
+</div>
+
 ## By month
 
-Deaths by month per year are shown here:
+Deaths by month per year are shown here.
 
 <div style="width: auto;">
  <a href="/img/ireland_deaths_ripie_bymonth_v2.png"> <img class="scaled" src="/img/ireland_deaths_ripie_bymonth_v2.png"></a>  
