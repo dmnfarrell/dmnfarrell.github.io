@@ -143,7 +143,7 @@ Deaths by month per year are shown here.
 
 ## Check against registered deaths
 
-As a check that our RIP data are accurate we can compare the RIP deaths to the GRO monthly data. We can see that the RIP.ie deaths are often slightly higher than GRO. Except in 2017 when they seem lower than expected. I do not know the reason for these differences. Duplicates in the RIP data may still be present which might account for some of this.
+As a check that our RIP data are accurate we can compare the RIP deaths to the GRO monthly data. We can see that the RIP.ie deaths are often slightly higher than GRO. Except in 2013 when they seem a bit lower than expected. I do not know the reason for these differences. Duplicates in the RIP data may still be present which might account for some of this. Also the large differences in 2020 are probably because the GRO data for that year is incomplete.
 
 <div style="width: auto;">
  <a href="/img/ireland_deaths_gro_vs_ripie.png"> <img class="scaled" src="/img/ireland_deaths_gro_vs_ripie.png"></a>  
