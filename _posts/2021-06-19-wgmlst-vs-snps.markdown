@@ -3,7 +3,7 @@ layout: post
 title:  "wgMLST vs the reference-align-SNP-calling method for M.bovis"
 date:   2021-06-19 16:30:00
 categories: bioinformatics
-tags: [python,genomics,mtbc,microbiology]
+tags: [python,genomics,mtbc,microbiology,snipgenie]
 thumbnail: /img/snp_tree_sim.png
 ---
 
