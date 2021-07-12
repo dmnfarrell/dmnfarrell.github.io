@@ -4,13 +4,13 @@ title:  "Comparison of SNP detection using duplicate sequencing runs in SNiPgeni
 date:   2021-07-10 16:30:00
 categories: bioinformatics
 tags: [python,genomics,microbiology,snipgenie]
-thumbnail: /img/snp_duplicates_allfilters.png
+thumbnail: /img/snp_duplicates_dists.jpg
 ---
 
 ## Background
 
 Whole genome sequence data is now commonly used for bacterial epidemiology. For clonal species, the typical method is the 'map to reference and SNP site analysis method'. The reads are aligned to a reference genome, variants called and filtered. From this shares SNP sites are identified. The base at each site for all samples are then placed in a fasta file which is basically a sequence alignment. This can be used to build a phylogeny.
-Ideally we can detect a difference of even a single SNP between two related species. To test this we used two independent sequencing runs for 16 M.bovis samples. Libraries were prepared separately from the same cultures. Illumina sequencing was performed on two different platforms, a NextSeq 500 with 150 paired end reads and
+Ideally we can detect a difference of even a single SNP between two related species. To test this we used two independent sequencing runs for 16 M.bovis isolates. Libraries were prepared separately from the same cultures. Illumina sequencing was performed on two different platforms, a NextSeq 500 with 150 paired end reads and a MiSeq with ~250-300 paired end reads.
 
 The data was then analysed in [SNiPgenie](https://github.com/dmnfarrell/snipgenie) by running all samples together and then retrieving the SNP distance matrix and maximum likelihood tree. From this we could compare the SNP distance between each corresponding pair, which should be zero.
 The code is available [here](https://github.com/dmnfarrell/snipgenie/blob/master/notebooks/duplicates.ipynb).
@@ -41,7 +41,7 @@ We can also see the effect of the filters on the resulting phylogeny generated f
 
 ## Where are these SNPs?
 
-If we look at the locations of these SNPs a number of sites appear repeatedly across multiple samples in different parts of the phylogeny. This indicates they are false positives. On closer inspection we see that the sites in the protein Mb2038c are due to a problematic homologous region in the protein that also maps to Mb1794c. The majority of sites are in this region in fact. It is possible that some of these regions should be masked along with the repeat regions. 
+If we look at the locations of these SNPs a number of sites appear repeatedly across multiple samples in different parts of the phylogeny. This indicates they are false positives. On closer inspection we see that the sites in the protein Mb2038c are due to a problematic homologous region in the protein that also maps to Mb1794c. The majority of sites are in this region in fact. It is possible that some of these regions should be masked along with the repeat regions.
 
 <div style="width: auto;">
  <a href="/img/snps_mb2038c_igv.png"> <img class="small-scaled" src="/img//snps_mb2038c_igv.png"></a>
@@ -52,7 +52,7 @@ Another site that appears in one sample is in the pckA gene and appears possibly
 
 <div style="width: auto;">
  <a href="/img/snps_pckA_igv.png"> <img class="small-scaled" src="/img//snps_pckA_igv.png"></a>
-   <p class="caption">Different SNPs called on two identical samples.</p>
+   <p class="caption">Different SNPs called on two identical samples due to different coverage.</p>
 </div>
 
 ## Links
