@@ -17,7 +17,7 @@ The code is available [here](https://github.com/dmnfarrell/snipgenie/blob/master
 
 ## Results
 
-SNiPgenie has filters normally used with our M.bovis samples. One is a proximity filter that excludes SNPs within 10 bp of each other. The other is to mask all sites within genes with repeat regions, a common source of false positive calls. The comparison was run with and without the filters. Normal quality filters were retained since these are always used anyway. The plot below shows the SNP distances for each pair of runs for a sample. It is seen that without filters we often get more differences. In some cases up to 5 SNPs. Note that the bottom three samples are probably identical to each other. Even with filters we occasionally see 1 or 2 SNPs difference which can therefore be taken as the lower limit of our ability to detect genuine differences.
+SNiPgenie has filters normally used with our M.bovis samples. One is a proximity filter that excludes SNPs within 10 bp of each other. The other is to mask all sites within genes with repeat regions, a common source of false positive calls. The comparison was run with and without the filters. Normal quality filters were retained since these are always used anyway. The plot below shows the SNP distances for each pair of runs for a sample. It is seen that without filters we often get more differences. In some cases up to 5 SNPs. Note that the bottom three samples are probably identical to each other. Even with filters we occasionally see 1 or 2 SNPs differences which can therefore be taken as the lower limit of our ability to detect genuine differences.
 
 <div style="width: auto;">
  <a href="/img/snp_duplicates_dists.jpg"> <img class="small-scaled" src="/img/snp_duplicates_dists.jpg"></a>
@@ -26,7 +26,7 @@ SNiPgenie has filters normally used with our M.bovis samples. One is a proximity
 
 ## Trees
 
-We can also see the effect of the filters on the resulting phylogeny generated from the snp alignment.
+We can also see the effect of the filters on the resulting phylogeny generated from the SNP alignment.
 
 <div class ="image-gallery">
 <div class="box">
@@ -41,14 +41,14 @@ We can also see the effect of the filters on the resulting phylogeny generated f
 
 ## Where are these SNPs?
 
-If we look at the locations of these SNPs a number of sites appear repeatedly across multiple samples in different parts of the phylogeny. This indicates they are false positives. On closer inspection we see that the sites in the protein Mb2038c are due to a problematic homologous region in the protein that also maps to Mb1794c. The majority of sites are in this region in fact. It is possible that some of these regions should be masked along with the repeat regions.
+Some of the SNPs from the unfiltered run are due to PE/PPE genes that are normally masked. If we look at the locations of the filtered SNPs a number of sites appear repeatedly across multiple samples in different parts of the phylogeny. This indicates they are false positives. On closer inspection we see that the sites in the protein Mb2038c are due to a problematic homologous region in the protein that also maps to Mb1794c. The majority of sites are in this region in fact. It is possible that some of these regions should be masked along with the repeat regions.
 
 <div style="width: auto;">
  <a href="/img/snps_mb2038c_igv.png"> <img class="small-scaled" src="/img//snps_mb2038c_igv.png"></a>
    <p class="caption">Different SNPs called due to multimapping reads in homologous regions.</p>
 </div>
 
-Another site that appears in one sample is in the pckA gene and appears possibly real. There is no call in the lower sample perhaps due to it's low coverage. So differential coverage will certainly cause these differences to appear.
+Another site that appears in one sample is in the pckA gene and appears possibly real. There is no call in the lower sample perhaps due to it's low coverage. So differential coverage could certainly cause these differences to appear and a low coverage sample might be prone to missing a site that is actually present.
 
 <div style="width: auto;">
  <a href="/img/snps_pckA_igv.png"> <img class="small-scaled" src="/img//snps_pckA_igv.png"></a>
