@@ -3,7 +3,7 @@ layout: post
 title:  "Deaths in Ireland from RIP.ie - another look"
 date:   2021-06-15 14:18:00
 categories: plotting
-tags: [plotting,rip,python]
+tags: [plotting,rip.ie,python]
 thumbnail: /img/ireland_deaths_ripie_trend_v2.png
 ---
 
@@ -115,7 +115,7 @@ x.to_csv('rip_dn_scrape_processed.csv')
 
 <div style="width: auto;">
  <a href="/img/ireland_deaths_ripie_summary_v2.png"> <img class="small-scaled" src="/img/ireland_deaths_ripie_summary_v2.png"></a>  
-   <p class="caption">Monthly totals compared.</p>
+   <p class="caption">Yearly totals compared.</p>
 </div>
 
 ## By month
