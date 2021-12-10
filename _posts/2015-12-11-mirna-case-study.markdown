@@ -4,6 +4,7 @@ title:  "Example: plotting miRNA abundance data (advanced)"
 date:   2015-12-11 12:15:00
 categories: dataexplore
 tags: [miRNA,merge,melt,seaborn]
+thumbnail: /img/mirna_rowplots.png
 ---
 
 ## Background

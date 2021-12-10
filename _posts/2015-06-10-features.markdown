@@ -3,6 +3,7 @@ layout: post
 title:  "DataExplore Features"
 date:   2015-06-11 12:00:00
 categories: dataexplore
+thumbnail: /img/dexpl_childtable.png
 ---
 
 This post details some notable features that might help you decide if this program could be useful to you.

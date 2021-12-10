@@ -4,6 +4,7 @@ title:  "Create a bacterial GFF from a genbank file for BCFtools/csq"
 date:   2018-08-14 13:45:00
 categories: bioinformatics
 tags: [bcftools/csq]
+thumbnail: /img/gff_screen.png
 ---
 
 ## Consequence calling

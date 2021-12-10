@@ -3,6 +3,7 @@ layout: post
 title:  "DataExplore Introduction"
 date:   2015-05-30 12:17:29
 categories: dataexplore
+thumbnail: /img/dexpl_scr1.png
 ---
 
 ## Background

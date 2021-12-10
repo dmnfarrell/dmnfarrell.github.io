@@ -4,6 +4,7 @@ title:  "DataExplore - grouped plots in version 0.8.0"
 date:   2017-07-05 15:07:00
 categories: dataexplore
 tags: [plotting]
+thumbnail: /img/grouped_bar.png
 ---
 
 Plotting of grouped data has been improved in version 0.8. This is when you choose to group by a given categorical column (you can group by up to 2 columns) and then plot this data. There are then two ways to visualize the grouped data, in multiple or single plots.

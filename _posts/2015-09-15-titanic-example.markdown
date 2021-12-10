@@ -3,6 +3,8 @@ layout: post
 title:  "Looking at the Titanic dataset"
 date:   2015-09-15 14:12:00
 categories: dataexplore
+tags: [dataexplore]
+thumbnail: /img/titanic_ages.png
 ---
 
 <iframe width="320" height="240" style="float: right; padding:12px;"

@@ -3,6 +3,7 @@ layout: post
 title:  "Zenodo and sharing your software"
 date:   2015-07-18 11:50:00
 categories: bioinformatics
+thumbnail: /img/zenodo.png
 ---
 
 ## Software sharing in the sciences
