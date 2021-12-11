@@ -6,7 +6,7 @@ tagline: blog
 
 <div class="row">
   {% for post in site.posts limit:10 %}
-  <div class="span3">
+  <div class="mainbox">
 
    <div style="float:right;">
     	{% if post.thumbnail %}
@@ -18,16 +18,15 @@ tagline: blog
 
     <h2>
      <a href="{{ BASE_PATH }}{{ post.url }}" style="text-decoration: none;">{{ post.title }}  </a>
-     <h4>{{post.date | date_to_long_string}}</h4> </h2>
-
+    </h2>
+    <h4>{{post.date | date_to_long_string}}</h4>
 
     {% assign paragraphs = post.content | split:'</h2>' %}
     {{ paragraphs[1] | strip_html | truncatewords:80 }}
-    <p>
+    <p style="margin-bottom:5px;">
     <a class="btn" href="{{ BASE_PATH }}{{ post.url }}">Read more...</a>
     </p>
    </div>
-   <hr/>
 
   {% endfor %}
 

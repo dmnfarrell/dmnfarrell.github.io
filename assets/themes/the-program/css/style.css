@@ -1664,20 +1664,30 @@ input[type='checkbox'] { display: none; }
      margin-bottom: 0;
   }
 
+  .mainbox {
+      width: 95%;
+      padding: 15px;
+      margin: 25px;
+      margin-left: 5px;
+      box-shadow: 2px 2px 5px 4px #DCDCDC;
+      background-color: #fdfcfc;
+  }
+
   /*gallery elements*/
   .image-gallery {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
     justify-content: center;
-    padding: 5px;
+    margin: 2px;
   }
 
   .box {
         flex-basis: 25%;
-        width: 100%;
+        width: 90%;
         padding: 10px;
-        margin: 2px;
+        margin: 5px;
+        box-shadow: 2px 2px 5px 4px #DCDCDC;
     }
 
   .img-gallery {
