@@ -1667,9 +1667,8 @@ input[type='checkbox'] { display: none; }
   .mainbox {
       width: 95%;
       padding: 15px;
-      margin: 25px;
+      margin: 15px;
       margin-left: 5px;
-      box-shadow: 2px 2px 5px 4px #DCDCDC;
       background-color: #fdfcfc;
   }
 
@@ -1680,6 +1679,7 @@ input[type='checkbox'] { display: none; }
     grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
     justify-content: center;
     margin: 2px;
+    float: center;
   }
 
   .box {
@@ -1687,7 +1687,6 @@ input[type='checkbox'] { display: none; }
         width: 90%;
         padding: 10px;
         margin: 5px;
-        box-shadow: 2px 2px 5px 4px #DCDCDC;
     }
 
   .img-gallery {
