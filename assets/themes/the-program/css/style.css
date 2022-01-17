@@ -1676,7 +1676,7 @@ input[type='checkbox'] { display: none; }
   .image-gallery {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill,minmax(400px, 1fr));
     justify-content: center;
     margin: 2px;
     float: center;
