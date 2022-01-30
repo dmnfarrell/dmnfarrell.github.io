@@ -137,7 +137,7 @@ Deaths by month per year are shown here.
 ## Years compared
 
 <div style="width: auto;">
- <a href="/img/ireland_deaths_ripie_compared_mean_v2.png"> <img class="scaled" src="/img/ireland_deaths_ripie_compared_mean_v2.png"></a>  
+ <a href="/img/ireland_deaths_ripie_compared_mean_v2.png"> <img class="scaled" src="/img/ireland_deaths_ripie_compared_mean.png"></a>  
    <p class="caption">Averages for each year plotted over the same time scale.</p>
 </div>
 

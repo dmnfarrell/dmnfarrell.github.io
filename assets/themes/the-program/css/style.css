@@ -396,21 +396,25 @@ table {
   padding: 4px;
   background: white;
   border: 0px solid black;
+  font-family: monospace;
   font-size: small;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+   border-spacing: 15px;
 }
 th {
   border: 0px solid black;
   color: #F2F4F5;
   background-color: #6A7378;
   text-align: left;
-  padding: 4px;
+  padding-left: 10px;
 }
 td {
   border: 0px solid black;
   text-align: left;
   vertical-align: top;
-  padding: 4px;
+  padding-left: 5px;
 }
 tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -1654,7 +1658,7 @@ input[type='checkbox'] { display: none; }
     border-bottom-left-radius: 0;
   }
   .collapsible-content .content-inner
-  { background: #EFE8C0 ;
+  {
      border-bottom: #CCC5A0;
      border-bottom-left-radius: 7px;
      border-bottom-right-radius: 7px;
