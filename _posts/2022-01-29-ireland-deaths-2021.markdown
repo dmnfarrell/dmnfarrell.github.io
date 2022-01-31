@@ -11,20 +11,26 @@ thumbnail: /img/ireland_deaths_ripie_summary_v3.png
 
 **Note:** This is an updated version of an older post, which it replaces, as it has much of the same data but updated since. The **CSO** have been analysing RIP.ie data themselves and no doubt they will release an updated analysis in due course (see last section).
 
-In a [previous post](/plotting/ireland-deaths-reanalysis) I showed how to retrieve daily notices from RIP.ie. These can be used to count the number of daily deaths and compare between years. This is a useful proxy for the official registered deaths and provides an up to date estimate of current trends since registered data is delayed by up to 3 months. The method used to extract RIP.ie data here attempts to clean the data of duplicates and extract correct dates. This process is not perfect so the figures are close approximations. What I had stupidly not realised before is that there are many deaths outside the Irish state registered and they should be removed to reflect official figures. These have been mostly removed here but the method is not perfect so our values will be a slight overestimate. We can also extract the sex of the individual by checking against common male and female names and also checking the death notice for keywords that indicate it like 'his family' and so on. There are still about 1300 unaccounted for in the dataset, mostly people with unusual (or misspelt) names.
+In a [previous post](/plotting/ireland-deaths-reanalysis) I showed how to retrieve daily notices from RIP.ie. These can be used to count the number of daily deaths and compare between years. This is a useful proxy for the official registered deaths and provides an up to date estimate of current trends since registered data is delayed by up to 3 months. The method used to extract RIP.ie data here attempts to clean the data of duplicates and extract correct dates. This process is not perfect so the figures are close approximations. What I had not realised before is that there are many deaths outside the Irish state registered and they should be removed to reflect official figures. These have been mostly removed here but some are missed so our values will be a slight overestimate. We can also extract the sex of the individual by checking against common male and female names and also checking the death notice for keywords that indicate it like 'his family' and so on. There are still about 1300 unaccounted for in the dataset, mostly people with unusual (or misspelt) names.
 
 The Jupyter notebook with the code is [here](https://github.com/dmnfarrell/teaching/blob/master/misc/ireland_rip_deaths2.ipynb). You can download the calculated daily death data [here](https://raw.githubusercontent.com/dmnfarrell/teaching/master/misc/rip_est_deaths_daily.csv).
 
 ## Year on year comparison
 
-Total deaths are shown in the plot from 2011. The second plot below shows deaths per thousand, calculating using each years population estimate. Obviously as the population grows deaths will tend to be higher so this adjusts for that. No adjustment has been made for age distribution as it changes over time. At bottom are the CSO official deaths per year from the GRO. Remember our results are higher probably mostly because not all deaths outside ROI were removed. You can see the figures in the table below also.
+Total deaths are shown in the plot from 2011. The second plot below shows deaths per thousand, calculating using each years population estimate. (Obviously as the population grows deaths will tend to be higher). No adjustment has been made for age distribution as it changes over time. At bottom are the CSO official deaths per year from the GRO. Remember our results are a bit high probably because not all deaths outside ROI were removed. The right plot shows that RIP.ie values are not 1:1 correlated with official values and that they have increased over time at a different rate. Probably in earlier years there was underreporting?
 
-<div style="width: auto;">
- <a href="/img/ireland_deaths_ripie_summary_v3.png"> <img class="small-scaled" src="/img/ireland_deaths_ripie_summary_v3.png"></a>  
-   <p class="caption">Yearly totals compared for months of June to September.</p>
+<div class ="image-gallery">
+<div class="box">
+ <a href="/img/ireland_deaths_ripie_summary_v3.png"> <img class="scaled" src="/img/ireland_deaths_ripie_summary_v3.png"></a>  
+   <p class="caption">Yearly totals compared.</p>
+ </div>
+ <div class="box">
+ <a href="/img/ireland_deaths_gro_vs_ripie2.png"> <img class="scaled" src="/img/ireland_deaths_gro_vs_ripie2.png"></a>  
+   <p class="caption">Yearly totals rip.ie/gro plotted against each other.</p>
+ </div>
 </div>
 
-The table shows the deaths we estimate compared to the official sources (gro) and the difference between them. In earlier years this is negative because the rip.ie estimate is lower. Probably in earlier years there was underreporting? In 2020 the difference is over 600 which seems like an anomaly. There is no official data for 2021 yet.
+The table shows the data. The diff column is the difference between gro and rip.ie values. In earlier years this is negative because the rip.ie estimate is lower. In 2020 the difference is over 600 which seems like an anomaly. There is no official data for 2021 yet.
 
 | year |     pop | deaths | deathsper1000 |     gro |    diff |
 |-----:|--------:|-------:|--------------:|--------:|--------:|
@@ -77,7 +83,7 @@ The higher trends in late 2021 don't appear to be reflected in the current Eurom
 
 ## Care homes
 
-We can extract references to nursing homes in each death notice. This gives a somewhat crude estimate of deaths in elderly care facilities as a category. The values for each month per year as shown below in a heatmap. The spike in April of 2020 is shown clearly. These results also tally with the CSO's [press release](https://www.cso.ie/en/csolatestnews/pressreleases/2021pressreleases/pressstatementmeasuringmortalityusingpublicdatasources2019-2021/) that mentions 1,000 in January and 737 in February deaths in 2021.
+We can extract references to nursing homes in each death notice. This gives a somewhat crude estimate of deaths in elderly care facilities as a distinct category. The values for each month per year as shown below in a heatmap. The spike in April of 2020 is shown clearly. These results also tally roughyl with the CSO [press release](https://www.cso.ie/en/csolatestnews/pressreleases/2021pressreleases/pressstatementmeasuringmortalityusingpublicdatasources2019-2021/) that mentions 1,000 in January and 737 in February deaths in 2021.
 
 <div style="width: auto;">
  <a href="/img/nursing_home_heatmap.png"> <img class="scaled" src="/img/nursing_home_heatmap.png"></a>  
@@ -86,7 +92,7 @@ We can extract references to nursing homes in each death notice. This gives a so
 
 ## CSO RIP.ie estimates
 
-The CSO is also using RIP.ie to get up to date mortality estimates in addition to their regular method of using the official death registry. They likely use a very similar method of cleaning the data as I did, only better. There estimates can be accessed via their Pxstat system [here](https://data.cso.ie/product/MFPDA). They currently seem to have data up to July 2021 however. It is useful to compare their data with ours here, shown below. My values are consistently slightly higher because I have probably not completely cleaned all deaths outside the state yet.
+The CSO is also using RIP.ie to get up to date mortality estimates in addition to their regular method of using the official death registry. They likely use a very similar method of cleaning the data, only better. Their estimates can be accessed via their Pxstat system [here](https://data.cso.ie/product/MFPDA). They currently seem to have data up to July 2021 only. It is useful to compare their data with ours here, shown below. My values are consistently slightly higher because I have probably not completely cleaned all deaths outside the state yet.
 
 <div style="width: auto;">
  <a href="/img/cso_ireland_deaths_compared.png"> <img class="scaled" src="/img/cso_ireland_deaths_compared.png"></a>  
@@ -97,7 +103,7 @@ It has been pointed out by Seamus Coffey [here](https://twitter.com/seamuscoffey
 
 ## RIP.ie not ideal but provides valuable insight
 
-RIP.ie was not really designed for this task and therefore we cannot further analyse this data by age group for example. We can see that the reporting changes over time and that deaths increase more at a different rate each year compared to the official figures. So any conclusions drawn from this data must be carefully checked for bias. For example it is possible that the increase from June 2021 months is an artifact such as the result of changes in how deaths are recorded though this seems extremely unlikely.
+RIP.ie was not really designed for this task and therefore we cannot further analyse this data by age group for example. We can see that the reporting changes over time and that deaths increase at a different rate each year compared to the official figures. So any conclusions drawn from this data must be carefully checked for bias. For example it is possible that the increase from June 2021 months is an artifact due to changes in how deaths are recorded, though this seems extremely unlikely.
 
 ## Links
 
