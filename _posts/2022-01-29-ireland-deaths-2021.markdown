@@ -58,16 +58,16 @@ Here we show the mean and distribution of monthly values by sex using a boxplot:
    <p class="caption">Total deaths by year/sex.</p>
 </div>
 
-## 2021/2020 vs other years
+## 2021/2020 average trends
 
-A rolling average of daily deaths for 2020/2021. Averages are taken from 2017-2019. This shows the pandemic peak in 2020 and the 2021 Winter peak. Also seen are unusually high values for the latter half of 2021.
+A rolling average of daily deaths for 2020/2021 is shown below. The 3 year average is taken from 2017-2019 (using older years may skew this too low). The trends shows the pandemic peak in 2020 and the 2021 Winter peak. Also seen are unusually high values for the latter half of 2021.
 
 <div style="width: auto;">
  <a href="/img/ireland_deaths_ripie_compared_mean_v2.png"> <img class="scaled" src="/img/ireland_deaths_ripie_compared_mean_v2.png"></a>  
    <p class="caption">Average daily deaths compared from 2020/2021.</p>
 </div>
 
-Tte higher values in 2021 can also be shown as weekly totals here:
+The higher values in 2021 can also be shown as weekly totals here:
 
 <div style="width: auto;">
  <a href="/img/ireland_deaths_ripie_byweek.png"> <img class="scaled" src="/img/ireland_deaths_ripie_byweek.png"></a>  
@@ -83,12 +83,25 @@ The higher trends in late 2021 don't appear to be reflected in the current Eurom
 
 ## Care homes
 
-We can extract references to nursing homes in each death notice. This gives a somewhat crude estimate of deaths in elderly care facilities as a distinct category. The values for each month per year as shown below in a heatmap. The spike in April of 2020 is shown clearly. These results also tally roughyl with the CSO [press release](https://www.cso.ie/en/csolatestnews/pressreleases/2021pressreleases/pressstatementmeasuringmortalityusingpublicdatasources2019-2021/) that mentions 1,000 in January and 737 in February deaths in 2021.
+We can extract references to nursing homes in each death notice. This gives a somewhat crude estimate of deaths in elderly care facilities as a distinct category. The values for each month per year as shown below in a heatmap. The spike in April of 2020 is shown clearly. These results also tally roughyl with the CSO [press release](https://www.cso.ie/en/csolatestnews/pressreleases/2021pressreleases/pressstatementmeasuringmortalityusingpublicdatasources2019-2021/) that mentions 1,000 in January and 737 in February deaths in 2021. Note however the right plot shows that entries mentioning care home increase sharply since 2008. I assume this is partly due to changes in the way notices are reported over time. Perhaps older entries tended to have less details in the notice.
 
 <div style="width: auto;">
  <a href="/img/nursing_home_heatmap.png"> <img class="scaled" src="/img/nursing_home_heatmap.png"></a>  
    <p class="caption">Counts of notices with nursing homes mentioned.</p>
 </div>
+
+
+<div class ="image-gallery">
+<div class="box">
+ <a href="/img/ireland_deaths_ripie_compared_mean_nonnursing_homes.png"> <img class="scaled" src="/img/ireland_deaths_ripie_compared_mean_nonnursing_homes.png"></a>  
+   <p class="caption">Estimated average deaths outside nursing homes.</p>
+ </div>
+ <div class="box">
+ <a href="/img/ireland_deaths_ripie_compared_mean_nursing_homes.png"> <img class="scaled" src="/img/ireland_deaths_ripie_compared_mean_nursing_homes.png"></a>  
+   <p class="caption">Estimated average deaths in nursing homes.</p>
+ </div>
+</div>
+
 
 ## CSO RIP.ie estimates
 
@@ -103,7 +116,7 @@ It has been pointed out by Seamus Coffey [here](https://twitter.com/seamuscoffey
 
 ## RIP.ie not ideal but provides valuable insight
 
-RIP.ie was not really designed for this task and therefore we cannot further analyse this data by age group for example. We can see that the reporting changes over time and that deaths increase at a different rate each year compared to the official figures. So any conclusions drawn from this data must be carefully checked for bias. For example it is possible that the increase from June 2021 months is an artifact due to changes in how deaths are recorded, though this seems extremely unlikely.
+RIP.ie was not really designed for this task and therefore we cannot further analyse this data by age group for example. We can see that the reporting changes over time and that deaths increase at a different rate each year compared to the official figures. So any conclusions drawn from this data must be carefully checked for bias. For example it is possible that the increase from June 2021 months is an artifact due to changes in how deaths are recorded, though this seems unlikely.
 
 ## Links
 
