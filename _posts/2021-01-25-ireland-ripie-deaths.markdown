@@ -9,7 +9,7 @@ thumbnail: /img/ireland_deaths_ripie_bymonth.png
 
 ## Background
 
-NOTE: This data has been updated and re-plotted in a [more recent post](/plotting/ireland-deaths-reanalysis).
+NOTE: This data has been updated and re-plotted in a [more recent post](/general/ireland-deaths-2021).
 
 Deaths in Ireland must be registered by law and are held in the General Register Office (GRO) which is the central civil repository for records relating to Births, Marriages and Deaths. A death can be registered with any Registrar, irrespective of where it occurs. Deaths must be registered as soon as possible after the death and no later than **three months**. So there is a delay of a few months before death figures can be considered completely accurate. In any case if we want to get trends in daily mortality we cannot get this from the GRO. The next best thing is to use data posted publicly on the RIP.ie website. This is a private service used by undertakers who upload the deaths in a more timely manner than official registrations and is considered a reliable substitute. This has actually been [described by the CSO](https://www.cso.ie/en/releasesandpublications/br/b-mpds/measuringmortalityusingpublicdatasources/#d.en.237397) who give a good description of the rationale for using the RIP.ie data, quoted here:
 

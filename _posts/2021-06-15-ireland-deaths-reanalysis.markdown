@@ -9,6 +9,8 @@ thumbnail: /img/ireland_deaths_ripie_trend_v2.png
 
 ## Background
 
+See updated analysis [here](/general/ireland-deaths-2021).
+
 In a [previous post](/plotting/ireland-ripie-deaths) I looked at Ireland estimates of daily deaths from RIP.ie over 2019 and 2020. This data was obtained by manual copying of the results tables from the web page. This is tedious and misses other information in the actual death notice page that might be useful such as address or even place of death. *Note: The plots here may have been subsequently updated after the original post to reflect newer data.*
 
 ## Better method
@@ -125,13 +127,6 @@ Deaths by month per year are shown here.
 <div style="width: auto;">
  <a href="/img/ireland_deaths_ripie_bymonth_v2.png"> <img class="scaled" src="/img/ireland_deaths_ripie_bymonth_v2.png"></a>  
    <p class="caption">Monthly totals compared.</p>
-</div>
-
-## 14 day average over the period
-
-<div style="width: auto;">
- <a href="/img/ireland_deaths_ripie_trend_v2.png"> <img class="scaled" src="/img/ireland_deaths_ripie_trend_v2.png"></a>  
-   <p class="caption">14 day trailing average for daily deaths from 2018 - 2020 from RIP.ie.</p>
 </div>
 
 ## Years compared
