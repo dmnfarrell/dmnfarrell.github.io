@@ -3,7 +3,7 @@ layout: post
 title:  "Bacterial SNP detection with nanopore vs. illumina sequencing"
 date:   2021-10-18 16:30:00
 categories: bioinformatics
-tags: [python,genomics,microbiology,snipgenie]
+tags: [python,genomics,nanopore,snipgenie]
 thumbnail: /img/oxford-nanopore-minion.jpg
 ---
 
