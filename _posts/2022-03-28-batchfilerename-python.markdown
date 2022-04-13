@@ -43,6 +43,10 @@ Other features:
 * Undo the previous renaming step (assuming you have not quit the program)
 * Recursively load a folder
 
+<div style="width: auto;">
+ <img class="small-scaled" src="/img/batchfilerename_scr1.gif">   
+</div>
+
 ## Links
 
 * [Github page](https://github.com/dmnfarrell/batchfilerename)
