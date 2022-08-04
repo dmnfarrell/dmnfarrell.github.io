@@ -4,7 +4,7 @@ title:  "Make regular grids from polygons with geopandas"
 date:   2022-08-04 10:00:00
 categories: plotting
 tags: [maps,geopandas,python]
-thumbnail: /img/geopandas_grids.png
+thumbnail: /img/geopandas_grid_types.png
 ---
 
 ## Background
