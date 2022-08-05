@@ -104,6 +104,7 @@ The idea is to return a grid over the total area of the map as below. The `overl
 First we get a shapefile or other source and load it into a `geodataframe`. In this example we use a map of the counties of Ireland. Then we use the functions above to make grids and plot them alongside the map.
 
 ```python
+import pylab as plt
 counties = gpd.read_file('metadata/counties.shp')
 counties = counties.to_crs("EPSG:29902")
 
@@ -128,16 +129,24 @@ Which produces the plot below:
 
 ## How is this useful
 
-To make practical use of the plot requires some quantitative data added to the grid dataframe. In this case we can simply used the existing columns that were merged when we performed the `sjoin` step in the functions. This adds the county name for instance. Below we just color by each county. This isn't a very real world usage of course. There are convenience functions used here for making random colors and making a legend. You can see the source code for those [here](https://github.com/dmnfarrell/snipgenie/blob/master/snipgenie/plotting.py).
+To make practical use of the plot requires some quantitative data added to the grid dataframe. In this case we can simply used the existing columns that were merged when we performed the `sjoin` step in the functions. This adds the county name for instance. Below we just color by each county. This isn't a very real world usage of course. There are convenience functions used here for making random colors and making a legend. The code for those is in the notebook [here](https://github.com/dmnfarrell/teaching/blob/master/geo/gridding.ipynb).
 
 ```python
-gr = create_hex_grid(counties, n_cells=50, overlap=True, crs="EPSG:29902")
-gr['color'],nmap = get_color_mapping(gr, 'NAME_TAG')   
-
-fig,ax = plt.subplots(1,1,figsize=(10,10))
-gr.plot(color=gr.color,ec='gray',ax=ax)
+fig,ax = plt.subplots(1,2,figsize=(15,10))
+axs=ax.flat
+types=['square','hex']
+funcs = [create_grid,create_hex_grid]
+i=0
+colors,nmap = get_color_mapping(gr, 'NAME_TAG')   
+for func in funcs:    
+    ax=axs[i]
+    gr = func(counties, n_cells=50, overlap=True, crs="EPSG:29902")
+    gr['value'] = gr.apply(lambda x: np.random.normal(10),1)
+    gr['color'] = gr.NAME_TAG.map(nmap)
+    gr.plot(color=gr.color,ec='gray',lw=.5,ax=ax)    
+    ax.axis('off')
+    i+=1
 make_legend(fig,nmap,loc=(1.05, .9),fontsize=10)
-ax.axis('off')
 fig.suptitle('Ireland counties',fontsize=26)
 ```
 
