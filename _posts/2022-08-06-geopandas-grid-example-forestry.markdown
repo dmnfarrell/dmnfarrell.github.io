@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Plotting gridded quantitative data with geopandas - Irish forestry"
-date:   2022-08-06 08:00:00
+date:   2022-08-07 07:00:00
 categories: plotting
 tags: [maps,geopandas,python]
 thumbnail: /img/geopandas_grid_forestry_wicklow.png
@@ -9,7 +9,7 @@ thumbnail: /img/geopandas_grid_forestry_wicklow.png
 
 ## Background
 
-A [previous post](/plotting/geopandas-grids) showed how to create grids over polygons using geopandas. To make practical use of this requires you have some kind of quantitative data associated with each grid polygon. This could be a summary statistic over that area derived from a more fine grained spatial dataset. To do this we would combine the grid with the original data using `sjoin` and then aggregate using `dissolve` with some defined aggregating function. `sjoin` is like merging in pandas except it's joining GeoDataFrames based on spatial overlaps.
+A [previous post](/plotting/geopandas-grids) showed how to create grids over polygons using geopandas. To make practical use of this requires you have some kind of quantitative data that you want to bin into each grid polygon. This could be a summary statistic over that area derived from a more fine grained spatial dataset. To do this we would combine the grid with the original data using `sjoin` and then aggregate using `dissolve` with some defined aggregating function. `sjoin` is like merging in pandas except it's joining GeoDataFrames based on spatial overlaps.
 
 In this example we will use data on [tree coverage in Ireland](/general/estimating-irelands-tree-cover). We want to summarise the coverage values over the grid instead of just by county. Below, we load the shapefiles and spatial join the original data to the grid, the use dissolve to get the aggregated area values for all polygons in each grid cell.
 
@@ -42,7 +42,7 @@ def grid_summary(gdf, data, n_cells=20):
 
 ## Results
 
-To test the method works it's easier to take a smaller area like a county to test on. Below we run the method on county Wicklow data and overlay the original polygons of tree areas onto the grid coloured by the summary values of total square area. Note that we can use the original polyons or take the centroids of each and use them for the `sjoin`. This should make a more accurate estimate of which one is most within each grid and the answer will be unique. Both results are shown below. I do not know which is most optimal but the centroid method seems more sensible.
+To test the method works it's easier to take a smaller area like a county to test on. Below we run the method on county Wicklow data and overlay the original polygons of tree areas onto the grid coloured by the summary values of total square area. Note that there are various ways to bin the polygons into each cell for the area calculation. The most naive is to just find all polygons overlapping the cell. Or we can take the centroids of each and use them for the `sjoin`. The latter avoids duplication of polygons being assigned to multiple adjoining cells. I do not know which is most optimal but the centroid method seems more sensible. Both are shown below with the original polygons overlaid. The most accurate method would be to just use a custom aggregation function that clips everything within each cell and calculates that area. I didn't get time to do that here.
 
 ```python
 wicklow = total[total.county.isin(['Wicklow'])]
