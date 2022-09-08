@@ -42,7 +42,7 @@ def grid_summary(gdf, data, n_cells=20):
 
 ## Results
 
-To test the method works it's easier to take a smaller area like a county to test on. Below we run the method on county Wicklow data and overlay the original polygons of tree areas onto the grid coloured by the summary values of total square area. Note that there are various ways to bin the polygons into each cell for the area calculation. The most naive is to just find all polygons overlapping the cell. Or we can take the centroids of each and use them for the `sjoin`. The latter avoids duplication of polygons being assigned to multiple adjoining cells. I do not know which is most optimal but the centroid method seems more sensible. Both are shown below with the original polygons overlaid. The most accurate method would be to just use a custom aggregation function that clips everything within each cell and calculates that area. I didn't get time to do that here.
+To test the method works it's easier to take a smaller area like a county to test on. Below we run the method on county Wicklow data and overlay the original polygons of tree areas onto the grid coloured by the summary values of total square area. Note that there are various ways to bin the polygons into each cell for the area calculation. The most naive is to just find all polygons overlapping the cell. Or we can take the centroids of each and use them for the `sjoin`. The latter avoids duplication of polygons being assigned to multiple adjoining cells. I do not know which is most optimal but the centroid method seems more sensible. Either method will be less accurate the smaller the cells. Both are shown below with the original polygons overlaid. The most accurate method would be to just use a custom aggregation function that clips everything within each cell and calculates that area. I didn't get time to do that here.
 
 ```python
 wicklow = total[total.county.isin(['Wicklow'])]
@@ -58,7 +58,7 @@ ax.axis('off')
 ```
 
 <div style="width: auto;">
- <img class="small-scaled" src="/img/geopandas_grid_forestry_wicklow.png">
+ <a href="/img/geopandas_grid_forestry_wicklow.png"> <img class="small-scaled" src="/img/geopandas_grid_forestry_wicklow.png"></a>
    <p class="caption">Example for one county.</p>
 </div>
 

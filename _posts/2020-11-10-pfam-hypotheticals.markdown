@@ -18,10 +18,11 @@ import pandas as pd
 from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
-from snpgenie import tools
+from snipgenie import tools
+from prody import *
 ```
 
-First we take the latest version of the genome and load it into a pandas DataFrame for easier processing. The method `genbank_to_dataframe` is part of the *snpgenie* package. But you can just use the method on it's own without the library by copying it from [here](https://github.com/dmnfarrell/snpgenie/blob/master/snpgenie/tools.py). It uses BioPython to parse the genbank file.
+First we take the latest version of the genome and load it into a pandas DataFrame for easier processing. The method `genbank_to_dataframe` is part of the *snipgenie* package. But you can just use the method on it's own without the library by copying it from [here](https://github.com/dmnfarrell/snipgenie/blob/master/snipgenie/tools.py). It uses BioPython to parse the genbank file.
 
 ```python
 #put the genome annotation into a dataframe (one row per feature)
