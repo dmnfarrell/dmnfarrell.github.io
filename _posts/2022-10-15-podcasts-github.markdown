@@ -9,8 +9,8 @@ thumbnail: /img/podcast_feed.jpg
 
 ## Background
 
-<div style="width: 300px; float:right;">
- <img src="/img/podcast_feed.jpg" width="320px">
+<div style="width: 320px; float:right;">
+ <img src="/img/podcast_feed.jpg" width="300px">
 </div>
 
 If you want to make your own podcasts the usual method is probably to use a [commercial service](https://www.podcastinsights.com/best-podcast-hosting/) that handles all the file hosting and distribution. However the process is actually surprisingly simple for those with a bit of technical knowledge and patience.

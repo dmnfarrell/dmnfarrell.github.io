@@ -1689,13 +1689,13 @@ input[type='checkbox'] { display: none; }
   .box {
         flex-basis: 25%;
         width: 90%;
-        padding: 10px;
+        padding: 3px;
         margin: 5px;
     }
 
-  .img-gallery {
+.img-gallery {
   width: 100%;
-  height: 200px;
+  height: 220px;
 
   object-fit: cover;
   transform: scale(.9);
@@ -1703,3 +1703,22 @@ input[type='checkbox'] { display: none; }
   &:hover {
     transform: scale(1.05);
   }
+
+.flex-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.flex-gallery > li {
+  flex-basis: 350px; /* width: 350px; */
+}
+
+.flex-gallery li img {
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-radius: 5px;
+}
