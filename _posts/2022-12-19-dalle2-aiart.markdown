@@ -13,7 +13,7 @@ DALL-E 2 (or just dalle) is an AI model from OpenAI used to generate art and ima
 
 ## Example
 
-You can try this yourself by registering on the OpenAI website which at the moment gives you 50 credits. 'Prompts' are currently restricted to 400 words. Coming up with the appropriate prompt to get the image you want back is tricky. Supposedely being more specific is better to get what you want but it will depend on how well dalle can recognise and put together specific items. Names of real people are not allowed for example. The training set has also been filtered to remove certain material.
+You can try this yourself by registering on the OpenAI website which at the moment gives you 50 free credits. 'Prompts' are currently restricted to 400 words. Coming up with the appropriate prompt to get the image you want back is tricky. Supposedely being more specific is better to get what you want but it will depend on how well dalle can recognise and put together specific items. Names of real people are not allowed for example. The training set has also been filtered to remove certain material.
 
 Let's say we give it the prompt: **"oil painting, irish people"**. I got the following results. You will get something else if you provide the exact same phrase.
 
@@ -21,7 +21,7 @@ Let's say we give it the prompt: **"oil painting, irish people"**. I got the fol
  <a href="/img/dalle-irish-people1.png"> <img class="small-scaled" src="/img/dalle-irish-people1.png"></a>
 </div>
 
-So when I repeated the prompt I got the following images, but you can tell they are trying to represent the same concepts. Notice how they vary in number of people and how close faces are etc. This is because I gave only a general phrase and only constrained it by asking for an oil painting hence the styles are similar. We can also use request the image be in a known artists style.
+So when I repeated the prompt I got the following images, all different but you can tell they are trying to represent the same concepts. Notice how they vary in number of people and how close faces are etc. This is because I gave only a general phrase and only constrained it by asking for an oil painting hence the styles are similar. We can also request the image be in a known artistic style or of a specific artist. In fact there is a whole pdf book guide on how to make prompts, called the [DALLE2 prompt book](https://dallery.gallery/the-dalle-2-prompt-book/).
 
 <div style="width: auto;">
  <a href="/img/dalle-irish-people2.png"> <img class="small-scaled" src="/img/dalle-irish-people2.png"></a>
@@ -74,18 +74,25 @@ Specific prompts certainly help to get more tailored responses. Most of the ones
 
 ## Limitations
 
-On the one hand dalle is incredibly impressive in the results it can produce so rapidly. It creates a completed picture with disparate elements combined together in a visually meaningful way that we can generally interpret. This means the model can adequately encode the syntactic elements as separate from one another. Remember that these are new images that have never been seen before even if they are very similar in some cases to those in the enormous training set.
-However it won't always put images together in a way what we intended. In particular telling it spatial relations or getting it to include specific numbers of items/people is hard. These things humans have an intuitive understanding of, given a description. For example if we give dalle this prompt: **"oil painting of dog kicking soccer ball at huge goal, cloudy sky"**, it is quite clear what we mean. A child could draw this simple picture. But dalle could not produce this image accurately and typically gives the image below, with a huge ball. Perhaps the prompt is not specific enough.
+On the one hand dalle is incredibly impressive in the results it can produce so rapidly. It creates a completed picture with disparate elements combined together in a visually meaningful way that we can generally interpret. This means the model can adequately encode the separate elements in 'image space'. Remember that these are new images that have never been seen before even if they are very similar in some cases to those in the enormous training set. However it won't always put images together in a way that we intend. In particular imparting spatial relations or getting it to include specific numbers of items/people is hard. These things humans have an intuitive understanding of, given a description. The model doesn't have an understanding of the physical world. This is probably because it is not trained to encode such information in its model. Perhaps it is too obvious to state that Dalle is good at composition in paintings only because it has copied from human artists who are.
+
+For example if we give dalle this prompt: **"oil painting of dog kicking soccer ball at huge goal, cloudy sky"**, it is quite clear what we mean. A child could draw this simple picture even if crudely. But dalle could not produce these elements in an image accurately and typically gives the image below, with a huge ball instead. Perhaps the prompt was not specific enough of course.
 
 <div style="width: auto;">
  <a href="/img/dalle-dog-ball.png"> <img class="small-scaled" src="/img/dalle-dog-ball.png"></a>
 </div>
 
+Here is an example from David Madras about how hard spatial composition is for dalle:
+
+<div style="width: auto;">
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The ways in which <a href="https://twitter.com/hashtag/dalle?src=hash&amp;ref_src=twsrc%5Etfw">#dalle</a> is so incredible (and it is) really put a fine point on the ways in which compositionality is so hard <a href="https://t.co/I6DC4g53MK">pic.twitter.com/I6DC4g53MK</a></p>&mdash; David Madras (@david_madras) <a href="https://twitter.com/david_madras/status/1512573390896480267?ref_src=twsrc%5Etfw">April 8, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
 ## Ethical problems
 
-The huge advancement represented by this tool is very real but there is a tendency to over hype this technology especially on first seeing it work. It is amazing but can this really 'replace' human artists? Obviously it can be used to make art and that may be indirectly derived from the work of real artists that the models are trained. But arguably it can't go beyond it's training set. There is also an element of exploitation here. Many living artists rail against the use of their work this way as shown by protests on the ArtStation website. DeviantArt [doesn't include](https://www.deviantart.com/team/journal/Create-AI-Generated-Art-Fairly-with-DreamUp-933537821) users art in training its DreamUp AI image-generation tool. It's hard to see how this can be stopped ultimately though.
+The huge advancement represented by this tool is very real but there is a tendency to over hype this technology especially on first seeing it work. It is amazing but can this really 'replace' human artists? Obviously it can be used to make art of a kind. That art may be indirectly derived from the work of real artists on which the models are trained. But arguably it can't go beyond it's training set. I don't think artists will be replaced but they are right to feel under threat of losing their income. There is also an element of exploitation here. Many living artists rail against the use of their work this way as shown by protests on the ArtStation website. DeviantArt [doesn't include](https://www.deviantart.com/team/journal/Create-AI-Generated-Art-Fairly-with-DreamUp-933537821) users art by default in training its **DreamUp** AI image-generation tool. It's hard to see how the AI plagiarism problem can be solved ultimately though.
 
-There is also the problem of fake and offensive imagery. Dalle can make photorealistic images of places and even people. Though sometimes they look downright weird. In the future faked generated images will be easier to make and we won't be able to tell them apart from real ones. Images of someone famous performing revolting or illegal acts might be easy to make. This will have to dealt with as the problem arises. Whether we like it or not AI art is here and will only get better.
+There is also the problem of fake and offensive imagery. Dalle can make photorealistic images of places and even people. Though sometimes they look downright weird. In the future faked generated images will be of better quality and we won't be able to tell them apart from real ones. Images of someone famous performing revolting or illegal acts might be easy to make. This will have to dealt with as the problem arises. Whether we like it or not AI art is here and will only get better.
 
 ## Links
 

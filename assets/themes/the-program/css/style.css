@@ -224,21 +224,6 @@ justify-content: center;
     }
 }
 
-figure {
-  float: right;
-  width: 420px;
-  min-width: 200px;
-  text-align: center;
-  font-style: italic;
-  font-size: smaller;
-  line-height: 1.3;
-  text-indent: 0;
-
-  margin: 0.5em;
-  padding: 0.2em;
-  overflow: auto;
-}
-
 img.banner {
   width: 100%;
   padding: 3px;
@@ -286,6 +271,7 @@ figcaption{
   align: center;
   max-width: 300px;
 }
+
 /*
 Forms from [HTML5 Boilerplate](http://j.mp/rP0wmY)
 See inline comments for detail
@@ -1670,27 +1656,27 @@ input[type='checkbox'] { display: none; }
 
   .mainbox {
       width: 95%;
-      padding: 15px;
-      margin: 15px;
+      padding: 10px;
+      margin: 5px;
       margin-left: 5px;
       background-color: #fdfcfc;
   }
 
-  /*gallery elements*/
-  .image-gallery {
+/*gallery elements*/
+.image-gallery {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
     justify-content: center;
     margin: 2px;
     float: center;
   }
 
-  .box {
-        flex-basis: 25%;
-        width: 90%;
-        padding: 3px;
-        margin: 5px;
+.box {
+    flex-basis: 25%;
+    width: 95%;
+    padding: 3px;
+    margin: 5px;
     }
 
 .img-gallery {
@@ -1702,23 +1688,4 @@ input[type='checkbox'] { display: none; }
   transition: all 0.3s ease-in-out;
   &:hover {
     transform: scale(1.05);
-  }
-
-.flex-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.flex-gallery > li {
-  flex-basis: 350px; /* width: 350px; */
-}
-
-.flex-gallery li img {
-  object-fit: cover;
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  border-radius: 5px;
 }
