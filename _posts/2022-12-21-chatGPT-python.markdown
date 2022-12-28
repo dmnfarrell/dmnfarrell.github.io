@@ -13,11 +13,42 @@ thumbnail: /img/man-at-computer.png
  <img src="/img/man-at-computer.png" width="300px">
 </div>
 
-There has been a lot of talk about OpenAI's new chatbot, ChatGPT. This is basically a very advanced chatbot. How it works is beyond my ability to explain. It is trained on a huge amount of information from the internet and can answer general questions or write poems and essays. It can also code in virtually any language quite well. You will see plenty of youtube videos marvelling at it's ability to produce (sometimes) usable code upon description of a specific coding task. There is plenty of talk of this replacing human coders and so on. This surely does has many applications in coding education, bioinformatics, statistics and many other fields.
+There has been a lot of talk about OpenAI's new chatbot, ChatGPT. This is basically a very advanced chatbot. How it works is beyond my ability to explain. It is trained on a huge amount of information from the internet and can answer general questions or write poems and essays. It can also code in virtually any language quite well. You will see plenty of youtube videos marvelling at it's ability to produce (sometimes) usable code upon description of a specific coding task. There is plenty of talk of this technology replacing human programmers. This might not be true yet but it surely does have many applications in coding education, bioinformatics, statistics and many other fields. Not least of which is for learning purposes. It could even become a replacement for using search engines.
+
+A few points to note:
+
+* ChatGPT will often not give the same answer to an identical question so it's sometimes worth asking it twice. It will also correct itself if you point out an error in the code it's given you.
+* It doesn't seem to distinguish between different versions of APIs or software versions. So some solutions will be correct but out of date for the version you might have.
 
 ## Example 1
 
-As an example here is what happens when we ask ChatGPT to **"write a python function that converts a genbank file into a pandas dataframe and stores the gene features in each column"**. Genbank files are just text files with records in non tabular format. There is a 'feature' for each gene with 'qualifiers' (fields) being information about the gene like it's name. This is a quite a short prompt but it makes a good try at providing the answer, shown below. I put the code as images here so that someone doesn't come to this site and copy/paste it by mistake.
+Let's start with something simple. We ask **"write python function to get the reverse complement of a dna sequence"**. The result returned below works fine:
+
+<div style="width: auto;">
+ <a href="/img/chatgpt-python.png"> <img class="small-scaled" src="/img/chatgpt-python.png"></a>
+</div>
+
+## Example 2
+
+Here's another simple one: **"write a python function that counts the number of reads in a gzipped fastq file"**. This one works quite well though it might not be optimal. It's certainly something a human would write.
+
+<div style="width: auto;">
+ <a href="/img/chatgpt-python4.png"> <img class="small-scaled" src="/img/chatgpt-python4.png"></a>
+</div>
+
+## Example 3
+
+A bit more challenging is this one: **"write a python function that predicts all the open read frames in a genome sequence"**. This request is self explanatory. Here is the answer:
+
+<div style="width: auto;">
+ <a href="/img/chatgpt-python3.png"> <img class="small-scaled" src="/img/chatgpt-python3.png"></a>
+</div>
+
+This actually returns a result without errors. I didn't specify the input so it assumes just a long string of DNA which is reasonable. However it returns 50,000 ORFs from a bacterial sequence in which there are about 4000! I also asked it to predict the protein coding sequences and it gave much the same answer. In this cases we have probably under-specified the problem and need to give it more details.
+
+## Example 4
+
+To finish with something more complex, here is what happens when we ask ChatGPT to **"write a python function that converts a genbank file into a pandas dataframe and stores the gene features in each column"**. Genbank files are just text files with records in non tabular format. There is a 'feature' for each gene with 'qualifiers' (fields) being information about the gene like it's name. This is a quite a short prompt but it makes a good try at providing the answer, shown below. I put the code as images here so that someone doesn't come to this site and copy/paste it by mistake.
 
 <div style="width: auto;">
  <a href="/img/chatgpt-python1.png"> <img class="small-scaled" src="/img/chatgpt-python1.png"></a>
@@ -32,24 +63,6 @@ In fact this solution doesn't work. This might be because the prompt is ambiguou
 This is a better try but also fails because it seems confused over how to construct the dataframe in the loop. Also `append` is deprecated in the Pandas library. This could be a general problem of training on sites like stackoverflow with outdated answers.
 
 A programmer could use these functions to build a working one but it's arguable that is easier than doing it from scratch.
-
-## Example 2
-
-**"write a python function that predicts all the open read frames in a genome sequence"**. This request is self explanatory. Here is the answer:
-
-<div style="width: auto;">
- <a href="/img/chatgpt-python3.png"> <img class="small-scaled" src="/img/chatgpt-python3.png"></a>
-</div>
-
-This actually returns a result without errors. I didn't specify the input so it assumes just a long string of DNA which is reasonable. However it returns 50,000 ORFs from a bacterial sequence in which there are about 4000! I also asked it to predict the protein coding sequences and it gave much the same answer. In this cases we have probably under-specified the problem and need to give it more details. 
-
-## Example 4
-
-Here's a simpler one to finish: **"write a python function that counts the number of reads in a gzipped fastq file"**. This one works quite well though it might not be optimal. It's certainly something a human would write.
-
-<div style="width: auto;">
- <a href="/img/chatgpt-python4.png"> <img class="small-scaled" src="/img/chatgpt-python4.png"></a>
-</div>
 
 ## What people are saying
 
@@ -73,9 +86,11 @@ We are probably prone to over hype the impact of this technology because it's so
 
 ## Bionformatics type things chatGPT can help you with
 
-Software engineers, scientists who have no coding experience are not going to be using chatGPT to solve novel or complex problems. **It will help beginners but you do have to know enough to ask the right questions.**
+Software engineers, scientists who have no coding experience are not going to be using chatGPT to solve novel or complex problems. It will help beginners but **to solve real world problems you do have to know enough to ask the right questions**.
 
-* Ask it clearly defined functions with fairly simple tasks and it might produce the finished product, but you need to check it.
+Here's the kind of things it will good for:
+
+* Ask it clearly defined functions with fairly simple tasks and it might produce a finished product, but you need to check it.
 * Providing a scaffold for functions very quickly which you can then bug fix, add details or augment to suit. This would take care of the work of naming variables and writing logic for example.
 * Building mundane things like regular expressions which humans don't find it easy to construct.
 * Helping to clean or import data tables.
