@@ -101,3 +101,4 @@ There is also the problem of fake and offensive imagery. Dalle can make photorea
 * [Artists stage mass protest against AI-generated artwork on ArtStation](https://arstechnica.com/information-technology/2022/12/artstation-artists-stage-mass-protest-against-ai-generated-artwork/)
 * [OpenAI labs](https://labs.openai.com/)
 * [MidJourney](https://www.midjourney.com/home)
+* [Will AI replace artists?](https://www.youtube.com/watch?v=Ao5aV4I4Ivw)
