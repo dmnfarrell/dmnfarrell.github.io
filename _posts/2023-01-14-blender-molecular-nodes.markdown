@@ -26,19 +26,24 @@ This example is the NMR structure of a fatty-acid binding protein. These protein
 NMR data comes with multiple states which can be animated using Molecular Nodes. This is quite straightforward (certainly compared to doing it yourself). Here I just added a glossy material and rotated the object as well. This gives an impression of the flexibility of the surface structures of the protein as the side chains move in solution:
 
 <div style="float: center; width: auto;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0iYwx3JUuao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="340" src="https://www.youtube.com/embed/0iYwx3JUuao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 <br>
 
 ## DNA sequencing nanopore
 
-Nanopore sequencers are composed of nanopores embedded in a membrane that splits a salt solution into two chambers. A voltage is applied across the membrane, which causes ionic flow that can be measured. When a DNA strand is pulled through the pore, the ion flow is partially blocked, leading to a reduction in the observed current. The four types of nucleic acid bases are each associated with a different level of ion current change, which enables their identification. To visualise this I used the structures detailed in the pdb Molecule of the Month [page](https://pdb101.rcsb.org/motm/261). I imported the individual structures with the addon and rendered them in surface style. The DNA molecule I artificially made in Pymol (using the fnab command) and imported also. You can make DNA with the addon but I didn't know how to use it properly to show the DNA unwinding as it goes into the pore. This is a hack and not that realistic but it's really only about making it look cool.
+[Nanopore sequencers](https://www.whatisbiotechnology.org/index.php/science/summary/nanopore/nanopore-sequencing-makes-it-possible-to-decode-the) are composed of nanopores embedded in a membrane that splits a salt solution into two chambers. A voltage is applied across the membrane, which causes ionic flow that can be measured. When a DNA strand is pulled through the pore, the ion flow is partially blocked, leading to a reduction in the observed current. The four types of nucleic acid bases are each associated with a different level of ion current change, which enables their identification. To visualise this I used the structures detailed in the pdb Molecule of the Month [page](https://pdb101.rcsb.org/motm/261). I imported the individual structures with the addon and rendered them in surface style. The DNA molecule I artificially made in Pymol (using the fnab command) and imported also. You can make DNA with the addon but I didn't know how to use it properly to show the DNA unwinding as it goes into the pore. This is a hack and not that realistic but it's mainly about making it look cool.
 
-The membrane protein is where the DNA passing through can be sensed. The polymerase slows down the DNA threading to make the signals more readable in real time.
+Shown below, the membrane protein is where the DNA passing through can be sensed. The polymerase (in green) slows down the DNA threading to make the signals more readable in real time.
 
 <div style="width: auto;">
  <a href="/img/blender_nanopore.png"> <img class="small-scaled" src="/img/blender_nanopore.png"></a>
 </div>
+
+<div style="float: center; width: auto;">
+<iframe width="100%" height="340" src="https://www.youtube.com/embed/kYgViPnwZRo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<br>
 
 ## Links
 

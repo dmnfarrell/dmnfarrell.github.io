@@ -9,6 +9,8 @@ thumbnail: /img/blender_mhc.png
 
 ## Background
 
+NOTE: An updated method for doing this with Molecular Nodes is detailed [here](/bioinformatics/blender-molecular-nodes/).
+
 <div style="width: 230px; float:right;">
 <img src="https://download.blender.org/institute/BlenderDesktopLogo.png" width="200px">
 </div>
@@ -86,10 +88,12 @@ Antibodies circulate in the blood. Each type binds to a different target molecul
 
 It's also possible to animate scenes in Blender. Again, the full details are beyond the scope of this article. The video below shows simple animated versions of the models above. These were made by simply making the virtual camera move around the models in a circular path. Each frame is rendered to an image and these are compiled into a video using ffmpeg. This can be a time consuming process though. It could take several hours just to render half a minute of video. There is a new version of Blender (2.80) which has some improved features including a real-time renderer called Eeevee. You may want to try this instead. You can imagine that much more advanced uses of animation to illustrate molecular processes are possible. There is almost no limit with Blender - with enough expertise..
 
-<iframe width="500" height="280" style="padding:12px;"
+<div style="float: center; width: auto;">
+<iframe width="100%" height="320" style="padding:12px;"
 src="https://www.youtube.com/embed/fpyDBR-bgE4"
 frameborder="0" allowfullscreen>
 </iframe>
+</div>
 
 ## Links
 
