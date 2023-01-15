@@ -13,7 +13,7 @@ thumbnail: /img/man-at-computer.png
  <img src="/img/man-at-computer.png" width="300px">
 </div>
 
-There has been a lot of talk about OpenAI's new chatbot, ChatGPT. This is basically a very advanced chatbot. How it works is beyond my ability to explain. It is trained on a huge amount of information from the internet and can answer general questions or write poems and essays. It can also code in virtually any language quite well. You will see plenty of youtube videos marvelling at it's ability to produce (sometimes) usable code upon description of a specific coding task. There is plenty of talk of this technology replacing human programmers. This might not be true yet but it surely does have many applications in coding education, bioinformatics, statistics and many other fields. Not least of which is for learning purposes. It could even become a replacement for using search engines.
+There has been a lot of talk about OpenAI's new technology, ChatGPT. This is basically a very advanced chatbot. How it works is beyond my ability to explain. It is trained on a huge amount of information from the internet and can answer general questions or write poems and essays. It can also code in virtually any language quite well. You will see plenty of youtube videos marvelling at it's ability to produce (sometimes) usable code upon description of a specific coding task. There is plenty of talk of this technology replacing human programmers. This might not be true yet but it surely does have many applications in coding education, bioinformatics, statistics and many other fields. Not least of which is for learning purposes. It could even become a replacement for using search engines.
 
 A few points to note:
 
@@ -22,7 +22,7 @@ A few points to note:
 
 ## Example 1
 
-Let's start with something simple. We ask **"write python function to get the reverse complement of a dna sequence"**. The result returned below works fine:
+Let's start with something simple. We ask **"write a python function to get the reverse complement of a dna sequence"**. The result returned below works fine:
 
 <div style="width: auto;">
  <a href="/img/chatgpt-python.png"> <img class="small-scaled" src="/img/chatgpt-python.png"></a>
@@ -38,13 +38,13 @@ Here's another simple one: **"write a python function that counts the number of 
 
 ## Example 3
 
-A bit more challenging is this one: **"write a python function that predicts all the open read frames in a genome sequence"**. This request is self explanatory. Here is the answer:
+A bit more challenging is this one: **"write a python function that predicts all the open read frames in a genome sequence"**. This request is self explanatory. It is the first step in gene prediction. We want it to extract all the potential sections of the sequence that may be translated into protein sequence. We have not specified whether this is for eukyarotic genes or not. Here is the answer:
 
 <div style="width: auto;">
  <a href="/img/chatgpt-python3.png"> <img class="small-scaled" src="/img/chatgpt-python3.png"></a>
 </div>
 
-This actually returns a result without errors. I didn't specify the input so it assumes just a long string of DNA which is reasonable. However it returns 50,000 ORFs from a bacterial sequence in which there are about 4000! I also asked it to predict the protein coding sequences and it gave much the same answer. In this cases we have probably under-specified the problem and need to give it more details.
+This actually returns a result without errors. I didn't specify the input so it assumes just a long string of DNA which is reasonable. However it returns 50,000 ORFs from a bacterial sequence in which there are about 4000! I also asked it to predict the protein coding sequences and it gave much the same answer. In this cases we have probably under-specified the problem and need to give it more details. For example we could specify that ORFs should be at least 100 codons in length.
 
 ## Example 4
 
