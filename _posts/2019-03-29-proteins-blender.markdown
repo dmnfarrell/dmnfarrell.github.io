@@ -9,7 +9,7 @@ thumbnail: /img/blender_mhc.png
 
 ## Background
 
-NOTE: An updated method for doing this with Molecular Nodes is detailed [here](/bioinformatics/blender-molecular-nodes/).
+NOTE: An updated method for doing this with Molecular Nodes is detailed [here](/bioinformatics/blender-molecular-nodes).
 
 <div style="width: 230px; float:right;">
 <img src="https://download.blender.org/institute/BlenderDesktopLogo.png" width="200px">
