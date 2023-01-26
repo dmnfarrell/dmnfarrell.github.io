@@ -9,7 +9,7 @@ thumbnail: /img/geopandas_delaunay.png
 
 ## Background
 
-Geopandas `Geodataframes` store spatial data such as points and polygons. This post adapts code a from some examples online to show how to convert spatial points into a [Delaunay graph](https://cartography-playground.gitlab.io/playgrounds/triangulation-delaunay-voronoi-diagram/). This connects adjacent points only. This may be useful for building a spatial contact network of neighbouring points and doing further processing. Here we convert into [networkx](https://networkx.org) graphs.
+Geopandas `Geodataframes` store spatial data such as points and polygons. This post adapts code a from some examples online to show how to convert spatial points into a [Delaunay graph](https://cartography-playground.gitlab.io/playgrounds/triangulation-delaunay-voronoi-diagram/). This is a undirected graph with edges between adjacent points only. This may be useful for building a spatial contact network of neighbouring points and doing further processing. Here we convert into [networkx](https://networkx.org) graphs.
 
 First we make a `GeoDataFrame` from some random points:
 
@@ -47,8 +47,6 @@ We now want to compute the Delaunay graph for these points, first using scipy. T
 import sys,os
 import numpy as np
 import pandas as pd
-import pylab as plt
-import seaborn as sns
 import geopandas as gpd
 import networkx as nx
 from shapely.geometry import Point, LineString, Polygon, MultiPolygon
@@ -111,12 +109,22 @@ G,pos=delaunay_pysal(rand, key='label')
 nx.draw(G, pos, node_size=500, node_color='y', with_labels=True,ax=axs[1])
 ```
 
-Results from both are shown below. They are almost identical except you can see the second method is missing some of the outer edges. This may be related to the clipping that `voronoi_frames` does in order to make the cells.
+Results from both are shown below. They are almost identical except you can see the second method is missing some of the outer edges. This may be related to the clipping that `voronoi_frames` does in order to make the cells. However this looks more correct as the fist method is connecting outer nodes very far apart.
 
 <div style="width: auto;">
  <img class="small-scaled" src="/img/geopandas_delaunay.png">
    <p class="caption">Results of methods 1 and 2.</p>
 </div>
+
+## How is this useful
+
+This type of graph is used in things like community detection. We can use the resultant graph to examine nodes for those adjacent to it for example. In the snippet below we get the name of node 0 and those of all the nodes connected to it.
+
+```python
+name=G.nodes[0]['name']  
+conn = G[0]
+names = [G.nodes[c]['name'] for c in conn ]
+```
 
 ## Links
 
