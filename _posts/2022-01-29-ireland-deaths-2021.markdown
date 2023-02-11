@@ -9,6 +9,8 @@ thumbnail: /img/ireland_deaths_ripie_summary_v3.png
 
 ## Background
 
+<span style="color:red">See updates [here](/general/ireland-excess-deaths-2022).</span>
+
 **Note:** The **CSO** have been analysing RIP.ie data themselves and no doubt they will release an updated analysis in due course (see bottom of post).
 
 In a [previous post](/plotting/ireland-deaths-reanalysis) I showed how to retrieve daily notices from RIP.ie. These can be used to count the number of daily deaths and compare between years. This is a useful proxy for the official registered deaths and provides an up to date estimate of current trends since registered data is delayed by up to 3 months. The method used to extract RIP.ie data here attempts to clean the data of duplicates and extract correct dates. This process is not perfect so the figures are close approximations. What I had not realised before is that there are many deaths outside the Irish state registered and they should be removed to reflect official figures. These have been mostly removed here but some are missed so our values will be a slight overestimate. We can also extract the sex of the individual by checking against common male and female names and also checking the death notice for keywords that indicate it like 'his family' and so on. There are still about 1300 unaccounted for in the dataset, mostly people with unusual (or misspelt) names.

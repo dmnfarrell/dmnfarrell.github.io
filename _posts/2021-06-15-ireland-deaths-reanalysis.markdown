@@ -9,7 +9,7 @@ thumbnail: /img/ireland_deaths_ripie_trend_v2.png
 
 ## Background
 
-See updated analysis [here](/general/ireland-deaths-2021).
+<span style="color:red">See updated analysis [here](/general/ireland-deaths-2021) and [here](/general/ireland-excess-deaths-2022).</span>
 
 In a [previous post](/plotting/ireland-ripie-deaths) I looked at Ireland estimates of daily deaths from RIP.ie over 2019 and 2020. This data was obtained by manual copying of the results tables from the web page. This is tedious and misses other information in the actual death notice page that might be useful such as address or even place of death. *Note: The plots here may have been subsequently updated after the original post to reflect newer data.*
 
@@ -25,7 +25,7 @@ Another method is to automatically retrieve pages by their numerical id and pars
  "Kelly (Avenue Grove, Ballymodan Place, Bandon and late of Currivreeda West) on June 5th 2019. Margaret, beloved daughter of the late Timothy and Ellen. Sadly missed by her loving sisters Ann and Eileen, brothers Teddy and John, Margaret's Partner William, brothers-in-law, sisters-in-law, nieces, nephews, relatives and good friend Malcolm.;;Rosary on Friday evening at 7pm in St. Patrick's Church, Bandon. Requiem Mass on Saturday at 12 noon, funeral afterwards to the adjoining cemetery.;;May Margaret Rest in Peace")
  ```
 
-We can then make the same plots as before but with more data. The plotting code is more or less the same as the previous post and can be found in the Jupyter notebook [here](https://github.com/dmnfarrell/teaching/blob/master/misc/ireland_rip_deaths2.ipynb).
+We can then make the same plots as before but with more data. The plotting code is more or less the same as the previous post and can be found in the Jupyter notebook [here](https://github.com/dmnfarrell/teaching/blob/master/ireland_deaths/ireland_rip_deaths2.ipynb).
 
 <div class="wrap-collabsible">
 <input id="collapsible1" class="toggle" type="checkbox">
@@ -147,6 +147,8 @@ As a check that our RIP data are accurate we can compare the RIP deaths to the G
 
 ## Links
 
+* [Ireland mortality data from RIP.ie, updated for 2021](/general/ireland-deaths-2021)
+* [Excess mortality in Ireland is still high in 2022](/general/ireland-excess-deaths-2022)
 * [CSO: Measuring Mortality Using Public Data Sources](https://www.cso.ie/en/releasesandpublications/br/b-mpds/measuringmortalityusingpublicdatasources/)
 * [GRO](https://www.gov.ie/en/service/49c66f-registering-a-death-in-ireland/)
 * [ONS deaths data](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths)

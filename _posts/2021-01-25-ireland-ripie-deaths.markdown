@@ -9,7 +9,7 @@ thumbnail: /img/ireland_deaths_ripie_bymonth.png
 
 ## Background
 
-NOTE: This data has been updated and re-plotted in a [more recent post](/general/ireland-deaths-2021).
+<span style="color:red;font-size:18px;">See updated analyses [here](/general/ireland-deaths-2021) and [here](/general/ireland-excess-deaths-2022).</span>
 
 Deaths in Ireland must be registered by law and are held in the General Register Office (GRO) which is the central civil repository for records relating to Births, Marriages and Deaths. A death can be registered with any Registrar, irrespective of where it occurs. Deaths must be registered as soon as possible after the death and no later than **three months**. So there is a delay of a few months before death figures can be considered completely accurate. In any case if we want to get trends in daily mortality we cannot get this from the GRO. The next best thing is to use data posted publicly on the RIP.ie website. This is a private service used by undertakers who upload the deaths in a more timely manner than official registrations and is considered a reliable substitute. This has actually been [described by the CSO](https://www.cso.ie/en/releasesandpublications/br/b-mpds/measuringmortalityusingpublicdatasources/#d.en.237397) who give a good description of the rationale for using the RIP.ie data, quoted here:
 
@@ -154,6 +154,8 @@ The CSO has a more detailed analysis as they added place of death information. B
 
 ## Links
 
+* [Ireland mortality data from RIP.ie, updated for 2021](/general/ireland-deaths-2021)
+* [Excess mortality in Ireland is still high in 2022](/general/ireland-excess-deaths-2022)
 * [CSO: Measuring Mortality Using Public Data Sources](https://www.cso.ie/en/releasesandpublications/br/b-mpds/measuringmortalityusingpublicdatasources/)
 * [GRO](https://www.gov.ie/en/service/49c66f-registering-a-death-in-ireland/)
 * [PHE mortality](https://fingertips.phe.org.uk/static-reports/mortality-surveillance/excess-mortality-in-england-latest.html)

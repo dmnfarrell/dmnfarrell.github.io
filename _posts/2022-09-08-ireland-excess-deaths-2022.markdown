@@ -79,7 +79,7 @@ Ireland is not the only country experiencing high excess mortality rates in the 
    <p class="caption">Our world in data mortality excesses for selected countries.</p>
 </div>
 
-The code for creating these plots can be found in the Jupyter notebook [here](https://github.com/dmnfarrell/teaching/blob/master/misc/ireland_rip_deaths2.ipynb).
+The code for creating these plots can be found in the Jupyter notebook [here](https://github.com/dmnfarrell/teaching/blob/master/ireland_deaths/ireland_rip_deaths2.ipynb).
 
 ## Links
 
