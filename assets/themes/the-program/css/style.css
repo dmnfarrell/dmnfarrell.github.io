@@ -258,6 +258,7 @@ figure {
 }
 
 .caption {
+  font-family: serif;
   color: gray;
   font-style: italic;
   text-align: center;
@@ -557,6 +558,12 @@ strong {
 }
 em {
   font-weight: bold;
+}
+.large {
+  font-size: 28px;
+  line-height: 30px;
+  margin-top: 12px;
+  margin-bottom: 18px;
 }
 /*
 Color schemes
