@@ -125,11 +125,18 @@ We can further fragment the farms by adding the `fragments` parameter. You need 
 
 ## Contact network from parcels
 
-Finally we can generate a contact network from the parcels which is why I was doing this originally. This produces a network graph with edges between all nodes (centroids of parcels) with contiguous fragments. Therefore we would expect that very fragmented farms are highly connected in the network.
+Finally we can generate a contact network from the parcels which is why I was doing this originally. This produces a network graph with edges between all nodes (centroids of parcels) with contiguous fragments. Therefore we would expect that very fragmented farms are highly connected in the network. That can be seen below. Not the code currently just adds all the fragments to the first farm but we can easily change to add randomly or otherwise.
 
 <div style="width: auto;">
  <a href="/img/land_parcels_contact_network.png"> <img class="scaled" src="/img/land_parcels_contact_network.png"></a>
   <p class="caption">Contact network from connected parcels. The red farm on top is fragmented and most connected in the network</p>
+</div>
+
+Same with more farms below. This isn't very realistic but illustrative. Node locations are centroid of original parcels which can become meaningless with a lot of fragmentation.
+
+<div style="width: auto;">
+ <a href="/img/land_parcels_contact_network2.png"> <img class="scaled" src="/img/land_parcels_contact_network2.png"></a>
+  <p class="caption">The red farm is by far most connected in the network.</p>
 </div>
 
 ## Links
