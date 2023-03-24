@@ -9,12 +9,12 @@ thumbnail: /img/farm_hedgerows.png
 
 ## Background
 
-Land fragmentation is the division of land holdings into discrete parcels that may be dispersed over a wide area. It is common in an agricultural context where a single farmer can own multiple parcels of contiguous (separated by roads, hedgerows or fencing) or non-contiguous land. For cattle farming this means animals could spend their time in different portions of land at different times of the year. This presents a challenge for something like contact networks where determining connections between farms relies on knowing which parcels are close to others.
-Here geopandas used to make groups of polygons that approximate such land parcels. We then use networkx to generate crude contact networks taking into account farms with neighbouring fragments.
+Land fragmentation is the division of land holdings into discrete parcels that may be dispersed over a wide area. It is common in an agricultural context where a single farmer can own multiple parcels of contiguous (separated by roads, hedgerows or fencing) or non-contiguous land. For cattle farming this means animals could spend their time in different portions of land at different times of the year. This presents a challenge for something like contact networks where determining connections between farms relies on knowing which parcels are close or adjacent to others.
+Here geopandas is used to make groups of polygons that approximate such land parcels. We then use networkx to generate crude contact networks taking into account farms with neighbouring fragments.
 
 ## Code
 
-The method used to generate random fragments here is to make a set of random points, derive the voronoi cells from these and then cluster them into 'farms'. We can merge contiguous polygons and optionally sparsify them to get less dense parcels. The more cells/points used the more sides the polygons will have. This is code verbose not very satisfactory. This is a classic case of quickly conceiving a way to solve a problem and then realising it's hard to add new functionality, namely adding more fragments, on top of the solution. So there are undoubtedly cleaner ways to accomplish this.
+The method used to generate random fragments here is to make a set of random points, derive the voronoi cells from these and then cluster them into 'farms'. We can merge contiguous polygons and optionally sparsify them to get less dense parcels. The more cells/points used the more sides the polygons will have. This code is verbose and not very satisfactory. This is a classic case of quickly conceiving a way to solve a problem and then realising it's hard to add new functionality (namely adding more fragments) on top of the solution. So there are undoubtedly cleaner ways to accomplish this.
 
 Extra methods not shown here are in the [notebook on github](https://github.com/dmnfarrell/teaching/blob/master/geo/land_parcels.ipynb) with the complete example.
 
@@ -50,7 +50,7 @@ def generate_land_parcels(cells=100,herds=10,empty=0,fragments=0,seed=None):
     e = cells.sample(frac=empty, random_state=seed)
     cells.loc[e.index,'cluster'] = 'empty'
 
-    #create new GeoDataFrame
+    #create new GeoDataFrame of farm parcels
     poly=[]
     data = {'cluster':[]}
     for c,g in cells.groupby('cluster'):
@@ -62,7 +62,7 @@ def generate_land_parcels(cells=100,herds=10,empty=0,fragments=0,seed=None):
 
     #merge contiguous fragments of same herd
     farms = farms.dissolve(by='cluster').reset_index()
-    #remove polygons with 'holes'
+    #remove 'holes' inside parcels
     def no_holes(x):
         if type(x) is MultiPolygon:
             return MultiPolygon(Polygon(p.exterior) for p in x.geoms)
@@ -70,7 +70,7 @@ def generate_land_parcels(cells=100,herds=10,empty=0,fragments=0,seed=None):
             return Polygon(x.exterior)
     farms.geometry = farms.geometry.apply(no_holes)
 
-    #remove empty cells inside parcels
+    #remove empty cells that are inside parcels
     e = e[e.within(farms.unary_union)==False]
 
     #assign some of the empty cells as fragments
@@ -108,7 +108,7 @@ To illustrate parameter usage we show the effect of increasing the number of ini
 
 ### Change empty parameter
 
-The `empty` parameter sparsifies the polygons as below. This also has the effect of fragmenting farms by removing a fraction of the original cells.
+The `empty` parameter sparsifies the polygons as below. This also has the effect of fragmenting farms by removing a fraction of the original cells. Another way to make empty space is to sub sample the geodataframe after it's returned from the function above.
 
 <div style="width: auto;">
  <a href="/img/land_parcels_vary_empty.png"> <img class="scaled" src="/img/land_parcels_vary_empty.png"></a>  
@@ -125,14 +125,14 @@ We can further fragment the farms by adding the `fragments` parameter. You need 
 
 ## Contact network from parcels
 
-Finally we can generate a contact network from the parcels which is why I was doing this originally. This produces a network graph with edges between all nodes (centroids of parcels) with contiguous fragments. Therefore we would expect that very fragmented farms are highly connected in the network. That can be seen below. Not the code currently just adds all the fragments to the first farm but we can easily change to add randomly or otherwise.
+Finally we can generate a contact network from the parcels which is why I was doing this originally. This produces a network graph with edges between all nodes (centroids of parcels) with contiguous fragments or with centroids within a certain distance of each other. Therefore we would expect that very fragmented farms are highly connected in the network. That can be seen below. In the resulting graph node locations are the centroid of original parcels. Note the code currently just adds all the fragments to the first farm but we can easily change to add randomly or otherwise.
 
 <div style="width: auto;">
  <a href="/img/land_parcels_contact_network.png"> <img class="scaled" src="/img/land_parcels_contact_network.png"></a>
-  <p class="caption">Contact network from connected parcels. The red farm on top is fragmented and most connected in the network</p>
+  <p class="caption">Contact network from connected parcels. The red farm on top is fragmented and most connected in the network.</p>
 </div>
 
-Same with more farms below. This isn't very realistic but illustrative. Node locations are centroid of original parcels which can become meaningless with a lot of fragmentation.
+Same with more farms below. This might be more illustrative. There are less edges in the graph as we have lowered the distance threshold for connectivity. This is arbitrary.
 
 <div style="width: auto;">
  <a href="/img/land_parcels_contact_network2.png"> <img class="scaled" src="/img/land_parcels_contact_network2.png"></a>

@@ -4,12 +4,12 @@ title:  "An individual based model of farm pathogen spread with Python/Mesa"
 date:   2023-03-19 14:00:00
 categories: python
 tags: [abm,mesa,python]
-thumbnail: /img/network_graph_example.png
+thumbnail: /img/cow_computer.png
 ---
 
 ## Background
 
-Computer-based disease spread models are frequently used in veterinary science to simulate disease spread. So called Agent based or individual based models simulate each 'agent' in a network of contacts. Each agent could be an animal or other entity like a herd with certain behaviours. For example the agents can randomly contact each other and transmit disease. Running such a simulation with many heterogeneous entities over many steps produces emergent complex behaviour that is meant to approximate real life disease spread. Comparing the output to real world data may allow estimation of some of the input parameters such as the transmission rates between species for example. It should always be kept in mind that 'all models are wrong' in the sense that they are crude representations of the real world. Thus using them for prediction is fraught with problems in any field. But they can serve a very useful purpose in that they generate information which is otherwise difficult to obtain. They can also be useful decision-making tools by simulating surveillance or control measures.
+Computer-based disease spread models are frequently used in veterinary science to simulate disease spread. So called Agent based (ABM) or individual based models simulate each 'agent' in a network of contacts. Each agent could be an animal or other entity like a herd with certain behaviours. For example the agents can randomly contact each other and transmit disease. Running such a simulation with many heterogeneous entities over many steps produces emergent complex behaviour that is meant to approximate real life disease spread. Comparing the output to real world data may allow estimation of some of the input parameters such as the transmission rates between species for example. We should always keep in mind the aphorism that ['all models are wrong but some are useful'](https://en.wikipedia.org/wiki/All_models_are_wrong) in the sense that they are crude representations of the real world. Thus using them for prediction is fraught with problems in any field. But they can serve a very useful purpose in that they generate information which is otherwise difficult to obtain. They can also be useful decision-making tools by simulating surveillance or control measures.
 
 A [previous post](/bioinformatics/abm-mesa-python) on this blog showed how to use the Mesa library to make a agent based model for generic disease spread. Here we try to apply the same tools to make a more realistic herd pathogen model for bovine TB spread amongst herds and wildlife. It was used to generate simulated data that can be tested against a regression model. This model has not been validated against real data as yet and sensitivity testing of parameters is needed.
 
@@ -93,7 +93,7 @@ model.make_phylogeny(removed=True,redundant=False) #make a phylogeny from the st
 
 ## Summary
 
-This is an initial attempt at making a model of bTB pathogen spread that was made to create simulated location and genetic distances for testing purposes. The code may be of use to those wishing to implement their own Python agent based models for similar diseases.
+This is an initial attempt at making a model of bTB pathogen spread that was made to create simulated location and genetic distances for testing purposes. The code may be of use to those wishing to implement their own Python agent based models for similar diseases. The model here has not been tested except in the sense of code validation.
 
 ## Links
 
