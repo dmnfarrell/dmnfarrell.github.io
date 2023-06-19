@@ -24,8 +24,6 @@ Mesa uses a `NetworkGrid` class that stores represents each node (usually an age
 
 This model was designed to produce spatio-temporal and genetic simulated data. The positions in the network can be seen to represent centroids on a map. To simulate genetic relatedness we assign a strain for each infected animal. This can mutate randomly at a given rate by assigning an artificial DNA sequence and altering it by a single nucleotide during the infection process. If we start the model by setting n animals as infected with a predefined 'strain' we can then extract the sequences of all circulating and/or past strains and make a phylogeny from this alignment.
 
-The code is available on github [here](https://github.com/dmnfarrell/btbabm).
-
 ## Parameters
 
 * mean_stay_time - mean time in a herd
@@ -45,6 +43,10 @@ In real life agriculture cattle are traded between farms which means an infected
 
 ## Usage
 
+The model is implemeented in a package called bTBabm available on github [here](https://github.com/dmnfarrell/btbabm). If you want to try it out, the easiest way is to install with pip:
+
+`pip install -e git+https://github.com/dmnfarrell/btbabm.git#egg=btbabm`
+
 We run the model as follows:
 
 ```python
@@ -54,7 +56,7 @@ for i in range(2000):
     model.step()
 ```
 
-We can visualise the network after n steps using the following function with typical outputs shown below.
+We can visualise the network at it's current state using the following function with typical outputs shown below.
 
 ```python
 utils.plot_grid(model,ax=ax,pos=model.pos,colorby='strain',ns='num_infected')
@@ -65,7 +67,7 @@ utils.plot_grid(model,ax=ax,pos=model.pos,colorby='strain',ns='num_infected')
  <p class="caption">Grid plot at various steps of the simulation.</p>
 </div>
 
-There is also a dashboard used for visualising the network and model outputs as it steps. In the example below you can see the phylogeny changing as the model is run.
+There is also a panel dashboard used for visualising the network and model outputs as it steps. In the example below you can see the phylogeny changing as the model is run. 
 
 <div style="width: auto;">
  <img class="scaled" src="/img/btbabm_dashboard.gif">
