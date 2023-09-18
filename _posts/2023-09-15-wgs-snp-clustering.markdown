@@ -9,11 +9,11 @@ thumbnail: /img/st_typing.png
 
 ## Background
 
-Whole genome sequencing (WGS) has emerged as a powerful tool in the field of public health, specifically in the context of pathogen strain typing. In order to categorize strains they are traditionally 'typed' using molecular methods like spoligotyping, MIRU-VNTR, RFLP or MLST. With WGS this can be accomplished at a superior resolution. WGS provides a detailed blueprint of virtually the entire genome. This alloes every SNP difference between samples to be counted, within the error of instrument measurement. This information is used to help track the transmission and spread of infectious diseases or identify the source of outbreaks. Often WGS is used to assemble genomes and count alleles of reliable predefined genes, a type of whole genome MLST (wgMLST). This offers standardization and  effectively avoids problems associated with genes moving in and out of the genome in many species, where SNPs calling would be made complex. For 'clonal' For bacteria like TB which generally change quite slowly by single nucleotide mutations it is possible to count all the SNPs from variant calling and count the differences.
+Whole genome sequencing (WGS) has emerged as a powerful tool in the field of public health, specifically in the context of pathogen strain typing. In order to categorize strains they are traditionally 'typed' using molecular methods like spoligotyping, MIRU-VNTR, RFLP or MLST. With WGS this can be accomplished at a superior resolution. WGS provides a detailed blueprint of virtually the entire genome. This allows every SNP difference between samples to be counted, within the error of instrument measurement. This information is used to help track the transmission and spread of infectious diseases or identify the source of outbreaks. Often WGS is used to assemble genomes and count alleles of reliable predefined genes, a type of whole genome MLST (wgMLST). This offers standardization and  effectively avoids problems associated with genes moving in and out of the genome in many species, where SNPs calling would be made complex. For 'clonal' bacteria like TB, which generally change quite slowly by single nucleotide mutations, it is possible to count all the SNPs from variant calling and count the differences.
 
 In either case, for general surveillance it is necessary to create a naming scheme that reflects the grouping of strains. A straightforward solution is to create a hiercharchical system where strains are assigned common 'lineages' based on their relatedness at a given threshold level. Different levels can be used to compose the strain name down to a high resolution level, thus creating a consistent nomenclature. This should also be dynamic to accomodate new strains as they are added to the known population. This concept is not new. Such a system has already been described and implemented in the SnapperDB tool <sup>[1](https://doi.org/10.1093/bioinformatics/bty212)</sup>. Another is the Pango lineage designation system used for Sars-Cov-2.
 
-A method is given here, implemented in Python, that makes a naming scheme by clustering at given SNP levels and allows new samples to be added arbitarily. It uses agglomerative clustering to cluster samples according to their SNP distance.
+A method is given here, implemented in Python, that makes a naming scheme by clustering at given SNP levels and allows new samples to be added in batches. It uses agglomerative clustering to cluster samples according to their SNP distance.
 
 ## Method
 
@@ -75,7 +75,7 @@ S1,X1 = get_subset(S2,X2,n=15)
 To get strain names we can cluster at all levels using the `clustering.get_cluster_levels` method. Then the strain name is composed of each cluster label at each level. The levels used are arbitrary. `members1` is a dataframe with cluster labels at all threshold levels. This is used as input for subsequent runs.
 
 ```python
-#first run 
+#first run
 cl,members1 = clustering.get_cluster_levels(S1, linkage='single')
 
 #second run, using previous cluster info
@@ -86,14 +86,14 @@ ST2 = X2[cols].merge(ST2,left_index=True,right_index=True)
 
 ## Example
 
-After running the above the final `ST2` table (a dataframe) looks like this. You can see how the strain names are made up of each cluster label. The actual strain names are up to the end user and could be changed by customising the `clustering.generate_strain_names` method. Cluster labels are assigned starting from 1 in the order the clustering alogrithm finds the data so they are arbitrary. In this case the higher threshold cluster levels are all the same so some are redundant.
+After running the above the final `ST2` table (a dataframe) looks like this. You can see how the strain names are made up of each cluster label. The actual strain names are up to the end user and could be changed by customising the `clustering.generate_strain_names` method. Cluster labels are assigned starting from 1 in the order the clustering alogrithm finds the data so they are arbitrary. In this case the higher threshold cluster levels are all the same because of the narrow set of samples.
 
 <div style="width: auto;">
  <a href="/img/snp_clustering_table.png"> <img class="small-scaled" src="/img/snp_clustering_table.png"></a>  
   <p class="caption"></p>
 </div>
 
-We can visualise the result using the trees we made above. This lets us see the relationship of the clusters more easily. The tree is a neighbour-joining tree derived from the SNP distance matrix. The same tree is on the right with the strain names. The clusters are at the snp12 threshold.
+We can visualise the result using trees derived from the alignments. This lets us see the relationship of the clusters more easily. The tree is a neighbour-joining tree derived from the SNP distance matrix. The same tree is on the right with the strain names. The clusters are at the snp12 threshold.
 
 ### Run 1
 
@@ -121,9 +121,9 @@ Clustermap of the same data:
 
 ## Limitations
 
-This method has some limitations in reality. When we run subsequent samples in a variant calling pipeline, some SNPs can drop out due to a low quality sample. This will create some inaccuracy. It just means we need uality control of input samples, particularly with regard to coverage. 98% coverage is a reasonable threshold for TB for example. The cluster allocation is also order dependant to come extent. It means adding new samples can occasionally alter cluster allocation and strain names will change accordingly.
+This method has some limitations in reality. When we run subsequent samples in a variant calling pipeline, some SNPs can drop out due to a low quality sample. This will create some inaccuracy. It just means we need quality control of input samples, particularly with regard to coverage. 98% coverage is a reasonable threshold for TB for example. The cluster allocation is also order dependent to some extent. It means adding new samples can occasionally alter cluster allocation and strain names will change accordingly.
 
-The clustering code is available the SNiPgenie code [here](https://github.com/dmnfarrell/snipgenie/blob/master/snipgenie/clustering.py).
+The clustering code is available the SNiPgenie repository [here](https://github.com/dmnfarrell/snipgenie/blob/master/snipgenie/clustering.py).
 
 ## Links
 
