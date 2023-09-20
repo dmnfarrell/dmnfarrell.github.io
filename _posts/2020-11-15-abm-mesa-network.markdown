@@ -213,8 +213,8 @@ def run_model(pop, ptrans, degree, steps, delay, layout):
         time.sleep(delay)
     plt.clf()
 
-grid_pane = pn.pane.Matplotlib()
-states_pane = pn.pane.Matplotlib()
+grid_pane = pn.pane.Matplotlib(plt.Figure(),width=500,height=400)
+states_pane = pn.pane.Matplotlib(plt.Figure(),width=400,height=300)
 go_btn = pnw.Button(name='run',width=100,button_type='primary')
 pop_input = pnw.IntSlider(name='population',value=100,start=10,end=1000,step=10,width=100)
 ptrans_input = pnw.FloatSlider(name='prob. trans',value=0.1,width=100)
