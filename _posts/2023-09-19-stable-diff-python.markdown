@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AI art with Stable Diffusion in Python"
-date:   2023-09-19 17:00:00
+date:   2023-09-19 10:00:00
 categories: general
 tags: [ai,python]
 thumbnail: /img/stablediff_cubism.png
@@ -9,13 +9,15 @@ thumbnail: /img/stablediff_cubism.png
 
 ## Background
 
-Stable Diffusion is a text-to-image model trained on 512x512 images from a subset of the LAION-5B dataset. You can implement this model on your own computer using the Python Diffusers library, which is a library for state-of-the-art pre-trained diffusion models for generating images, audio, and 3D structures. It is hosted by huggingface. The workings of the library are beyond the scope of this post, there are guides [here](https://huggingface.co/docs/diffusers/index) if interested. To make this work fast enough you should have a reasonably modern graphics card. There is an online demo of the stable diffusion [here](https://stablediffusionweb.com/#demo) though it seems a bit slow.
+Stable Diffusion is a text-to-image model trained on 512x512 images from a subset of the LAION-5B dataset. You can implement this model on your own computer using the Python Diffusers library, which is a library for state-of-the-art pre-trained diffusion models for generating images, audio, and 3D structures. It is hosted by huggingface. The workings of the library are beyond the scope of this post, there are guides [here](https://huggingface.co/docs/diffusers/index) if interested. To make this work fast enough you should have a reasonably modern graphics card. There is also a [GUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) that allows you to use Stable Diffusion in a GUI if you don't want to use Python.
 
 ## Install
 
 You can install everything with pip. It's recommended to create a virtualenv for this. Note that exact install process will possibly change over time.
 
-`pip install -q diffusers==0.14.0 transformers xformers git+https://github.com/huggingface/accelerate.git`
+```
+pip install -q diffusers==0.14.0 transformers xformers git+https://github.com/huggingface/accelerate.git
+```
 
 ## Code
 
@@ -60,7 +62,9 @@ def prompt(prompt, n=1, style=None, path='.', negative_prompt=None):
 
 ## Examples
 
-```prompt('flowers',style='Alfred Sisley',n=5,path='test')```
+```
+prompt('flowers',style='Alfred Sisley',n=5,path='test')
+```
 
 <div style="width: auto;">
  <a href="/img/stablediff_flowers by Alfred Sisley_2.png"> <img class="small-scaled" src="/img/stablediff_flowers by Alfred Sisley_2.png"></a>
@@ -140,15 +144,17 @@ Here are some styles/media to try in the prompts. You can find lots of web pages
 Here is the code for putting multiple images in a grid as used above. It may be of use elsewhere.
 
 ```python
-def tile_images(image_paths, outfile, grid=False):
-    """Make tiled image"""
+def tile_images(image_paths, outfile, grid=False, tile_width=300):
+    """Make tiled image from folder. Assumes images are the same size."""
 
     from PIL import Image, ImageDraw
     images = [Image.open(path) for path in image_paths]
-    tile_width = 300
-    tile_height = 300
-    num_columns = int(math.sqrt(len(image_paths)))
-    num_rows = (len(images) + num_columns - 1) // num_columns  # Calculate number of rows
+      
+    ratio = images[0].height / images[0].width
+    tile_height = int( tile_width * ratio )
+    num_rows = int(math.sqrt(len(image_paths)))
+    # Calculate number of cols
+    num_columns = (len(images) + num_rows - 1) // num_rows
 
     tiled_width = num_columns * tile_width
     tiled_height = num_rows * tile_height
@@ -161,8 +167,8 @@ def tile_images(image_paths, outfile, grid=False):
         y_offset = row * tile_height
         tiled_image.paste(image.resize((tile_width, tile_height)), (x_offset, y_offset))
     if grid == True:
+        draw = ImageDraw.Draw(tiled_image)
         # Draw borders around each tile
-        draw = ImageDraw.Draw(tiled_image)       
         for row in range(num_rows):
             for col in range(num_columns):
                 x1 = col * tile_width
@@ -189,3 +195,4 @@ tile_images(x, 'tiled.png', grid=True)
 * [notebook](https://github.com/dmnfarrell/teaching/blob/master/machine_learning/stable-diffusion.ipynb)
 * [stable-diffusion](https://huggingface.co/stabilityai/stable-diffusion-2)
 * [how-to-fine-tune-stable-diffusion](https://ngwaifoong92.medium.com/how-to-fine-tune-stable-diffusion-using-lora-85690292c6a8)
+* [Stable Diffusion GUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
