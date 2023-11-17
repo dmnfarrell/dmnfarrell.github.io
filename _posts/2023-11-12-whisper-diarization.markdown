@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Diarization with OpenAI whisper and pyannote.audio"
+title:  "Speech diarization with OpenAI whisper and pyannote.audio"
 date:   2023-11-12 19:00:00
 categories: general
 tags: [ai,python]
@@ -9,7 +9,7 @@ thumbnail: /img/whisper.png
 
 ## Background
 
-OpenAIs [whisper](https://github.com/openai/whisper) library is an effective and free means of doing speech to text analysis. It's easy to use once installed and will output a set of files with timestamps for each sentence spoken. This is ideal for subtitling videos. It does identify individual speakers however, or group the conversation into passages according to who is speaking. This process is called diarization and can be acchieved using the [pyannote-audio](https://github.com/pyannote/pyannote-audio) library. This is based on PyTorch and hosted on the huggingface site. Here is some code for using it, mostly adapted from code from [Dwarkesh Patel](https://www.youtube.com/channel/UCXl4i9dYBrFOabk0xGmbkRA). To do this you need a recent GPU probably with at least 6-8GB of VRAM to load the medium model. I used an nvidia RTX 3060 for this.
+OpenAIs [whisper](https://github.com/openai/whisper) library is an effective and free means of doing speech-to-text analysis. It's easy to use once installed and will output a set of files with timestamps for each sentence spoken. This is ideal for things like subtitling videos. It does not identify individual speakers however, so won't group the conversation into passages according to who is speaking. This process is called speech diarization and can be acchieved using the [pyannote-audio](https://github.com/pyannote/pyannote-audio) library. This is based on PyTorch and hosted on the huggingface site. Here is some code for using it, mostly adapted from code from [Dwarkesh Patel](https://www.youtube.com/channel/UCXl4i9dYBrFOabk0xGmbkRA). To do this you need a recent GPU probably with at least 6-8GB of VRAM to load the medium model. I used an nvidia RTX 3060 with 12 GB RAM.
 
 ## Install
 
@@ -21,7 +21,7 @@ pip install openai-whisper pyannote.audio
 
 ## Code
 
-This code will take an audio file and convert it to mono using ffmeg, then use whisper to transcribe it. The voice segments are delineated using the `PretrainedSpeakerEmbedding` model. The clustering algorithm then fits the embeddings to assign each segments to a speaker accordingly. Finally the output can be written as a transcript. This is the process as I understand it at least.
+This code will take an audio file and convert it to mono using ffmeg, then use whisper to transcribe it. The voice segments are delineated using the `PretrainedSpeakerEmbedding` model. The clustering algorithm then fits the embeddings to assign each segment to a speaker accordingly. The number of speakers should be identified in advance. Finally the output can be written as a transcript. This is the process as I understand it at least.
 
 ```python
 import glob, os, subprocess
@@ -89,7 +89,7 @@ def write_segments(segments, outfile):
     f.close()
 ```
 
-We can then just use a few lines of code to run the process. You can select another model (e.g. 'small', 'large'). This example uses the English model (.en). I found that if you don't specify this results are of lower quality (assuming that's the language being spoken). You can also use a 'large' model for better accuracy but it will take more GPU memory.
+We can then just use a few lines of code to run the process. You can select another model (e.g. 'small', 'large'). This example uses the English model (.en). I found that if you don't specify this results are of lower quality (assuming that's the language being spoken). You can also use the 'large' model for better accuracy but it will take more GPU memory.
 
 ```python
 model = whisper.load_model('medium.en')
@@ -99,7 +99,7 @@ write_segments(seg, 'transcript.txt')
 
 ## Example
 
-Note the results won't be perfect of course. Sometimes whisper will overshoot so you can garbage at the end. Here is an example of a short interview excerpt and the transcript it produces below without editing.
+The results won't be perfect of course. Sometimes whisper will overshoot so you can garbage at the end. Here is an example of a short interview excerpt and the transcript it produces below without editing. There are very few mistakes here. Notice that overlapping speakers are handled reasonably well in this case. It's likely things would get a lot more complex with more than two speakers.
 
 <figure>
   <figcaption>Listen to excerpt:</figcaption>
