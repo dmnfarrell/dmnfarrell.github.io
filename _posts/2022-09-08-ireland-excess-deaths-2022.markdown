@@ -9,6 +9,8 @@ thumbnail: /img/ireland_deaths_weekly_excess.png
 
 ## Background
 
+<span style="color:red">Please see update for 2023 [here](/general/ireland-excess-deaths-2023).</span>
+
 In a [previous post](/general/ireland-deaths-2021) I showed how can use daily deaths from RIP.ie to get up to date mortality estimates in Ireland. This is a useful alternative to official GRO data which lag behind by some months. It is possible to determine sex from the death notices but not age. To summarise, RIP.ie data shows unusually high mortality for 2021/22 which continues to the present (September 2022). Below is an updated plot showing how 2022 values are still trending higher. These are rolling averages of daily deaths to smooth out the trends and make them more readable.
 
 <div style="width: auto;">
