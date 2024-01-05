@@ -9,11 +9,11 @@ thumbnail: /img/img2img_app.png
 
 ## Background
 
-[Previously](/general/stable-diff-img2img) we saw how to implement the Stable Diffusion image-to-image model using the Python diffusers library. There are plenty of websites now that offer AI image generation since it has become so popular. This post simply shows how we can make your own basic web dashboard with [Panel](https://panel.holoviz.org/) that does something similar. The app allows someone to upload an image and generate new ones with a prompt and some of the settings previously demonstrated. Images are placed in a tabbed container and can be removed when needed.
+[Previously](/general/stable-diff-img2img) we saw how to implement the Stable Diffusion image-to-image model using the Python diffusers library. There are plenty of websites now that offer AI image generation since it has become so popular. This post simply shows how you can make your own basic web dashboard with [Panel](https://panel.holoviz.org/) that does something similar. The app allows someone to upload an image and generate new ones with a prompt and some of the settings previously demonstrated. Generated images are placed in a tabbed container and can be removed when needed.
 
 ## Code
 
-First we create our dashboard app by defining a function that returns the widgets. The `execute` function calls the img2imgprompt method. In Panel we can lay out our widgets using `pn.Column` and `pn.Row` panes. Note that other required methods are placed in another tools.py file and imported. This is kept in the same directory.
+First we create our dashboard app by defining a function that returns all the widgets on one container. The `execute` function calls the img2imgprompt method. In Panel we can lay out our widgets using `pn.Column` and `pn.Row` panes. Note that the other required methods are placed in another tools.py file and imported. This is kept in the same directory. (Generally it's considered bad practice in Python to use `from x import *` but as long it's a single module like this there is no problem).
 
 ```python
 import os, glob
@@ -92,7 +92,7 @@ def dashboard():
     return app
 ```
 
-Finally we create the app object and place it in a bootstrap template and call the `servable` method to launch it. This code is all placed in a python file. The full script is [here](https://github.com/dmnfarrell/teaching/blob/master/machine_learning/img2imgapp.py). If you wanted to run this in the background you could launch it using the `nohup` command. BY default Panel apps launched like this will run on localhost:5000.
+Finally we create the app object and place it in a bootstrap template and call the `servable` method to launch it. This code is all placed in a python file. The full script is [here](https://github.com/dmnfarrell/teaching/blob/master/machine_learning/img2imgapp.py). You can launch the script using `panel serve img2img.py`. By default Panel apps launched like this will run on localhost:5000. If you wanted to run this in the background you could launch it using the `nohup` command.
 
 ```python
 bootstrap = pn.template.BootstrapTemplate(title='image-to-image app',
