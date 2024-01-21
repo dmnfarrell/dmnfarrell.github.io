@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Fetch assembly and associated biosample data using Entrez tools in Python"
+title:  "Fetch assemblies and associated biosample data using Entrez tools with Biopython"
 date:   2024-01-19 16:10:00
 categories: bioinformatics
-tags: [python,genomics,microbiology]
+tags: [python,genomics]
 thumbnail: /img/entrez_dna.png
 ---
 
@@ -16,7 +16,7 @@ This is a somewhat altered version of code from an [old post](/bioinformatics/as
 
 ## Method
 
-In this case we wish to get meta data on set of assemblies and also retrieve extra fields from the corresponding entry in the **biosample** database. We use the `BioSampleId` to perform a linked search on the biosample db and add it to our result. The final table will also contain links to download the assembly fasta file. Obviously this can be customised to use any other linked db like bioproject. In this case I wanted the `geo_loc_name` field for the biosample.
+In this case we wish to get meta data on a set of assemblies and also retrieve extra fields from the corresponding entry in the **biosample** database. We use the `BioSampleId` to perform a linked search on the biosample db and add it to our result. The final table will also contain links to download the assembly fasta file. Obviously this can be customised to use any other linked db like bioproject. In this case I wanted the `geo_loc_name` field for the biosample.
 
 First the esearch is performed and the returned ids are used to get an esummary for each in turn. This contains assembly accession and biosample id which we put in a dictionary (called `row`). We then run another esearch using that biosampleid. This returns sample data, some of which must be parsed from the XML using BeautifulSoup. All the attributes are added to the dict. (Some of these attributes will be empty and many you likely don't need.) The dict is added to a list which is used to create a pandas DataFrame at the end. Note that I use the `FtpPath_GenBank` to get the link to the assembly file as the RefSeq one is sometimes not present. At the end there is a short function to download the links in the table.
 
