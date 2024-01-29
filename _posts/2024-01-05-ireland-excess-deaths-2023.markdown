@@ -76,12 +76,27 @@ Finally, Ireland is not the only country experiencing excess mortality in this p
    <p class="caption">Eurostat mean monthly excess for Ireland, Germany, Sweden and Netherlands</p>
 </div>
 
+## Public health concern
+
+If we take these figures as reasonable estimates there may have been roughly 8000 excess deaths from the start of 2021 to date. This should be a significant concern for public health authorities yet it appears to have received limited attention in the media.
+
 ## Notes
 
-1. There may still be a slight over estimate of mortality in our result as deaths of non Irish residents abroad are often included on RIP.ie. These have to be removed along with deaths from Northern Ireland but some might be missed.
+1. There may still be a slight over estimate of mortality in our result as deaths of non Irish residents abroad are often included on RIP.ie. These have to be removed along with deaths from Northern Ireland but some might have been missed. However this will be the same across all years so it shouldn't affect excess calculations.
 2. The period from 2016-2020 is used as the baseline data for excess calculations. Note that this includes the Covid pandemic year as **there was actually little or no excess death in 2020**. This has been clear for some time and has even been reported recently in the [Irish Examiner](https://www.irishexaminer.com/news/arid-41300326.html).
-3. Below 2016 the RIP estimates are not reliable.
-4. This data tells us nothing about the cause(s).
+3. Below 2016 the RIP estimates are not reliable but aren't used here for any calculations.
+
+Here are the values for estimated excesses and total deaths from 2017- derived from the curve fitting method. Once again, data is approximate and fits are an estimate.
+
+| year    | excess | total |
+|---------|--------|-------|
+| 2017    | -218   | 30520 |
+| 2018    | 260    | 31430 | 
+| 2019    | -176   | 31535 |
+| 2020    | 79     | 32444 |
+| 2021    | 2540   | 35048 |
+| 2022    | 3074   | 36052 |
+| 2023    | 2453   | 35936 |
 
 ## Links
 
