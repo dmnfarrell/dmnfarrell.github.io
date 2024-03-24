@@ -9,6 +9,10 @@ thumbnail: /img/pyqt.png
 
 ## Background
 
+<div style="width: 200px; float:right;">
+ <a href="/img/pyqt.png"> <img src="/img/pyqt.png" width="180px"></a>
+</div>
+
 Qt is a popular GUI toolkit for writing desktop applications. It has bindings for Python using either PySide2 or PyQt5 (which use essentially identical syntax). `QTableView` is the default class for table representations. It uses a `QAbstractTableModel` as the data source class. These can be sub classed to use whatever data backend you want. Here is some code using a pandas DataFrame as the data source. It's not actually essential for the example, but could be extended with more complex filtering logic that uses pandas. The key to filtering tables is using a proxy model that sits on top of the main model. This `QSortFilterProxyModel` class has methods that allow filtering to be applied. When the proxy model is triggered by calling `setFilterFixedString`, for example, the table display updates. The underlying data is unchanged. Here are the [methods for this class](https://doc.qt.io/qtforpython-5/PySide2/QtCore/QSortFilterProxyModel.html).
 
 We show here a simple `FilterWidget` class that is just a text field and button. There is also a drop down option for choosing which column to filter by - this is set with the `proxy.setFilterKeyColumn` method. Other options could be added. To create more complex filtering machinery you may need a custom proxy model. Also note that with proxy models you may have to add some extra lines of code for sorting and selection to work properly, if you have specific code in your class already.
