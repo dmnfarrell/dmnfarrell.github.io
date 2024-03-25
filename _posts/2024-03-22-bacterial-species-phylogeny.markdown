@@ -15,7 +15,7 @@ thumbnail: /img/bacteria.png
 
 Performing phylogenetic analysis with whole or core genome sequences maximizes the information used to estimate phylogenies and the resolution of closely related species. Usually sequences are aligned with a reference species or strain. However genome alignment is a process that does not scale well computationally. Even for small numbers of genomes it can be time consuming. Here are two relatively painless ways make a bacterial species phylogeny that you can do yourself. This might be useful if you are concerned with strains of a particular species you have sequenced and want to know how they relate to the nearest species in the genus.
 
-In this example we want to look at how all the species in the [Mycoplasma](https://en.wikipedia.org/wiki/Mycoplasma) genus are related. Mycoplasmopsis is a large genus among mollicutes and is of significant veterinary importance. You can see the taxonomy of the known species on NCBI [here] but it doesn't show a phylogeny.
+In this example will look at how all the species in the [Mycoplasmopsis]() genus are related. Mycoplasmopsis is a large genus among mollicutes and is of significant veterinary importance. You can see the taxonomy of the known species on NCBI but not a phylogeny.
 
 ## kSNP
 
@@ -25,32 +25,36 @@ In this example we want to look at how all the species in the [Mycoplasma](https
 
 kSNP4 is a program that identifies SNPs without doing alignments and a reference genome. This permits the inclusion of hundreds of microbial genomes that can be processed in a realistic time scale. Such an alignment free technique comes about through the insight that SNPs can be detected in small odd length chunks of sequence, **kmers**. So you split up the genomes into odd sized kmers and compare them. If the kmers are otherwise identical and are long enough not to be random, they can be compared between many samples to detect SNPs. 
 
-kSNP is mainly used for the analysis of viral and prokaryotic genomes. The input data are genome sequences in FASTA format. It can also annotate the SNPs if you include at least one annotation file.
+kSNP is mainly used for the analysis of viral and prokaryotic genomes. The input data are genome sequences in FASTA format. It can also annotate the SNPs if you include at least one annotation file. See more [here]([Building Phylogenetic Trees From Genome Sequences With kSNP4]).
 
 ### Get genomes
 
-First we have to get the genomes of the species we want. You can do this from the NCBI taxonomy browser [here](https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=2767358&reference_only=true). This is the page for Mycoplasma. Click on the genus name and it will show links to the genome page. You can follow the short screen capture below to see how to get the genome files. I filtered to only use reference genomes and retrieved 40. They don't need to be completed/closed genomes for kSNP to work. Unzip the files.
+First we have to get the representative genomes of the genus (or a set of specific species). You can do this from the NCBI taxonomy browser [here](https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=2767358&reference_only=true). This is the page for Mycoplasma. Click on the genus name and it will show links to the genome page. You can follow the short screen capture below to see how to get the genome files. I filtered to only use reference genomes and retrieved 40. They don't need to be completed/closed genomes for kSNP to work. Unzip the files.
 
 <div style="width: auto;">
  <a href="/img/ncbi_taxonomy_genomes.gif"> <img class="scaled" src="/img/ncbi_taxonomy_genomes.gif "></a>  
 </div>
 
-**Important:** kSNP won't accept names with a '.' in them. Ours have so we have to rename the files first which is a bit annoying. I renamed them by just keeping the assembly ID. The should also be all in one folder (not sub folders).
+**Important:** kSNP won't accept names with a '.' in them. Ours have so we have to rename the files first which is a bit annoying. We also need a flat file structure whereas the genomes assemblies are all placed in individual folders. I renamed them by just keeping the assembly ID. 
 
 To use kSNP there are basically three commands you need to run. They are shown below.
 
-```
 Make ksnp file (this is the input to the main program):
-`/local/kSNP4.1/MakeKSNP4infile -indir mycoplasmopsis_genomes/ -outfile ksnp_mycoplasmopsis.txt`
+```
+/local/kSNP4.1/MakeKSNP4infile -indir mycoplasmopsis_genomes/ -outfile ksnp_mycoplasmopsis.txt`
+```
 
 Use kchooser to determine the optimal kmer length. You will see it in the output. I got 19.
+```
 /local/kSNP4.1/Kchooser4 -in ksnp_mycoplasmopsis.txt
+```
 
 Finally, run kSNP4:
+```
 /local/kSNP4.1/kSNP4 -core -k 19 -outdir ksnp_mycoplasmopsis -in ksnp_mycoplasmopsis.txt
 ```
 
-This will take maybe 10-20 minutes to run for about 80 genomes. It will produce a lot of files in the output folder. The one we want is the ML tree, tree.parsimony.tre. You can plot the tree using whatever program you wish. Here we use toytree, a Python package:
+This will take maybe 10-15 minutes to run for about 80 genomes. It will produce a lot of files in the output folder. The one we want is the ML tree, tree.parsimony.tre. You can plot the tree using whatever program you wish. Here we use toytree, a Python package:
 
 <div style="width: auto;">
  <a href="/img/mycoplasma_tree_ksnp.png"> <img class="scaled" src="/img/mycoplasma_tree_ksnp.png "></a>  
@@ -74,7 +78,7 @@ toyplot.pdf.render(canvas, "tree-plot.pdf")
 
 ### Aside: FastANI
 
-You can also use fastaANI to get a distance measure between genomes that also doesn't use alignments. However it will not return values for genomes with <80% similarity, so should generally be used for fairly similar species or within species comparisons. To use this for many to many comparisons you make a list of all the fasta files in identical two seperate files, then supply these at the command line as follows:
+You can also use fastaANI to get a similarity (identity) measure between genomes. This also doesn't use alignments. However it will not return values for genomes with <80% similarity, so should generally be used for fairly similar species or within species comparisons. To use this for many to many comparisons you make a list of all the fasta files in identical two seperate files, then supply these at the command line as follows:
 
 ```
 fastANI --ql query1.txt --rl query2.txt -o fastani.out -t 8 --matrix
@@ -86,7 +90,7 @@ fastANI --ql query1.txt --rl query2.txt -o fastani.out -t 8 --matrix
 
 This option doesn't really require whole genomes. You only really need one or several conserved genes from your species. It uses the [OrthoDB](orthodb.org) site to find orthologs of a conserved protein and then aligns them the usual way. Single gene amino acid alignments are easy to do. Note that this method will likely not be sensitive enough to distinguish strains. Though you could use multiple genes joined together. The genes used might depend on what you want but normally they should be well conserved. 16S or other ribosomal subunits are often used to delineate species. You could also do this using **Uniprot** but this way is faster.
 
-First we go to the OrthoDB site and search for a protein such as 'Ribosomal protein'. This will give you lots of results and you can see they are grouped by genus level. Pick the Mycoplasma level for the protein you want. I picked [Ribosomal protein S20](https://www.orthodb.org/?level=&species=&query=6927at2093). You will see that there are 98 genes in the result. Just click on 'view fasta' to download the sequences. Remember these are amino acid sequences. To add your own strain to this from WGS data you would assemble the genome, run annotation tool like Prokka and extract the protein sequence. Then add it to the fasta you downloaded.
+First we go to the OrthoDB site and search for a protein such as 'Ribosomal protein'. This will give you lots of results and you can see they are grouped by genus level. Pick the Mycoplasma level for the protein you want. Note: There is a bit of confusion here as the mycoplasmopsis genus has been re-ordered and the change hasn't been reflected on this site yet. So Mycoplasma is still used to mean mycoplasmopsis for some species. I picked [Ribosomal protein S20](https://www.orthodb.org/?level=&species=&query=6927at2093). You will see that there are 98 sequences in the result. Just click on 'view fasta' to download the sequences. Remember these are amino acid sequences. To add your own strain to this from WGS data you would assemble the genome, run annotation tool like Prokka and extract the protein sequence. Then add it to the fasta you downloaded.
 
 <div style="width: auto;">
  <a href="/img/orthodb.png"> <img class="scaled" src="/img/orthodb.png "></a>  
@@ -114,7 +118,7 @@ for r in recs:
 SeqIO.write(new,'mycoplasmopsis_S20_org.faa','fasta')
 ```
 
-We can now align with mafft:
+We can now align the sequences, this example uses mafft:
 
 ```
 mafft mycoplasmopsis_S20_org.faa > out.aln
@@ -124,12 +128,13 @@ Make alignment with fasttree:
 fasttree out.aln > out.tree
 ```
 
-You can plot the tree using whatever program you wish. Here we use toytree, a Python package:
+Here is the resulting tree. You can see there are more species than in the kSNP example above. 
 
 <div style="width: auto;">
  <a href="/img/mycoplasma_tree_orthodb.png"> <img class="scaled" src="/img/mycoplasma_tree_orthodb.png "></a>  
 </div>
 
+There is a Jupyter notebook [here](https://github.com/dmnfarrell/teaching/blob/master/phylogenetics/mycoplasmopsis.ipynb) with this code.
 
 ## Links
 
@@ -137,6 +142,8 @@ You can plot the tree using whatever program you wish. Here we use toytree, a Py
 * [OrthoDB](orthodb.org/)
 * [kSNP3.0: SNP detection and phylogenetic analysis of genomes without genome alignment or reference genome](https://academic.oup.com/bioinformatics/article/31/17/2877/183216)
 * [Building Phylogenetic Trees From Genome Sequences With kSNP4](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10640685/)
+* ['The All-Species Living Tree' Project](https://lpsn.dsmz.de/)
+* [Jupyter notebook](https://github.com/dmnfarrell/teaching/blob/master/phylogenetics/mycoplasmopsis.ipynb)
 
 ## References
 
