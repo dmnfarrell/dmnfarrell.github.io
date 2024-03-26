@@ -15,7 +15,7 @@ thumbnail: /img/bacteria.png
 
 Performing phylogenetic analysis with whole or core genome sequences maximizes the information used to estimate phylogenies and the resolution of closely related species. Usually sequences are aligned with a reference species or strain. However genome alignment is a process that does not scale well computationally. Even for small numbers of genomes it can be time consuming. Here are two relatively painless ways make a bacterial species phylogeny that you can do yourself. This might be useful if you are concerned with strains of a particular species you have sequenced and want to know how they relate to the nearest species in the genus.
 
-In this example will look at how all the species in the [Mycoplasmopsis]() genus are related. Mycoplasmopsis is a large genus among mollicutes and is of significant veterinary importance. You can see the taxonomy of the known species on NCBI but not a phylogeny.
+In this example we will look at how the species in the Mycoplasmopsis genus are related. Mycoplasmopsis is a large genus among mollicutes and is of significant veterinary importance. You can see the taxonomy of the known species on NCBI but not a phylogeny.  Note: There is a bit of confusion here as the mycoplasmopsis genus is a newer designation for some species formerly called Mycoplasma. The names are often used synonymously, i.e. Mycoplasma Bovis.
 
 ## kSNP
 
@@ -25,11 +25,11 @@ In this example will look at how all the species in the [Mycoplasmopsis]() genus
 
 kSNP4 is a program that identifies SNPs without doing alignments and a reference genome. This permits the inclusion of hundreds of microbial genomes that can be processed in a realistic time scale. Such an alignment free technique comes about through the insight that SNPs can be detected in small odd length chunks of sequence, **kmers**. So you split up the genomes into odd sized kmers and compare them. If the kmers are otherwise identical and are long enough not to be random, they can be compared between many samples to detect SNPs. 
 
-kSNP is mainly used for the analysis of viral and prokaryotic genomes. The input data are genome sequences in FASTA format. It can also annotate the SNPs if you include at least one annotation file. See more [here]([Building Phylogenetic Trees From Genome Sequences With kSNP4]).
+kSNP is mainly used for the analysis of viral and prokaryotic genomes. The input data are genome sequences in FASTA format. It can also annotate the SNPs if you include at least one annotation file. See more [here]([https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10640685/]).
 
 ### Get genomes
 
-First we have to get the representative genomes of the genus (or a set of specific species). You can do this from the NCBI taxonomy browser [here](https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=2767358&reference_only=true). This is the page for Mycoplasma. Click on the genus name and it will show links to the genome page. You can follow the short screen capture below to see how to get the genome files. I filtered to only use reference genomes and retrieved 40. They don't need to be completed/closed genomes for kSNP to work. Unzip the files.
+First we have to get the representative genomes of the genus (or a set of specific species). You can do this from the NCBI taxonomy browser [here](https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=2767358&reference_only=true). This is the page for Mycoplasmopsis. Click on the genus name and it will show links to the genome page. You can follow the short screen capture below to see how to get the genome files. I filtered to only use reference genomes and retrieved 40. They don't need to be completed/closed genomes for kSNP to work. Unzip the files.
 
 <div style="width: auto;">
  <a href="/img/ncbi_taxonomy_genomes.gif"> <img class="scaled" src="/img/ncbi_taxonomy_genomes.gif "></a>  
@@ -90,7 +90,7 @@ fastANI --ql query1.txt --rl query2.txt -o fastani.out -t 8 --matrix
 
 This option doesn't really require whole genomes. You only really need one or several conserved genes from your species. It uses the [OrthoDB](orthodb.org) site to find orthologs of a conserved protein and then aligns them the usual way. Single gene amino acid alignments are easy to do. Note that this method will likely not be sensitive enough to distinguish strains. Though you could use multiple genes joined together. The genes used might depend on what you want but normally they should be well conserved. 16S or other ribosomal subunits are often used to delineate species. You could also do this using **Uniprot** but this way is faster.
 
-First we go to the OrthoDB site and search for a protein such as 'Ribosomal protein'. This will give you lots of results and you can see they are grouped by genus level. Pick the Mycoplasma level for the protein you want. Note: There is a bit of confusion here as the mycoplasmopsis genus has been re-ordered and the change hasn't been reflected on this site yet. So Mycoplasma is still used to mean mycoplasmopsis for some species. I picked [Ribosomal protein S20](https://www.orthodb.org/?level=&species=&query=6927at2093). You will see that there are 98 sequences in the result. Just click on 'view fasta' to download the sequences. Remember these are amino acid sequences. To add your own strain to this from WGS data you would assemble the genome, run annotation tool like Prokka and extract the protein sequence. Then add it to the fasta you downloaded.
+First we go to the OrthoDB site and search for a protein such as 'Ribosomal protein'. This will give you lots of results and you can see they are grouped by genus level. Pick the Mycoplasma level for the protein you want. (The taxonomy here is not up to date for this genus). I picked [Ribosomal protein S20](https://www.orthodb.org/?level=&species=&query=6927at2093). You will see that there are 98 sequences in the result. Just click on 'view fasta' to download the sequences. Remember these are amino acid sequences. To add your own strain to this from WGS data you would assemble the genome, run annotation tool like Prokka and extract the protein sequence. Then add it to the fasta you downloaded.
 
 <div style="width: auto;">
  <a href="/img/orthodb.png"> <img class="scaled" src="/img/orthodb.png "></a>  
