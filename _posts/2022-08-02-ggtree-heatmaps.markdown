@@ -11,6 +11,8 @@ thumbnail: /img/ggtree_example.png
 
 There are many online examples of how to draw phylogenetic trees using various R tools. One is [ggtree](https://github.com/YuLab-SMU/ggtree), based on the ggplot packages, which provides a wide range of options. This example shows how to write some functions that can plot trees with an arbitrary number of heatmap annotations, given the appropriate meta data in a `data.frame` object. The columns to be used are provided as a list along with color maps for each. The first column is used for the tip colors. Note that you will see a warning: _"Scale for 'fill' is already present. Adding another scale for 'fill', which will replace the existing scale."_ when this is run but it can be ignored. This is because a new `scale_fill_manual` is called each time we add a heatmap. There is also some code here to deal with the case of continuous column types, in which case `scale_color_brewer` is used instead.
 
+See [here](/r/ggplottree) for an updated version of the function.
+
 ## Code
 
 ```R
@@ -32,10 +34,10 @@ gettreedata <- function(tree, meta){
 }
 
 get_color_mapping <- function(data, col, cmap){
-    labels <- (data[[col]])   
+    labels <- (data[[col]])
     names <- levels(as.factor(labels))
     n <- length(names)
-    if (n<10){      
+    if (n<10){
         colors <- suppressWarnings(c(brewer.pal(n, cmap)))[1:n]
     }
     else {
@@ -49,7 +51,7 @@ ggplottree <- function(tree, meta, cols=NULL, cmaps=NULL, layout="rectangular",
                        offset=10, tiplabel=FALSE, tipsize=3) {
 
     y <- gettreedata(tree, meta)
-    p <- ggtree(y, layout=layout)   
+    p <- ggtree(y, layout=layout)
     if (is.null(cols)){
         return (p)
     }
@@ -59,8 +61,8 @@ ggplottree <- function(tree, meta, cols=NULL, cmaps=NULL, layout="rectangular",
     df<-meta[tree$tip.label,][col]
     colors <- get_color_mapping(df, col, cmap)
 
-    #tip formatting    
-    p1 <- p + new_scale_fill() +    
+    #tip formatting
+    p1 <- p + new_scale_fill() +
           geom_tippoint(mapping=aes(fill=.data[[col]]),size=tipsize,shape=21,stroke=0) +
           scale_fill_manual(values=colors, na.value="white")
 
@@ -70,23 +72,23 @@ ggplottree <- function(tree, meta, cols=NULL, cmaps=NULL, layout="rectangular",
             col <- cols[i]
             cmap <- cmaps[i]
             df <- meta[tree$tip.label,][col]
-            type <- class(df[col,])            
+            type <- class(df[col,])
             p2 <- p2 + new_scale_fill()
             p2 <- gheatmap(p2, df, offset=i*offset, width=.08,
-                      colnames_angle=0, colnames_offset_y = .05)  
+                      colnames_angle=0, colnames_offset_y = .05)
             #deal with continuous values
-            if (type == 'numeric'){               
+            if (type == 'numeric'){
                 p2 <- p2 + scale_color_brewer(type="div", palette=cmap)
             }
             else {
                 colors <- get_color_mapping(df, col, cmap)
                 p2 <- p2 + scale_fill_manual(values=colors, name=col)
-            }          
+            }
         }
     }
 
     p2 <- p2 + theme_tree2(legend.text = element_text(size=20), legend.key.size = unit(1, 'cm'),
-                        legend.position="left", plot.title = element_text(size=40))     
+                        legend.position="left", plot.title = element_text(size=40))
             guides(color = guide_legend(override.aes = list(size=10)))
 
     return(p2)

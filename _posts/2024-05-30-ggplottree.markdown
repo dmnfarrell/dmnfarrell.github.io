@@ -171,7 +171,6 @@ ggplottree(tree, df, layout='rect', cols=c('species','country','year'),
 
 <div style="width: auto;">
  <img class="small-scaled" src="/img/ggplottree1.png">
-   <p class="caption">Example tree.</p>
 </div>
 
 ### Circular tree with different tip labels
@@ -184,7 +183,6 @@ ggplottree(tree, df, layout='c', cols=c('species','label','label2'),
 
 <div style="width: auto;">
  <img class="small-scaled" src="/img/ggplottree2.png">
-   <p class="caption">Example tree.</p>
 </div>
 
 ### Cladogram with multiple color scales
@@ -198,7 +196,6 @@ ggplottree(tree, df, layout='cladogram', cols=c('species','country','label','lab
 
 <div style="width: auto;">
  <img class="small-scaled" src="/img/ggplottree3.png">
-   <p class="caption">Example tree.</p>
 </div>
 
 ## Links
