@@ -9,7 +9,7 @@ thumbnail: /img/entrez_dna.png
 
 ## Background
 
-This is a somewhat altered version of code from an [old post](/bioinformatics/assemblies-genbank-python) for downloading assemblies. GenBank provides access to information on all it's assembled genomes via the **assembly** database. You have several options: download assemblies individually or in bulk via the website or the Entrez database search system using command line tools without the website. The later is good for large automated searches/downloads. The BioPython package provides an interface to the entrez tools too. 
+This is a somewhat altered version of code from an [old post](/bioinformatics/assemblies-genbank-python) for downloading assemblies. GenBank provides access to information on all it's assembled genomes via the **assembly** database. You have several options: download assemblies individually or in bulk via the website or the Entrez database search system using command line tools without the website. The later is good for large automated searches/downloads. The BioPython package provides an interface to the entrez tools too.
 
 * esearch - searches an NCBI database for a query and finds the unique identifiers (UIDs) for all records that match.
 * esummary - returns document summaries (DocSums) for a list of input UIDs.
@@ -37,44 +37,52 @@ from Bio import Entrez
 
 def get_assembly_summary(id, db="assembly"):
     """Get esummary for an entrez id"""
-    
+
     esummary_handle = Entrez.esummary(db=db, id=id, report="full")
     esummary_record = Entrez.read(esummary_handle)
     return esummary_record
 
-def get_assemblies(term):
+def get_assemblies(term, retmax='5000', prev=None):
     """Download genbank assembly meta data for a given search term.
     Args:
-        term: search term, usually organism name        
+        term: search term, usually organism name
+        retmax: max return results
+        prev: previous results to avoid re-downloading, a pandas dataframe
     """
 
+    if prev is not None:
+        found = list(prev.id)
+    else:
+        found = []
     #provide your own mail here
     Entrez.email = "A.N.Other@example.com"
-    handle = Entrez.esearch(db="assembly", term=term, retmax='5000')
+    handle = Entrez.esearch(db="assembly", term=term, retmax=retmax)
     record = Entrez.read(handle)
     ids = record['IdList']
     print (f'found {len(ids)} ids')
     links = []
     result = []
-    for id in tqdm(ids[:4]):
+    for id in tqdm(ids):
+        if id in found:
+            continue
         row = {'id':id}
         #get summary
         rec = get_assembly_summary(id)
-        
-        asm_summ = rec['DocumentSummarySet']['DocumentSummary'][0]       
+
+        asm_summ = rec['DocumentSummarySet']['DocumentSummary'][0]
         fields = ['AssemblyAccession','BioSampleAccn','BioSampleId','SubmitterOrganization']
         for key in fields:
             row[key] = asm_summ[key]
         row['GenbankAccession'] = asm_summ['Synonym']['Genbank']
-        
+
         #biosample info is a separate request using the BioSampleId
-        handle = Entrez.esummary(db="biosample", id=asm_summ['BioSampleId'], report="full")        
+        handle = Entrez.esummary(db="biosample", id=asm_summ['BioSampleId'], report="full")
         rec2 = Entrez.read(handle)
         sampledata = rec2['DocumentSummarySet']['DocumentSummary'][0]['SampleData']
         #parse xml in sampledata
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(sampledata)
-        all_attr = soup.findAll('attribute')        
+        all_attr = soup.findAll('attribute')
         for attr in all_attr:
             #print (attr,attr['attribute_name'],attr.text)
             row[attr['attribute_name']] = attr.text
@@ -82,23 +90,24 @@ def get_assemblies(term):
         #url = asm_summ['FtpPath_RefSeq']
         url = asm_summ['FtpPath_GenBank']
         #print (url)
-        if url != '':           
+        if url != '':
             label = os.path.basename(url)
             #get the fasta link - change this to get other formats
-            link = os.path.join(url,label+'.fna.gz')        
+            link = os.path.join(url,label+'.fna.gz')
             row['link'] = link
         result.append(row)
     result = pd.DataFrame(result)
+    if prev is not None:
+        result = pd.concat([prev, result])
     return result
 
 def download_links(df, path):
     for i,r in df.iterrows():
         label = r.AssemblyAccession
         urllib.request.urlretrieve(link, os.path.join(path, f'{label}.fna.gz'))
-        
 ```
 
-We call the method like this: 
+We call the method like this:
 
 ```python
 res = get_assemblies('Mycoplasmopsis bovis')
