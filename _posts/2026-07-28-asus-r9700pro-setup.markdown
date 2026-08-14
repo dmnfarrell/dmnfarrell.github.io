@@ -4,7 +4,7 @@ title:  "The Asus Turbo AI R9700 Pro on Linux"
 date:   2026-07-28 12:20:00
 categories: bioinformatics
 tags: []
-thumbnail: /img/
+thumbnail: /img/asus_turbo_r9700.jpg
 ---
 
 ## Background
