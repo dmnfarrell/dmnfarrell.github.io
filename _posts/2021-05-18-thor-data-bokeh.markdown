@@ -16,11 +16,11 @@ Following from the [previous post](/plotting/thor-seasia), we can view the same 
 The resulting widget is animated here.
 
 <div>
- <a href="/img/thor_bokeh_dashboard.gif"> <img class="small-scaled" src="/img/thor_bokeh_dashboard.gif"></a>  
+ <a href="/img/thor_bokeh_dashboard.gif"> <img class="small-scaled" src="/img/thor_bokeh_dashboard.gif"></a>
    <p class="caption">.</p>
 </div>
 
-The complete code can be found [here](https://github.com/dmnfarrell/teaching/tree/master/vietnam_thor). You can also view a demo of the dashboard hosted [here](http://bola.ucd.ie/thor). If this no longer available you can run the notebook from [mybinder](https://mybinder.org/v2/gh/dmnfarrell/teaching/tree/master/vietnam_thor/HEAD) too.
+The complete code can be found [here](https://github.com/dmnfarrell/teaching/tree/master/vietnam_thor).
 
 ## Code
 
@@ -40,9 +40,8 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
     return df
 
  def draw_map(df=None, long=None, lat=None, height=500, colorby='TGTCOUNTRY',
-             point_size=5,
-              tile_provider='CARTODBPOSITRON'):
-    tile_provider = get_provider(tile_provider)
+              point_size=5, tile_provider='CARTODBPOSITRON'):
+
     tools = "pan,wheel_zoom,box_zoom,hover,tap,lasso_select,reset,save"
     sizing_mode='stretch_both'
 
@@ -58,15 +57,15 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
 
     p = figure(x_range=(x-pad, x+pad), y_range=(y-pad, y+pad),
                x_axis_type="mercator", y_axis_type="mercator", tools=tools,
-               plot_width=height, plot_height=height, sizing_mode=sizing_mode)
+               width=height, height=height, sizing_mode=sizing_mode)
     p.add_tile(tile_provider)
     if df is None:
         return
     df.loc[:,'color'] = [colormap[i] if i in colormap else 'gray' for i in df[colorby]]
 
-    source = ColumnDataSource(df)    
+    source = ColumnDataSource(df)
     p.circle(x='x', y='y', size=point_size, alpha=0.7, color='color', source=source)
-    p.toolbar.logo = None    
+    p.toolbar.logo = None
     p.title.text = "date"
     hover = p.select(dict(type=HoverTool))
     hover.tooltips = OrderedDict([
@@ -74,7 +73,7 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
         ("MSNDATE", "@MSNDATE"),
         ("TAKEOFFLOCATION", "@TAKEOFFLOCATION"),
         ("WEAPONTYPE", "@WEAPONTYPE"),
-        ("MFUNC_DESC", "@MFUNC_DESC")     
+        ("MFUNC_DESC", "@MFUNC_DESC")
     ])
     hover.formatters={'@MSNDATE': 'datetime'}
     return p
@@ -85,10 +84,10 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
      map_pane=pn.pane.Bokeh(width=700)
      df_pane = pn.pane.DataFrame(width=600,height=600)
      date_picker = pnw.DatePicker(name='Pick Date',width=200)
-     from datetime import date  
-     date_picker.value=date(1965, 1, 1)    
+     from datetime import date
+     date_picker.value=date(1965, 1, 1)
      date_slider = pnw.DateSlider(name='Date', start=dt.datetime(1965, 1, 1),
-                                  end=dt.datetime(1973, 10, 31), value=dt.datetime(1968, 1, 1))      
+                                  end=dt.datetime(1973, 10, 31), value=dt.datetime(1968, 1, 1))
      tile_select = pnw.Select(name='tile layer',options=providers,width=200)
      filterby_select = pnw.Select(name='filter by',value='',options=['']+cols[1:4],width=200)
      value_select = pnw.Select(name='value',value='',options=[],width=200)
@@ -116,13 +115,13 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
          d = do_filter(d)
          if len(d)==0:
              return
-         elif len(d)>25000:           
+         elif len(d)>25000:
              p.title.text = 'too many points!'
          else:
-             d.loc[:,'color'] = [colormap[i] if i in colormap else 'gray' for i in d[colorby]]        
+             d.loc[:,'color'] = [colormap[i] if i in colormap else 'gray' for i in d[colorby]]
              source.data = dict(d)
              p.title.text = 'selected %s points' %len(d)
-         map_pane.param.trigger('object')     
+         map_pane.param.trigger('object')
          return
 
      def do_filter(d):
@@ -133,7 +132,7 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
          return d
 
      def update_date(event):
-         date_slider.value = date_picker.value     
+         date_slider.value = date_picker.value
 
      def update_map(event=None, date=None):
          p = map_pane.object
@@ -143,7 +142,7 @@ def wgs84_to_web_mercator(df, lon="LON", lat="LAT"):
          d = x[x.MSNDATE==date]
          d = do_filter(d)
          if len(d)==0:
-             return  
+             return
          d.loc[:,'color'] = [colormap[i] if i in colormap else 'gray' for i in d[colorby]]
          source.data = dict(d)
          p.title.text = date
